@@ -3,26 +3,26 @@ import { Button } from "@/components/ui/button"
 
 const services = [
   {
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/service-images/AFFFp.png",
     title: "Personal Injury Claims",
     description:
       "Comprehensive support for accidents, medical malpractice, and workplace injuries with maximum compensation.",
     features: ["No upfront fees", "Proven track record", "24/7 support"],
   },
   {
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/service-images/motor.png",
     title: "Motor Vehicle Accidents",
     description: "Expert handling of car, truck, and motorcycle accident claims with full insurance negotiations.",
     features: ["Insurance negotiations", "Property damage", "Medical expenses"],
   },
   {
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/service-images/product-liability.png",
     title: "Product Liability",
     description: "Defective product cases including pharmaceuticals, medical devices, and consumer products.",
     features: ["Pharmaceutical cases", "Medical devices", "Consumer products"],
   },
   {
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/service-images/mass-torent.png",
     title: "Mass Tort Litigation",
     description: "Join class action lawsuits for widespread harm from corporations and defective products.",
     features: ["Class action suits", "Corporate negligence", "Environmental claims"],
@@ -52,7 +52,7 @@ export function ServicesSection() {
                 <img
                   src={service.image || "/placeholder.svg"}
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
 
