@@ -31,9 +31,9 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section id="process" className="py-20 bg-background">
+    <section id="process" className="py-6 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-space-grotesk">
             How Do I Get <span className="text-primary">Compensated?</span>
           </h2>
@@ -42,7 +42,7 @@ export function ProcessSection() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-10">
           {steps.map((step, index) => (
             <Card key={index} className="text-center group hover:shadow-lg transition-all duration-300">
               <CardContent className="p-6 lg:p-8 space-y-4">

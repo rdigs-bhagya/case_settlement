@@ -31,8 +31,8 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-5 bg-gray-50">
-      <div className="px-6">
+    <section id="services" className="py-3 bg-gray-50">
+      <div className="px-8">
         <div className="text-center space-y-4 mb-5">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
             Our Legal <span className="text-blue-800">Expertise</span>
@@ -48,7 +48,7 @@ export function ServicesSection() {
               key={index}
               className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 bg-white overflow-hidden"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 overflow-hidden">
                 <img
                   src={service.image || "/placeholder.svg"}
                   alt={service.title}

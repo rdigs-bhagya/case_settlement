@@ -6,9 +6,9 @@ import { Phone, Mail, Clock } from "lucide-react"
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-12 bg-white">
+    <section id="contact" className="py-8 bg-white">
       <div>
-        <div className="text-center mb-8 px-4">
+        <div className="text-center mb-8 px-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
             Get Your <span className="text-blue-900">Free Consultation</span>
           </h2>
@@ -19,7 +19,7 @@ export function ContactSection() {
           {/* Contact Form - takes 2 columns */}
           <div className="lg:col-span-2">
             <Card className="shadow-md border-0">
-              <CardContent className="p-6">
+              <CardContent className="p-4">
                 <form className="space-y-4">
                   <div className="grid grid-cols-2 gap-3">
                     <Input placeholder="First Name" />
