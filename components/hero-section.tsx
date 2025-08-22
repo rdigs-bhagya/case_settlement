@@ -19,7 +19,7 @@ export function HeroSection() {
                 Expert Legal Assistance • Free Consultation
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+              <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900">
                 Maximum <span className="text-blue-800">Legal Recovery</span> for Your Case
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">

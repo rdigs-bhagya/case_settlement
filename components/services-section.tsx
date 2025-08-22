@@ -31,9 +31,9 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-5 bg-gray-50">
       <div className="px-6">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-5">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
             Our Legal <span className="text-blue-800">Expertise</span>
           </h2>
@@ -42,7 +42,7 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2">
           {services.map((service, index) => (
             <Card
               key={index}
@@ -56,7 +56,7 @@ export function ServicesSection() {
                 />
               </div>
 
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-center pb-1">
                 <CardTitle className="text-xl font-bold leading-tight text-gray-900">{service.title}</CardTitle>
               </CardHeader>
 
