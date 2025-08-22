@@ -6,10 +6,10 @@ import { useState } from "react"
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
+    name: "Michael's Perspective",
     case: "Personal Injury",
     rating: 5,
-    text: "Excellent service and great results. They handled my case professionally and got me the compensation I deserved.",
+    text: " As an attorney, I can confidently say that Legal Claim Assistance is a game-changer. Their Mass Tort Case Acquisitions service empowers attorneys like me to focus on providing top-notch representation. They handle case identification and acquisition seamlessly, allowing us to excel in our legal practice. ",
     amount: "$125,000",
   },
   {
