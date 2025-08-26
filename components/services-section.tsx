@@ -1,31 +1,39 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const services = [
   {
     image: "/service-images/AFFFp.png",
-    title: "Personal Injury Claims",
+    title: "AFFF-Lawsuite",
     description:
       "Comprehensive support for accidents, medical malpractice, and workplace injuries with maximum compensation.",
     features: ["No upfront fees", "Proven track record", "24/7 support"],
+    link: "/AFFF_Service",
   },
   {
     image: "/service-images/motor.png",
     title: "Motor Vehicle Accidents",
-    description: "Expert handling of car, truck, and motorcycle accident claims with full insurance negotiations.",
+    description:
+      "Expert handling of car, truck, and motorcycle accident claims with full insurance negotiations.",
     features: ["Insurance negotiations", "Property damage", "Medical expenses"],
+    link: "/services/motor-vehicle",
   },
   {
     image: "/service-images/product-liability.png",
     title: "Product Liability",
-    description: "Defective product cases including pharmaceuticals, medical devices, and consumer products.",
+    description:
+      "Defective product cases including pharmaceuticals, medical devices, and consumer products.",
     features: ["Pharmaceutical cases", "Medical devices", "Consumer products"],
+    link: "/services/product-liability",
   },
   {
     image: "/service-images/mass-torent.png",
     title: "Mass Tort Litigation",
-    description: "Join class action lawsuits for widespread harm from corporations and defective products.",
+    description:
+      "Join class action lawsuits for widespread harm from corporations and defective products.",
     features: ["Class action suits", "Corporate negligence", "Environmental claims"],
+    link: "/services/mass-tort",
   },
 ]
 
@@ -72,13 +80,15 @@ export function ServicesSection() {
                   ))}
                 </ul>
 
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 border-blue-800 text-blue-800 bg-transparent"
-                >
-                  Learn More
-                </Button>
+                <Link href={service.link}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 border-blue-800 text-blue-800 bg-transparent"
+                  >
+                    Learn More
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}

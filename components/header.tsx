@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Phone, Mail, ChevronDown, Menu, X } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useState, useEffect } from "react"
+import Link from "next/link"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -79,9 +80,9 @@ export function Header() {
       <div className="px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+            <Link href="/" className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
               <div className="text-white font-bold text-2xl">⚖</div>
-            </div>
+            </Link>
           </div>
 
           <nav className="hidden lg:flex items-center gap-8">
