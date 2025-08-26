@@ -36,7 +36,7 @@ const AFFFHeroSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="service-images/firefighters-afff.jpeg"
+                                    src="service-images/nec-lawsuit.png"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />
