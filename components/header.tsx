@@ -44,8 +44,8 @@ export function Header() {
   }, [])
 
   const services = [
-    { name: "AFFF Lawsuit Support", href: "#afff" },
-    { name: "NEC Lawsuit Assistance", href: "#nec" },
+    { name: "AFFF Lawsuit Support", href:"AFFF_Service" },
+    { name: "NEC Lawsuit Assistance", href: "NEC_Service" },
     { name: "Motor Vehicle Accidents", href: "#mva" },
     { name: "Roundup Lawsuit", href: "#roundup" },
     { name: "Hair Relaxer Claims", href: "#hair-relaxer" },
