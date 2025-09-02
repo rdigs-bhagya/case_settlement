@@ -44,14 +44,16 @@ export function Header() {
   }, [])
 
   const services = [
-    { name: "AFFF Lawsuit Support", href:"AFFF_Service" },
-    { name: "NEC Lawsuit Assistance", href: "NEC_Service" },
-    { name: "Motor Vehicle Accidents", href: "#mva" },
-    { name: "Roundup Lawsuit", href: "#roundup" },
-    { name: "Hair Relaxer Claims", href: "#hair-relaxer" },
-    { name: "Zantac Lawsuits", href: "#zantac" },
-    { name: "Mass Tort Claims", href: "#mass-tort" },
-    { name: "Personal Injury", href: "#personal-injury" },
+    { name: "AFFF Lawsuit Support", href: "/services/afff-service" },
+    { name: "NEC Lawsuit Assistance", href: "/services/nec-service" },
+    { name: "Motor Vehicle Accidents", href: "/services/mva" },
+    { name: "Product Liability", href: "/services/product-liability-service" },
+    { name: "Mass Tort Litigation", href: "/services/mass-tort-litigation" },
+    { name: "Roundup Lawsuit", href: "/services/round-up-service" },
+    { name: "Hair Relaxer Claims", href: "/services/hair-relaxer" },
+    { name: "Zantac Lawsuits", href: "/services/zantac-lawsuite-service" },
+    { name: "PFAS Lawsuite", href: "/services/pfas-lawsuite-service" },
+    { name: "Silicosis", href: "/services/silicosis" },
   ]
 
   return (
@@ -104,22 +106,24 @@ export function Header() {
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
-            <a href="#about" className="text-gray-700 hover:text-primary transition-colors text-lg font-bold">
+            <a href="/about-us" className="text-gray-700 hover:text-primary transition-colors text-lg font-bold">
               About
             </a>
-            <a href="#process" className="text-gray-700 hover:text-primary transition-colors text-lg font-bold">
-              Process
+            <a href="/blogs" className="text-gray-700 hover:text-primary transition-colors text-lg font-bold">
+              Blog's
             </a>
-            <a href="#contact" className="text-gray-700 hover:text-primary transition-colors text-lg font-bold">
+            <a href="/contact-us" className="text-gray-700 hover:text-primary transition-colors text-lg font-bold">
               Contact
             </a>
           </nav>
 
           <div className="flex items-center gap-2">
-            <Button className="bg-primary hover:bg-primary/90 text-white text-xs sm:text-sm px-3 sm:px-4 py-2">
-              <span className="hidden sm:inline">Get Started Today</span>
-              <span className="sm:hidden">Get Started</span>
-            </Button>
+            <Link href="/contact-us">
+              <Button className="bg-primary hover:bg-primary/90 text-white text-xs sm:text-sm px-3 sm:px-4 py-2">
+                <span className="hidden sm:inline">Get Started Today</span>
+                <span className="sm:hidden">Get Started</span>
+              </Button>
+            </Link>
 
             <button className="lg:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -146,21 +150,21 @@ export function Header() {
                 </div>
               </div>
               <a
-                href="#about"
+                href="/about-us"
                 className="text-gray-700 hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </a>
               <a
-                href="#process"
+                href="/blogs"
                 className="text-gray-700 hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Process
+                Blog's
               </a>
               <a
-                href="#contact"
+                href="/contact-us"
                 className="text-gray-700 hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >

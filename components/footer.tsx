@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin } from "lucide-react"
 export function Footer() {
   return (
     <footer className="bg-foreground text-background py-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">

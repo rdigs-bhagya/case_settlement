@@ -2,7 +2,7 @@
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import { Button } from "@/components/ui/button";
 
-const AFFFHeroSection = () => {
+const RoundUpSection = () => {
     return (
         <>
             <section className=" text-black relative overflow-hidden">
@@ -11,27 +11,19 @@ const AFFFHeroSection = () => {
                     <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[500px]">
                         <div className="order-2 lg:order-1 space-y-4">
                             <h1 className="text-4xl lg:text-5xl xl:text-4xl font-extrabold leading-tight">
-                                Who is <span className="text-[#193CB8]">Responsible for Cancer Caused by AFFF Exposure?</span>
+                                <span className="text-primary">Why Do I Need a Lawyer for a Roundup Lawsuit?</span>
                             </h1>
                             <div className="space-y-6 text-lg sm:text-lg text-black/90">
                                 <p>
-                                    Major Manufacturers like 3M, DuPont, and Chemours have known that these
-                                    harmful substances contained dangerous PFAS (Per-fluoroalkyl PFAS) commonly
-                                    called "forever chemicals", but failed to warn users.
-                                </p>
-                                <p>
-                                    Anyone previously facing frequent exposure to chemicals used in AFFF
-                                    foam may qualify. AFFF was used around the country at
-                                    military bases and major commercial airports and is responsible for toxic
-                                    health risks including cancer, prostate cancer,
-                                    testicular cancer, and kidney cancer.
+                                    Roundup, a herbicide containing glyphosate, has been widely used in both commercial and residential settings. However, long-term exposure has been linked in lawsuits to cancers such as non-Hodgkin lymphoma, leukemia, and mantle cell lymphoma. While regulatory agencies differ in their conclusions, courts have recognized potential health risks and awarded substantial damages to victims.
+                                    An experienced product liability attorney can evaluate your history of exposure, review your medical records, and determine if you are eligible to pursue compensation against Bayer, the manufacturer of Roundup. Legal representation ensures that deadlines are met, evidence is preserved, and your rights are fully protected.
                                 </p>
                             </div>
                         </div>
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="service-images/firefighters-afff.jpeg"
+                                    src="../RoundUp/Roundup.png"
                                     alt="Firefighters using AFFF foam at emergency scene"
                                     className="w-full h-auto"
                                 />
@@ -45,7 +37,7 @@ const AFFFHeroSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="service-images/firefighters-afff.jpeg"
+                                    src="../RoundUp/Roundup1.png"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />
@@ -54,22 +46,58 @@ const AFFFHeroSection = () => {
                         </div>
                         <div className="order-2 lg:order-2 space-y-4">
                             <h1 className="text-4xl lg:text-5xl xl:text-4xl font-extrabold leading-tight">
-                                <span className="text-[#193CB8]">Victims of AFFF Exposure</span> May Qualify for Legal Compensation
+                                <span className="text-[#193CB8]">THealth Conditions and Legal Precedents</span>
                             </h1>
                             <div className="space-y-6 text-lg sm:text-lg text-black/90">
                                 <p>
-                                    Thousands of military personnel, firefighters, and airport workers were
-                                    unknowingly exposed to toxic PFAS chemicals contained in AFFF foam for
-                                    decades.
-                                </p>
-                                <p>
-                                    Legal actions are being taken nationwide to hold manufacturers accountable
-                                    for failing to warn about these risks. You may be entitled to significant
-                                    compensation if diagnosed with related cancers.
+                                    Claims related to Roundup most often involve:
+
+                                    <li><b>Non-Hodgkin B-cell or T-cell lymphoma</b></li>
+
+                                    <li><b>Chronic lymphocytic leukemia</b></li>
+
+                                    <li><b>Hairy cell lymphoma</b></li>
+
+                                    <li><b>Mantle cell lymphoma</b></li>
+                                    Notable lawsuits have resulted in multimillion-dollar verdicts, including cases where long-term users demonstrated a direct connection between Roundup exposure and their cancer diagnosis. While Bayer has also defended and won some cases, the litigation landscape continues to evolve with ongoing claims nationwide.
                                 </p>
                             </div>
                         </div>
                     </div>
+
+                    {/* First Row (Text Left - Image Right) */}
+                    <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[500px]">
+                        <div className="order-2 lg:order-1 space-y-4">
+                            <h1 className="text-4xl lg:text-5xl xl:text-4xl font-extrabold leading-tight">
+                                <span className="text-primary">Marketing/Supportive Version (Add-On)</span>
+                            </h1>
+                            <div className="space-y-6 text-lg sm:text-lg text-black/90">
+                                <p>
+                                    Roundup Lawsuit Support for Victims and Families
+
+                                    Thousands of individuals have come forward claiming Roundup contributed to their cancer diagnoses. Successful lawsuits have already secured millions in compensation for victims. If you believe your health has been impacted, don’t wait.
+                                    Our legal team provides:
+
+                                    <li><b>No upfront fees –</b> we only get paid if you win.</li>
+
+                                    <li><b>Nationwide support – </b> serving clients across the U.S.</li>
+
+                                    <li><b>Proven litigation experience – </b> standing up against large corporations.</li>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="order-1 lg:order-2 relative">
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                                <img
+                                    src="../RoundUp/Rooundup2.png"
+                                    alt="Firefighters using AFFF foam at emergency scene"
+                                    className="w-full h-auto"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-navy-blue/20 to-transparent"></div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     {/* CTA Buttons (shared for both sections) */}
                     <div className="flex gap-4 pt-2 justify-center items-center">
@@ -91,12 +119,10 @@ const AFFFHeroSection = () => {
                             Qualification Check
                         </div>
                         <h2 className="text-4xl lg:text-5xl font-bold text-navy-blue mb-6">
-                            Do You Qualify for AFFF Cancer Compensation?
+                            Do You Qualify for a Roundup Lawsuit?
                         </h2>
                         <p className="text-muted-foreground text-xl max-w-4xl mx-auto leading-relaxed">
-                            If you or a loved one has been diagnosed with cancer after exposure to AFFF firefighting foam,
-                            you may be entitled to significant compensation.
-                        </p>
+                            If you or a loved one has been diagnosed with cancer after prolonged use of Roundup, you may qualify to pursue compensation.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -109,8 +135,7 @@ const AFFFHeroSection = () => {
                                     Exposure History
                                 </h3>
                                 <p className="text-muted-foreground text-lg leading-relaxed">
-                                    You were exposed to AFFF foam as a firefighter, military personnel,
-                                    or worked at airports/chemical plants.
+                                    You regularly used Roundup herbicide in agricultural, landscaping, gardening, or related work.
                                 </p>
                             </div>
                         </div>
@@ -124,8 +149,7 @@ const AFFFHeroSection = () => {
                                     Cancer Diagnosis
                                 </h3>
                                 <p className="text-muted-foreground text-lg leading-relaxed">
-                                    You have been diagnosed with kidney cancer, testicular cancer,
-                                    prostate cancer, or thyroid disease.
+                                    You have been diagnosed with a qualifying condition such as non-Hodgkin lymphoma, leukemia, mantle cell lymphoma, or other related cancers.
                                 </p>
                             </div>
                         </div>
@@ -139,8 +163,7 @@ const AFFFHeroSection = () => {
                                     Timeline Connection
                                 </h3>
                                 <p className="text-muted-foreground text-lg leading-relaxed">
-                                    Your cancer diagnosis occurred after your exposure to AFFF foam
-                                    during your service or employment.
+                                    Your cancer diagnosis occurred after extended exposure to Roundup, and medical records or history support the link.
                                 </p>
                             </div>
                         </div>
@@ -148,12 +171,11 @@ const AFFFHeroSection = () => {
                 </div>
             </section>
             <div>
-                        <ClaimReviewForm/>
+                <ClaimReviewForm service={"round-up-service"} />
 
             </div>
-
         </>
     );
 };
 
-export default AFFFHeroSection;
+export default RoundUpSection;

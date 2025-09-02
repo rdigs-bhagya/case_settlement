@@ -7,9 +7,9 @@ const services = [
     image: "/service-images/AFFFp.png",
     title: "AFFF-Lawsuite",
     description:
-      "Comprehensive support for accidents, medical malpractice, and workplace injuries with maximum compensation.",
-    features: ["No upfront fees", "Proven track record", "24/7 support"],
-    link: "/AFFF_Service",
+      "Legal support for AFFF cancer and toxic exposure claims, pursuing compensation.",
+    features: ["No upfront fees (contingency)", "Experienced PFAS litigation team", "Nationwide, 24/7 case intake"],
+    link: "services/afff-service",
   },
   {
     image: "/service-images/motor.png",
@@ -17,7 +17,7 @@ const services = [
     description:
       "Expert handling of car, truck, and motorcycle accident claims with full insurance negotiations.",
     features: ["Insurance negotiations", "Property damage", "Medical expenses"],
-    link: "/services/motor-vehicle",
+    link: "/services/mva",
   },
   {
     image: "/service-images/product-liability.png",
@@ -25,7 +25,7 @@ const services = [
     description:
       "Defective product cases including pharmaceuticals, medical devices, and consumer products.",
     features: ["Pharmaceutical cases", "Medical devices", "Consumer products"],
-    link: "/services/product-liability",
+    link: "/services/product-liability-service",
   },
   {
     image: "/service-images/mass-torent.png",
@@ -33,7 +33,7 @@ const services = [
     description:
       "Join class action lawsuits for widespread harm from corporations and defective products.",
     features: ["Class action suits", "Corporate negligence", "Environmental claims"],
-    link: "/services/mass-tort",
+    link: "/services/mass-tort-litigation",
   },
 ]
 
@@ -43,7 +43,7 @@ export function ServicesSection() {
       <div className="px-8">
         <div className="text-center space-y-4 mb-5">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-            Our Legal <span className="text-blue-800">Expertise</span>
+            Our Legal <span className="text-primary">Expertise</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Comprehensive legal services with proven results across multiple practice areas
@@ -94,11 +94,11 @@ export function ServicesSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Button size="lg" className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold">
             See All Services
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   )

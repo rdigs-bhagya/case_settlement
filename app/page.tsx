@@ -5,7 +5,6 @@ import { WhyChooseUsSection } from "@/components/why-choose-us-section"
 import { ProcessSection } from "@/components/process-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
 
 export default function HomePage() {
   return (
@@ -16,7 +15,6 @@ export default function HomePage() {
       <ProcessSection />
       <TestimonialsSection />
       <ContactSection />
-      <Footer />
     </main>
   )
 }

@@ -2,7 +2,7 @@
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import { Button } from "@/components/ui/button";
 
-const AFFFHeroSection = () => {
+const MassTortSection = () => {
     return (
         <>
             <section className=" text-black relative overflow-hidden">
@@ -11,18 +11,18 @@ const AFFFHeroSection = () => {
                     <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[500px]">
                         <div className="order-2 lg:order-1 space-y-4">
                             <h1 className="text-4xl lg:text-5xl xl:text-4xl font-extrabold leading-tight">
-                              <span className="text-[#193CB8]">Seeking Justice for NEC-Affected Families</span>
+                                <span className="text-primary">Why Do I Need a Lawyer for Mass Tort Litigation?</span>
                             </h1>
                             <div className="space-y-6 text-lg sm:text-lg text-black/90">
                                 <p>
-                                   Necrotizing Enterocolitis (NEC) is a devastating condition that primarily affects premature infants, often linked to certain infant formulas. If your child has been diagnosed with NEC, you may be entitled to file a lawsuit against the responsible manufacturers. Legal action can help you secure compensation for medical expenses and hold negligent companies accountable.
+                                    Mass tort litigation allows individuals harmed by the same corporation, defective product, or environmental hazard to pursue justice collectively. These cases often involve large-scale corporate negligence where victims may suffer serious medical, financial, or environmental harm. Retaining an experienced attorney ensures your rights are protected, your claim is properly filed within the broader litigation, and you receive fair compensation without being overshadowed by corporate defense teams.
                                 </p>
                             </div>
                         </div>
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="service-images/nec-affected-families.png"
+                                    src="../Mass_Tort_Litigation/attrony-addresing-groupclinet.png"
                                     alt="Firefighters using AFFF foam at emergency scene"
                                     className="w-full h-auto"
                                 />
@@ -36,7 +36,7 @@ const AFFFHeroSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="service-images/nec-lawsuit.png"
+                                    src="../Mass_Tort_Litigation/courtroom-scene.png"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />
@@ -45,13 +45,24 @@ const AFFFHeroSection = () => {
                         </div>
                         <div className="order-2 lg:order-2 space-y-4">
                             <h1 className="text-4xl lg:text-5xl xl:text-4xl font-extrabold leading-tight">
-                                <span className="text-[#193CB8]">Understanding the Legal Options for NEC Cases</span> 
+                                <span className="text-primary"> Types of Mass Tort Cases We Handle</span>
                             </h1>
                             <div className="space-y-6 text-lg sm:text-lg text-black/90">
                                 <p>
-                                    Parents of infants who have suffered from Necrotizing Enterocolitis (NEC) need to be aware of their legal rights. Filing a lawsuit against the manufacturers of potentially harmful formulas can provide crucial financial relief and help ensure safer products for future families. Don’t hesitate to explore your legal options and seek justice for your child.
+                                    Mass tort claims cover a wide range of large-scale harm, often requiring coordination across numerous plaintiffs. Our practice encompasses:
+                                    <li>
+                                        <b> Class action suits – </b> collective actions where individuals join together against a common defendant.
+                                    </li>
+                                    <li>
+                                        <b>  Corporate negligence – </b> cases involving harmful business practices or unsafe products.
+                                    </li>
+                                    <li>
+                                        <b>  Environmental claims –</b> lawsuits addressing exposure to toxic chemicals, pollutants, or environmental hazards.
+                                    </li>
+
+                                    Each case is evaluated carefully to ensure every client’s voice is heard and their damages are fully represented within the larger litigation.
+
                                 </p>
-                                
                             </div>
                         </div>
                     </div>
@@ -76,11 +87,10 @@ const AFFFHeroSection = () => {
                             Qualification Check
                         </div>
                         <h2 className="text-4xl lg:text-5xl font-bold text-navy-blue mb-6">
-                            Do You Qualify for AFFF Cancer Compensation?
+                            Do You Qualify for Mass Tort Compensation?
                         </h2>
                         <p className="text-muted-foreground text-xl max-w-4xl mx-auto leading-relaxed">
-                            If you or a loved one has been diagnosed with cancer after exposure to AFFF firefighting foam,
-                            you may be entitled to significant compensation.
+                           If you or a loved one has been affected by widespread harm from a corporation, defective product, or environmental hazard, you may be eligible to join a mass tort case and seek compensation.
                         </p>
                     </div>
 
@@ -91,11 +101,10 @@ const AFFFHeroSection = () => {
                                     1
                                 </div>
                                 <h3 className="text-2xl font-bold text-navy-blue mb-2">
-                                    Exposure History
+                                    Exposure or Involvement
                                 </h3>
                                 <p className="text-muted-foreground text-lg leading-relaxed">
-                                    You were exposed to AFFF foam as a firefighter, military personnel,
-                                    or worked at airports/chemical plants.
+                                   You were exposed to a defective product, harmful corporate practice, or environmental hazard.
                                 </p>
                             </div>
                         </div>
@@ -106,11 +115,10 @@ const AFFFHeroSection = () => {
                                     2
                                 </div>
                                 <h3 className="text-2xl font-bold text-navy-blue mb-4">
-                                    Cancer Diagnosis
+                                     Harm or Injury
                                 </h3>
                                 <p className="text-muted-foreground text-lg leading-relaxed">
-                                    You have been diagnosed with kidney cancer, testicular cancer,
-                                    prostate cancer, or thyroid disease.
+                                   You experienced medical issues, financial loss, or other damages linked to the exposure or negligence.
                                 </p>
                             </div>
                         </div>
@@ -121,11 +129,10 @@ const AFFFHeroSection = () => {
                                     3
                                 </div>
                                 <h3 className="text-2xl font-bold text-navy-blue mb-4">
-                                    Timeline Connection
+                                    Connection to Mass Tort Case
                                 </h3>
                                 <p className="text-muted-foreground text-lg leading-relaxed">
-                                    Your cancer diagnosis occurred after your exposure to AFFF foam
-                                    during your service or employment.
+                                    Your injury or loss is consistent with claims made in an existing mass tort or class action lawsuit.
                                 </p>
                             </div>
                         </div>
@@ -133,7 +140,7 @@ const AFFFHeroSection = () => {
                 </div>
             </section>
             <div>
-                        <ClaimReviewForm/>
+                <ClaimReviewForm service={"mass-tort-litigation"} />
 
             </div>
 
@@ -141,4 +148,4 @@ const AFFFHeroSection = () => {
     );
 };
 
-export default AFFFHeroSection;
+export default MassTortSection;
