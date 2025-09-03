@@ -32,6 +32,20 @@ type FormData = {
   roundupUse?: string;
   hairRelaxerUse?: string;
   silicosisExposure?: string;
+
+  necDiagnosed?: string;
+  necFormula?: string;
+  necComplications?: string;
+
+  // MVA
+  mvaState?: string;
+  mvaInjury?: string;
+  mvaCause?: string;
+  mvaRecentAccident?: string;
+  mvaAccidentDate?: string;
+  mvaTreatment?: string;
+  mvaFederalEmployee?: string;
+  mvaPoliceReport?: string;
 };
 
 type ClaimReviewFormProps = {
@@ -245,19 +259,172 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
                   )}
 
                   {service === "nec" && (
-                    <div>
-                      <Label className={labelClass}>Was the child diagnosed with NEC?*</Label>
-                      <Select onValueChange={(val) => setValue("necCondition", val)}>
-                        <SelectTrigger className={selectTriggerClass}>
-                          <SelectValue placeholder="-- Select --" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="yes">Yes</SelectItem>
-                          <SelectItem value="no">No</SelectItem>
-                        </SelectContent>
-                      </Select>
+                    <div className="space-y-4">
+                      {/* Q1 */}
+                      <div>
+                        <Label className={labelClass}>
+                          Has your child been diagnosed with Necrotizing Enterocolitis (NEC)?*
+                        </Label>
+                        <Select onValueChange={(val) => setValue("necDiagnosed", val)}>
+                          <SelectTrigger className={selectTriggerClass}>
+                            <SelectValue placeholder="-- Select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="yes">Yes</SelectItem>
+                            <SelectItem value="no">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Q2 */}
+                      <div>
+                        <Label className={labelClass}>
+                          Was your child given formula or fortifier before being diagnosed with NEC?*
+                        </Label>
+                        <Select onValueChange={(val) => setValue("necFormula", val)}>
+                          <SelectTrigger className={selectTriggerClass}>
+                            <SelectValue placeholder="-- Select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="yes">Yes</SelectItem>
+                            <SelectItem value="no">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Q3 */}
+                      <div>
+                        <Label className={labelClass}>
+                          Were there any complications with your child's NEC?*
+                        </Label>
+                        <Select onValueChange={(val) => setValue("necComplications", val)}>
+                          <SelectTrigger className={selectTriggerClass}>
+                            <SelectValue placeholder="-- Select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="yes">Yes</SelectItem>
+                            <SelectItem value="no">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
                   )}
+
+                  {service === "mva" && (
+                    <div className="space-y-4">
+                      {/* Q1 - State */}
+                      <div>
+                        <Label className={labelClass}>State (e.g., NY for New York)*</Label>
+                        <Input
+                          placeholder="Enter your state abbreviation"
+                          className={selectTriggerClass}
+                          onChange={(e) => setValue("mvaState", e.target.value)}
+                        />
+                      </div>
+
+                      {/* Q2 - Injured in accident */}
+                      <div>
+                        <Label className={labelClass}>
+                          Were you or a loved one injured in an accident that wasn’t your fault?*
+                        </Label>
+                        <Select onValueChange={(val) => setValue("mvaInjury", val)}>
+                          <SelectTrigger className={selectTriggerClass}>
+                            <SelectValue placeholder="-- Select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="yes">Yes</SelectItem>
+                            <SelectItem value="no">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Q3 - Cause of injury */}
+                      <div>
+                        <Label className={labelClass}>What caused your injury?*</Label>
+                        <Input
+                          placeholder="e.g., Car crash, Truck accident, Slip & Fall"
+                          className={selectTriggerClass}
+                          onChange={(e) => setValue("mvaCause", e.target.value)}
+                        />
+                      </div>
+
+                      {/* Q4 - Accident within 12 months */}
+                      <div>
+                        <Label className={labelClass}>
+                          Did this accident happen in the last 12 months?*
+                        </Label>
+                        <Select onValueChange={(val) => setValue("mvaRecentAccident", val)}>
+                          <SelectTrigger className={selectTriggerClass}>
+                            <SelectValue placeholder="-- Select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="yes">Yes</SelectItem>
+                            <SelectItem value="no">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Q5 - Date of Accident */}
+                      <div>
+                        <Label className={labelClass}>Date of Accident (MM/DD/YYYY)*</Label>
+                        <Input
+                          type="date"
+                          className={selectTriggerClass}
+                          onChange={(e) => setValue("mvaAccidentDate", e.target.value)}
+                        />
+                      </div>
+
+                      {/* Q6 - Medical treatment / hospitalization */}
+                      <div>
+                        <Label className={labelClass}>
+                          Did the injury require hospitalization, medical treatment, surgery or cause you to miss work?*
+                        </Label>
+                        <Select onValueChange={(val) => setValue("mvaTreatment", val)}>
+                          <SelectTrigger className={selectTriggerClass}>
+                            <SelectValue placeholder="-- Select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="yes">Yes</SelectItem>
+                            <SelectItem value="no">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Q7 - Federal government employee */}
+                      <div>
+                        <Label className={labelClass}>
+                          Do you work for a federal government agency?*
+                        </Label>
+                        <Select onValueChange={(val) => setValue("mvaFederalEmployee", val)}>
+                          <SelectTrigger className={selectTriggerClass}>
+                            <SelectValue placeholder="-- Select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="yes">Yes</SelectItem>
+                            <SelectItem value="no">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Q8 - Accident reported to police */}
+                      <div>
+                        <Label className={labelClass}>
+                          Was this accident reported to police?*
+                        </Label>
+                        <Select onValueChange={(val) => setValue("mvaPoliceReport", val)}>
+                          <SelectTrigger className={selectTriggerClass}>
+                            <SelectValue placeholder="-- Select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="yes">Yes</SelectItem>
+                            <SelectItem value="no">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  )}
+
+
 
                   {service === "roundup" && (
                     <div>
