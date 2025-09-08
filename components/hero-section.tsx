@@ -3,6 +3,8 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { CheckCircle, Star } from "lucide-react"
+import CaseEvaluationForm from "./FormFields/page"
+import FormFields from "./FormFields/page"
 
 export function HeroSection() {
   return (
@@ -38,13 +40,13 @@ export function HeroSection() {
               >
                 🚀 Get Free Case Review
               </Button>
-              <Button
+              {/* <Button
                 size="lg"
                 variant="outline"
                 className="px-6 py-3 text-base font-semibold border-2 border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white rounded-lg transition-colors"
               >
                 📞 Call (555) 123-4567
-              </Button>
+              </Button> */}
             </div>
           </div>
 
@@ -56,6 +58,34 @@ export function HeroSection() {
               <div className="text-center space-y-2">
                 <div className="flex justify-center gap-1">
                   {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+                    />
+                  ))}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Free Case Evaluation</h3>
+                <p className="text-gray-600 text-sm">
+                  Expert legal help, no strings attached.
+                </p>
+              </div>
+
+              {/* Form fields with proper Case Evaluation CSS */}
+              <FormFields />
+
+              <div className="text-center text-xs text-gray-500 mt-2">
+                🔒 100% Confidential & Secured
+              </div>
+            </div>
+          </Card>
+
+
+          {/* <Card className="p-6 rounded-xl bg-white/60 backdrop-blur-md shadow-md border border-gray-200 max-w-lg mx-auto">
+            <div className="space-y-4">
+              
+              <div className="text-center space-y-2">
+                <div className="flex justify-center gap-1">
+                  {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400 drop-shadow-sm" />
                   ))}
                 </div>
@@ -64,7 +94,7 @@ export function HeroSection() {
               </div>
 
               {/* Form */}
-              <form className="space-y-3">
+          {/* <form className="space-y-3">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Input
                     placeholder="First Name"
@@ -97,13 +127,13 @@ export function HeroSection() {
                 <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-2.5 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition duration-200">
                   🚀 Get My Free Consultation
                 </Button>
-              </form>
+              </form> */}
 
-              <div className="text-center text-xs text-gray-500 mt-2">
+          {/* <div className="text-center text-xs text-gray-500 mt-2">
                 🔒 100% Confidential & Secured
               </div>
             </div>
-          </Card>
+          </Card> */}
 
 
         </div>

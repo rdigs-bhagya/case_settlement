@@ -63,15 +63,17 @@ export function Header() {
       <div className="bg-blue-800 text-white py-2">
         <div className="flex justify-between items-center text-xs sm:text-sm px-8">
           <div className="flex items-center gap-2 sm:gap-4">
-            <div className="flex items-center gap-1 sm:gap-2">
+            <a href="tel:8338441999" className="flex items-center gap-1 sm:gap-2 hover:underline text-white">
               <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
               <span className="hidden sm:inline">(833) 844-1999</span>
               <span className="sm:hidden">Call Now</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-2">
+            </a>
+
+            <a href="mailto:contact@legalassistance.com" className="hidden sm:flex items-center gap-2 hover:underline text-white">
               <Mail className="h-4 w-4" />
               <span>contact@legalassistance.com</span>
-            </div>
+            </a>
+
           </div>
           <div className="text-xs sm:text-sm">
             <span className="font-medium">Free Consultation 24/7</span>

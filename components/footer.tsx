@@ -26,28 +26,28 @@ export function Footer() {
             <h4 className="font-bold font-space-grotesk mb-4">Our Services</h4>
             <ul className="space-y-2 text-background/80">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Personal Injury
+                <a href="/services/afff-service" className="hover:text-primary transition-colors">
+                  AFFF Lawsuite
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="/services/mva" className="hover:text-primary transition-colors">
                   Motor Vehicle Accidents
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="/services/mass-tort-litigation" className="hover:text-primary transition-colors">
                   Mass Tort Litigation
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Medical Malpractice
+                <a href="/services/product-liability-service" className="hover:text-primary transition-colors">
+                 Product Liability
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Workers Compensation
+                <a href="/services/nec-service" className="hover:text-primary transition-colors">
+                  NEC Lawsuite Assistance
                 </a>
               </li>
             </ul>
@@ -58,28 +58,28 @@ export function Footer() {
             <h4 className="font-bold font-space-grotesk mb-4">Quick Links</h4>
             <ul className="space-y-2 text-background/80">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="/about-us" className="hover:text-primary transition-colors">
                   About Us
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-primary transition-colors">
                   Case Results
                 </a>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <a href="#" className="hover:text-primary transition-colors">
                   FAQ
                 </a>
-              </li>
+              </li> */}
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="/blogs" className="hover:text-primary transition-colors">
                   Blog
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Privacy Policy
+                <a href="/contact-us" className="hover:text-primary transition-colors">
+                  Contact Us
                 </a>
               </li>
             </ul>
@@ -90,13 +90,19 @@ export function Footer() {
             <h4 className="font-bold font-space-grotesk mb-4">Contact Info</h4>
             <div className="space-y-3 text-background/80">
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span>(833) 844-1999</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span>contact@legalassistance.com</span>
-              </div>
+  <a href="tel:8338441999" className="flex items-center gap-2 hover:underline text-white">
+    <Phone className="h-4 w-4" />
+    <span>(833) 844-1999</span>
+  </a>
+</div>
+
+<div className="flex items-center gap-2">
+  <a href="mailto:contact@legalassistance.com" className="flex items-center gap-2 hover:underline text-white">
+    <Mail className="h-4 w-4" />
+    <span>contact@legalassistance.com</span>
+  </a>
+</div>
+
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-1" />
                 <span>
@@ -111,7 +117,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 mt-12 pt-8 text-center text-background/60">
           <p>
-            &copy; 2024 Legal Assistance. All rights reserved. | Attorney Advertising | Prior results do not guarantee a
+            &copy; 2025 Legal Assistance. All rights reserved. | Attorney Advertising | Prior results do not guarantee a
             similar outcome.
           </p>
         </div>

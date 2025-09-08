@@ -1,107 +1,79 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Phone, Mail } from 'lucide-react';
+import FormFields from "@/components/FormFields/page";
+import { Phone, Mail } from "lucide-react";
 
 export default function ContactUs() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({ name: '', email: '', message: '' }); // clear form
-  };
-
   return (
-    <section className="relative bg-gray-50 py-10">
-      {/* Decorative background strip */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 -z-10"></div>
+    <section className="relative py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+      {/* Decorative blurred shapes */}
+      <div className="absolute top-0 left-0 w-60 h-60 bg-blue-200/40 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-200/40 rounded-full blur-3xl -z-10"></div>
 
       <div className="container mx-auto px-6 lg:px-16 mt-[95px]">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Side - Text */}
+        <div className="grid lg:grid-cols-2 gap-14 items-start">
+          {/* Left Side - Text + Info */}
           <div className="space-y-8">
-            <h2 className="text-4xl font-extrabold text-primary">
-              Reach Our Expert Team
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-snug">
+              Reach Our{" "}
+              <span className="text-primary">
+                Expert Team
+              </span>
             </h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              If you have any questions, concerns, or inquiries, please don't hesitate to get in touch with us.
-              Our dedicated team is here to assist you and provide the support you need. Reach out to us using the contact details below:
+            <p className="text-base text-gray-700 leading-relaxed">
+              Have questions or need legal help? Our dedicated team is ready to
+              assist you with expert guidance. Reach out through the contact
+              details below or send us a direct message.
             </p>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 bg-white shadow-md p-5 rounded-xl hover:shadow-lg transition">
-                <Phone className="w-6 h-6 text-blue-600" />
+            <div className="space-y-5">
+              {/* Phone Card */}
+              <div className="flex items-center gap-4 bg-white/95 backdrop-blur-lg shadow-md p-4 rounded-lg border border-gray-100 hover:shadow-lg transition">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-md">
+                  <Phone className="w-5 h-5 text-white" />
+                </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900">Quickly Call Us</h4>
-                  <p className="text-primary font-medium">+1 323 843 5995</p>
+                  <h4 className="text-base font-semibold text-gray-900">
+                    Quickly Call Us
+                  </h4>
+                  <p className="text-primary font-medium text-sm">
+                    +1 323 843 5995
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 bg-white shadow-md p-5 rounded-xl hover:shadow-lg transition">
-                <Mail className="w-6 h-6 text-blue-600" />
+              {/* Email Card */}
+              <div className="flex items-center gap-4 bg-white/95 backdrop-blur-lg shadow-md p-4 rounded-lg border border-gray-100 hover:shadow-lg transition">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-md">
+                  <Mail className="w-5 h-5 text-white" />
+                </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900">Drop a Message on</h4>
-                  <p className="text-primary font-medium">contact@legalclaimassistance.com</p>
+                  <h4 className="text-base font-semibold text-gray-900">
+                    Drop a Message
+                  </h4>
+                  <p className="text-primary font-medium text-sm">
+                    contact@legalclaimassistance.com
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Side - Form */}
-          <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-100">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-gray-700 font-semibold mb-2">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full h-9 px-4 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  required
-                />
-              </div>
+          <div className="relative bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-purple-200 transition">
+            {/* Decorative top accent */}
+            {/* <div className="absolute top-0 left-0 w-full h-1.5 rounded-t-2xl bg-gradient-to-r from-blue-600 to-purple-600"></div> */}
 
-              <div>
-                <label className="block text-gray-700 font-semibold mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full h-9 px-4 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  required
-                />
-              </div>
+            <h3 className="text-xl font-bold text-center text-gray-800 mb-6">
+              📋 Send Us a Message
+            </h3>
 
-              <div>
-                <label className="block text-gray-700 font-semibold mb-2">Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full h-15 px-4 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  required
-                ></textarea>
-              </div>
+            {/* ✅ reusable form fields */}
+            <FormFields />
 
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition"
-              >
-                Send Message
-              </button>
-            </form>
+            <p className="text-xs text-center text-gray-500 mt-5">
+              🔒 Your information is safe & confidential
+            </p>
           </div>
         </div>
       </div>
