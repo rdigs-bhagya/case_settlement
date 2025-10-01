@@ -11,7 +11,7 @@ export function HeroSection() {
     <section className="relative bg-white py-12 lg:py-14 mt-18">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-gray-50"></div>
 
-      <div className="relative px-8">
+      <div className="relative px-10">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Left content */}
           <div className="space-y-5 max-w-3xl">
@@ -65,9 +65,6 @@ export function HeroSection() {
                   ))}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Free Case Evaluation</h3>
-                <p className="text-gray-600 text-sm">
-                  Expert legal help, no strings attached.
-                </p>
               </div>
 
               {/* Form fields with proper Case Evaluation CSS */}

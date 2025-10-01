@@ -140,7 +140,7 @@ const ProductLiabilitySection = () => {
                 </div>
             </section>
             <div>
-                <ClaimReviewForm service={"product-liability-service"} />
+                <ClaimReviewForm service={"product-liability"} />
 
             </div>
 

@@ -42,7 +42,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="/services/product-liability-service" className="hover:text-primary transition-colors">
-                 Product Liability
+                  Product Liability
                 </a>
               </li>
               <li>
@@ -90,18 +90,18 @@ export function Footer() {
             <h4 className="font-bold font-space-grotesk mb-4">Contact Info</h4>
             <div className="space-y-3 text-background/80">
               <div className="flex items-center gap-2">
-  <a href="tel:8338441999" className="flex items-center gap-2 hover:underline text-white">
-    <Phone className="h-4 w-4" />
-    <span>(833) 844-1999</span>
-  </a>
-</div>
+                <a href="tel:8338441999" className="flex items-center gap-2 hover:underline text-white">
+                  <Phone className="h-4 w-4" />
+                  <span>(833) 844-1999</span>
+                </a>
+              </div>
 
-<div className="flex items-center gap-2">
-  <a href="mailto:contact@legalassistance.com" className="flex items-center gap-2 hover:underline text-white">
-    <Mail className="h-4 w-4" />
-    <span>contact@legalassistance.com</span>
-  </a>
-</div>
+              <div className="flex items-center gap-2">
+                <a href="mailto:contact@legalassistance.com" className="flex items-center gap-2 hover:underline text-white">
+                  <Mail className="h-4 w-4" />
+                  <span>contact@legalassistance.com</span>
+                </a>
+              </div>
 
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-1" />

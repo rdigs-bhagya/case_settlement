@@ -1,4 +1,4 @@
-import type React from "react"
+ import type React from "react"
 import type { Metadata } from "next"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import "./globals.css"
@@ -36,4 +36,4 @@ export default function RootLayout({
       <Footer />
     </html>
   )
-}
+} 
