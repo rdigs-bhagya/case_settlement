@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from "next/link";
 import { FileText, Users, DollarSign, CheckCircle } from "lucide-react"
 
 const steps = [
@@ -68,12 +69,21 @@ export function ProcessSection() {
               Don't wait - there may be time limits on your claim. Contact us today for your free consultation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Get Started Today
-              </Button>
-              <Button size="lg" variant="outline">
-                Call (833) 844-1999
-              </Button>
+              <div className="flex gap-4 pt-4 justify-center items-center">
+                {/* Get Started button linking to contact page */}
+                <Link href="/contact-us">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90">
+                    Get Started Today
+                  </Button>
+                </Link>
+
+                {/* Call button linking to phone */}
+                <a href="tel:8338441999">
+                  <Button size="lg" variant="outline">
+                    Call (833) 844-1999
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
