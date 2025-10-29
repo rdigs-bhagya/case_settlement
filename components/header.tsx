@@ -69,9 +69,9 @@ export function Header() {
               <span className="sm:hidden">Call Now</span>
             </a>
 
-            <a href="mailto:contact@legalassistance.com" className="hidden sm:flex items-center gap-2 hover:underline text-white">
+            <a href="mailto:contact@claimyourclaims.com" className="hidden sm:flex items-center gap-2 hover:underline text-white">
               <Mail className="h-4 w-4" />
-              <span>contact@legalassistance.com</span>
+              <span>contact@claimyourclaims.com</span>
             </a>
 
           </div>
