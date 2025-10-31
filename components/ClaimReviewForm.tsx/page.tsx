@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -257,7 +259,7 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
                   }
                 />
                 <Label htmlFor="consent" className="text-sm text-slate-600">
-                  I confirm that the information provided is accurate.
+                  By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & its network of firms at any telephone number or email address provided by me, including my wireless number, if provided. I understand that my wireless carrier may charge me for such communications. I understand that these communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product and/or service I am inquiring about, to the number I provided above. Consent is not required to utilize services. I understand that this authorization overrides any previous registrations on a federal or state Do Not Call registry.
                 </Label>
               </div>
               {errors.consent && (

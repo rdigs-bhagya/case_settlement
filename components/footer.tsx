@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin } from "lucide-react"
+ import { Phone, Mail, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
@@ -12,12 +12,12 @@ export function Footer() {
                 <span className="text-primary-foreground font-bold text-lg">L</span>
               </div>
               <div>
-                <h3 className="font-bold text-xl font-space-grotesk">Legal Assistance</h3>
+                <h3 className="font-bold text-xl font-space-grotesk">Claim Your Claims</h3>
                 <p className="text-xs text-background/70">Claims & Settlements</p>
               </div>
             </div>
             <p className="text-background/80">
-              Expert legal assistance for case settlements, claims, and litigation with over 15 years of proven results.
+              Expert Claim assistance for case settlements, claims, and litigation with over 15 years of proven results.
             </p>
           </div>
 
@@ -62,16 +62,6 @@ export function Footer() {
                   About Us
                 </a>
               </li>
-              {/* <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Case Results
-                </a>
-              </li> */}
-              {/* <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  FAQ
-                </a>
-              </li> */}
               <li>
                 <a href="/blogs" className="hover:text-primary transition-colors">
                   Blog
@@ -97,9 +87,12 @@ export function Footer() {
               </div>
 
               <div className="flex items-center gap-2">
-                <a href="mailto:contact@legalassistance.com" className="flex items-center gap-2 hover:underline text-white">
+                <a
+                  href="mailto:contact@claimyourclaims.com"
+                  className="flex items-center gap-2 hover:underline text-white"
+                >
                   <Mail className="h-4 w-4" />
-                  <span>contact@legalassistance.com</span>
+                  <span>contact@claimyourclaims.com</span>
                 </a>
               </div>
 
@@ -115,10 +108,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-background/20 mt-12 pt-8 text-center text-background/60">
-          <p>
-            &copy; 2025 Legal Assistance. All rights reserved. | Attorney Advertising | Prior results do not guarantee a
-            similar outcome.
+        {/* Disclaimer + Copyright */}
+        <div className="border-t border-background/20 mt-12 pt-8 text-center max-w-6xl mx-auto">
+          <p className="text-[10px] text-background/50 leading-relaxed mb-6 tracking-wide uppercase">
+            BY SUBMITTING THIS FORM, YOU GIVE YOUR CONSENT TO CLAIMYOURCLAIMS.COM AND OUR MARKETING PARTNERS TO CONTACT YOU VIA AUTOMATED CALLS, PRE-RECORDED MESSAGES, AND TEXT MESSAGES AT THE TELEPHONE NUMBER(S) PROVIDED. THESE COMMUNICATIONS MAY BE RELATED TO POTENTIAL LEGAL SERVICES OR ASSISTANCE. STANDARD MESSAGE AND DATA RATES MAY APPLY. TO OPT OUT OF RECEIVING THESE COMMUNICATIONS, DO NOT SUBMIT THE FORM OR REFRAIN FROM PROVIDING YOUR CONTACT INFORMATION. I CONFIRM THAT I WAS NOT COACHED AND I WAS NOT OFFERED ANY COMPENSATION FOR THIS CLAIM. I UNDERSTAND I WILL BE ASKED FOR MEDICAL RECORDS, AND IF FALSIFIED, I WILL BE HELD LIABLE FOR KNOWINGLY PROVIDING FALSE INFORMATION, AND THE LAW FIRM RESERVES THE RIGHT TO SEEK ALL AVAILABLE REMEDIES UNDER THE LAW.
+          </p>
+
+          <p className="text-[11px] text-background/60 tracking-wide uppercase">
+            Copyright 2025 @ Claim Your Claims. All Rights Reserved. | Attorney Advertising | Prior Results Do Not Guarantee A
+            Similar Outcome.
           </p>
         </div>
       </div>

@@ -53,7 +53,7 @@ export default function ContactUs() {
                     Drop a Message
                   </h4>
                   <p className="text-primary font-medium text-sm">
-                    contact@legalclaimassistance.com
+                    contact@claimyourclaims.com
                   </p>
                 </div>
               </div>
