@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Button } from "@/components/ui/button"
@@ -69,7 +70,7 @@ export function Header() {
               <span className="sm:hidden">Call Now</span>
             </a>
 
-            <a href="mailto:contact@claimyourclaims.com" className="hidden sm:flex items-center gap-2 hover:underline text-white">
+            <a href="mailto:contact@legalassistance.com" className="hidden sm:flex items-center gap-2 hover:underline text-white">
               <Mail className="h-4 w-4" />
               <span>contact@claimyourclaims.com</span>
             </a>
@@ -112,10 +113,10 @@ export function Header() {
               About
             </a>
             <a href="/blogs" className="text-gray-700 hover:text-primary transition-colors text-lg font-bold">
-              Blog's
+              Blogs
             </a>
             <a href="/contact-us" className="text-gray-700 hover:text-primary transition-colors text-lg font-bold">
-              Contact
+              Contact Us
             </a>
           </nav>
 
@@ -163,14 +164,14 @@ export function Header() {
                 className="text-gray-700 hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Blog's
+                Blogs
               </a>
               <a
                 href="/contact-us"
                 className="text-gray-700 hover:text-primary transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Contact
+                Contact Us
               </a>
             </nav>
           </div>
