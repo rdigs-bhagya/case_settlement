@@ -52,7 +52,7 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
   const onSubmit = async (data: FormData) => {
     data.service = service;
     try {
-      const res = await fetch("/https://case-9w55.onrender.com/claims", {
+      const res = await fetch("https://case-9w55.onrender.com/claims", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
