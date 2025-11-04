@@ -6,14 +6,14 @@ import Image from "next/image"
 
 export function HeroSection() {
   return (
-    <section className="relative bg-white py-12 lg:py-14 mt-18">
+    <section className="relative bg-white py-12 lg:py-14 mt-15">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-gray-50"></div>
 
       <div className="relative px-10">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
 
           {/* --- Left Section (Updated + Smaller Text) --- */}
-          <div className="space-y-5 max-w-3xl">
+          <div className="space-y-6 max-w-3xl">
             {/* Badge */}
             {/* <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-blue-200 shadow-sm">
               <CheckCircle className="h-4 w-4" />
