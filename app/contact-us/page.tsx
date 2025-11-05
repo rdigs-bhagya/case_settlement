@@ -2,7 +2,7 @@
 
 
 import FormFields from "@/components/FormFields/page";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, CalendarDays, Clock } from "lucide-react";
 
 export default function ContactUs() {
   return (
@@ -28,32 +28,43 @@ export default function ContactUs() {
             </p>
 
             <div className="space-y-5">
-              {/* Phone Card */}
+              {/* ---- Phone Card ---- */}
               <div className="flex items-center gap-4 bg-white/95 backdrop-blur-lg shadow-md p-4 rounded-lg border border-gray-100 hover:shadow-lg transition">
                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-md">
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-base font-semibold text-gray-900">
-                    Quickly Call Us
-                  </h4>
-                  <p className="text-primary font-medium text-sm">
-                    +1 323 843 5995
-                  </p>
+                  <h4 className="text-base font-semibold text-gray-900">Quickly Call Us</h4>
+                  <p className="text-primary font-medium text-sm">+1 323 843 5995</p>
                 </div>
               </div>
 
-              {/* Email Card */}
+              {/* ---- Email Card ---- */}
               <div className="flex items-center gap-4 bg-white/95 backdrop-blur-lg shadow-md p-4 rounded-lg border border-gray-100 hover:shadow-lg transition">
                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-md">
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-base font-semibold text-gray-900">
-                    Drop a Message
-                  </h4>
+                  <h4 className="text-base font-semibold text-gray-900">Drop a Message</h4>
                   <p className="text-primary font-medium text-sm">
                     contact@claimyourclaims.com
+                  </p>
+                </div>
+              </div>
+
+              {/* ---- Availability Card ---- */}
+              <div className="flex items-center gap-4 bg-white/95 backdrop-blur-lg shadow-md p-4 rounded-lg border border-gray-100 hover:shadow-lg transition">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center shadow-md">
+                  <CalendarDays className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-base font-semibold text-gray-900">Availability</h4>
+                  <p className="text-sm text-gray-700 font-medium flex items-center gap-1">
+                    <Clock className="w-4 h-4 text-primary" /> Monday to Friday
+                  </p>
+                  <p className="text-sm text-gray-700 font-medium">8 AM EST – 5 PM PST</p>
+                  <p className="text-gray-500 text-sm">
+                    Always here to support your case with responsive, real-human help — no automated runarounds.
                   </p>
                 </div>
               </div>

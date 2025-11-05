@@ -76,8 +76,10 @@ export function Header() {
             </a>
 
           </div>
-          <div className="text-xs sm:text-sm">
-            <span className="font-medium">Free Consultation 24/7</span>
+          <div className="text-xs sm:text-sm text-white flex flex-wrap items-center gap-3">
+            <span className="font-medium">Availability</span>
+            <span>📅 Monday to Friday</span>
+            <span>⏰ 8 AM EST – 5 PM PST</span>
           </div>
         </div>
       </div>
@@ -140,7 +142,7 @@ export function Header() {
               <div className="space-y-2">
                 <div className="font-semibold text-gray-900">Services</div>
                 <div className="grid grid-cols-1 gap-2 pl-4">
-                  {services.slice(0, 4).map((service, index) => (
+                  {services.slice(0, 10).map((service, index) => (
                     <a
                       key={index}
                       href={service.href}

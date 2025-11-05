@@ -4,6 +4,7 @@ import { ServicesSection } from "@/components/services-section"
 import { WhyChooseUsSection } from "@/components/why-choose-us-section"
 import { ProcessSection } from "@/components/process-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import WhatWeDoSection from "@/components/WhatWeDoSection"
 // import { ContactSection } from "@/components/contactsection"
 
 
@@ -11,6 +12,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       <HeroSection />
+      <WhatWeDoSection/>
       <ServicesSection />
       <WhyChooseUsSection />
       <ProcessSection />
