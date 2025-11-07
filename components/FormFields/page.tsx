@@ -201,6 +201,7 @@ export default function ContactForm() {
         <div className="flex items-start gap-3 p-5 bg-slate-50 rounded-xl border border-slate-200">
           <Checkbox
             id="consent"
+            className="border-2 border-blue-200 bg-blue-50 hover:border-blue-300 data-[state=checked]:bg-blue-100 data-[state=checked]:border-blue-300 data-[state=checked]:text-blue-700 transition-colors"
             checked={consentGiven}
             onCheckedChange={() => {
               if (!consentGiven) {
@@ -210,6 +211,7 @@ export default function ContactForm() {
               }
             }}
           />
+
           <Label htmlFor="consent" className="text-[9px] text-slate-600">
             I agree to the Privacy Policy and Consent to receive calls, text messages, and emails, including automated and prerecorded messages, from Claim Your Claims and affiliate partners. Consent not required to proceed.
           </Label>
