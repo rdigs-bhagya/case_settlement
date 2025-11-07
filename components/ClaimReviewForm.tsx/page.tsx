@@ -57,7 +57,7 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      console.log("res",res);
+      console.log("res", res);
       const result = await res.json();
 
       if (res.ok) {
@@ -83,104 +83,104 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
   const labelClass = "text-slate-800 font-semibold text-sm";
 
   // Render dynamic questions
- const renderQuestion = (q: QuestionAnswerConfig) => {
-  const existing = serviceAnswers.find((item) => item.question === q.question);
+  const renderQuestion = (q: QuestionAnswerConfig) => {
+    const existing = serviceAnswers.find((item) => item.question === q.question);
 
-  switch (q.type) {
-    case "select":
-      return (
-        <Select
-          onValueChange={(val: string) =>
-            setValue("serviceAnswers", [
-              ...serviceAnswers.filter((item) => item.question !== q.question),
-              { question: q.question, answer: val },
-            ])
-          }
-        >
-          <SelectTrigger className={selectTriggerClass}>
-            <SelectValue placeholder="-- Select --" />
-          </SelectTrigger>
-          <SelectContent>
+    switch (q.type) {
+      case "select":
+        return (
+          <Select
+            onValueChange={(val: string) =>
+              setValue("serviceAnswers", [
+                ...serviceAnswers.filter((item) => item.question !== q.question),
+                { question: q.question, answer: val },
+              ])
+            }
+          >
+            <SelectTrigger className={selectTriggerClass}>
+              <SelectValue placeholder="-- Select --" />
+            </SelectTrigger>
+            <SelectContent>
+              {q.options.map((opt) => (
+                <SelectItem key={opt} value={opt}>
+                  {opt}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        );
+
+      case "radio":
+        return (
+          <div className="flex gap-6 mt-2">
             {q.options.map((opt) => (
-              <SelectItem key={opt} value={opt}>
+              <label key={opt} className="inline-flex items-center gap-2 text-slate-700">
+                <input
+                  type="radio"
+                  checked={existing?.answer === opt}
+                  onChange={() =>
+                    setValue("serviceAnswers", [
+                      ...serviceAnswers.filter((item) => item.question !== q.question),
+                      { question: q.question, answer: opt },
+                    ])
+                  }
+                  className="h-4 w-4"
+                />
                 {opt}
-              </SelectItem>
+              </label>
             ))}
-          </SelectContent>
-        </Select>
-      );
+          </div>
+        );
 
-    case "radio":
-      return (
-        <div className="flex gap-6 mt-2">
-          {q.options.map((opt) => (
-            <label key={opt} className="inline-flex items-center gap-2 text-slate-700">
-              <input
-                type="radio"
-                checked={existing?.answer === opt}
-                onChange={() =>
-                  setValue("serviceAnswers", [
-                    ...serviceAnswers.filter((item) => item.question !== q.question),
-                    { question: q.question, answer: opt },
-                  ])
-                }
-                className="h-4 w-4"
-              />
-              {opt}
-            </label>
-          ))}
-        </div>
-      );
+      case "checkbox":
+        // Ensure `existing?.answer` is string[] or fallback to empty array
+        const selected: string[] = Array.isArray(existing?.answer) ? existing.answer : [];
+        return (
+          <div className="flex flex-col gap-2 mt-2">
+            {q.options.map((opt) => (
+              <label key={opt} className="inline-flex items-center gap-2 text-slate-700">
+                <input
+                  type="checkbox"
+                  checked={selected.includes(opt)}
+                  onChange={(e) => {
+                    const newAnswer = e.target.checked
+                      ? [...selected, opt]
+                      : selected.filter((a) => a !== opt);
+                    setValue("serviceAnswers", [
+                      ...serviceAnswers.filter((item) => item.question !== q.question),
+                      { question: q.question, answer: newAnswer },
+                    ]);
+                  }}
+                  className="h-4 w-4"
+                />
+                {opt}
+              </label>
+            ))}
+          </div>
+        );
 
-    case "checkbox":
-      // Ensure `existing?.answer` is string[] or fallback to empty array
-      const selected: string[] = Array.isArray(existing?.answer) ? existing.answer : [];
-      return (
-        <div className="flex flex-col gap-2 mt-2">
-          {q.options.map((opt) => (
-            <label key={opt} className="inline-flex items-center gap-2 text-slate-700">
-              <input
-                type="checkbox"
-                checked={selected.includes(opt)}
-                onChange={(e) => {
-                  const newAnswer = e.target.checked
-                    ? [...selected, opt]
-                    : selected.filter((a) => a !== opt);
-                  setValue("serviceAnswers", [
-                    ...serviceAnswers.filter((item) => item.question !== q.question),
-                    { question: q.question, answer: newAnswer },
-                  ]);
-                }}
-                className="h-4 w-4"
-              />
-              {opt}
-            </label>
-          ))}
-        </div>
-      );
+      case "number":
+      case "input":
+      case "text":
+        return (
+          <input
+            type={q.type === "number" ? "number" : "text"}
+            className={inputClass}
+            placeholder={q.placeholder || ""}
+            value={existing?.answer || ""}
+            onChange={(e) =>
+              setValue("serviceAnswers", [
+                ...serviceAnswers.filter((item) => item.question !== q.question),
+                { question: q.question, answer: e.target.value },
+              ])
+            }
+          />
+        );
 
-    case "number":
-    case "input":
-    case "text":
-      return (
-        <input
-          type={q.type === "number" ? "number" : "text"}
-          className={inputClass}
-          placeholder={q.placeholder || ""}
-          value={existing?.answer || ""}
-          onChange={(e) =>
-            setValue("serviceAnswers", [
-              ...serviceAnswers.filter((item) => item.question !== q.question),
-              { question: q.question, answer: e.target.value },
-            ])
-          }
-        />
-      );
-
-    default:
-      return null;
-  }
-};
+      default:
+        return null;
+    }
+  };
 
 
   const questionsToRender = SERVICE_QUESTIONS[service] || [];
@@ -253,10 +253,9 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
               <div className="flex items-start gap-3 p-5 bg-slate-50 rounded-xl border border-slate-200">
                 <Checkbox
                   id="consent"
+                  className="border-2 border-blue-400 mt-2 data-[state=checked]:bg-blue-400 data-[state=checked]:text-white"
                   checked={!!watch("consent")}
-                  onCheckedChange={(checked) =>
-                    setValue("consent", checked as boolean)
-                  }
+                  onCheckedChange={(checked) => setValue("consent", checked as boolean)}
                 />
                 <Label htmlFor="consent" className="text-sm text-slate-600">
                   By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & its network of firms at any telephone number or email address provided by me, including my wireless number, if provided. I understand that my wireless carrier may charge me for such communications. I understand that these communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product and/or service I am inquiring about, to the number I provided above. Consent is not required to utilize services. I understand that this authorization overrides any previous registrations on a federal or state Do Not Call registry.

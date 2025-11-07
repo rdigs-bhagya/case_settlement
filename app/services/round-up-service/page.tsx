@@ -171,7 +171,7 @@ const RoundUpSection = () => {
                 </div>
             </section>
             <div>
-                <ClaimReviewForm service={"round-up-service"} />
+                <ClaimReviewForm service={"roundUp"} />
 
             </div>
         </>

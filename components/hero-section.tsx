@@ -10,7 +10,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-gray-50"></div>
 
       <div className="relative px-10">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="grid lg:grid-cols-2 gap-3 items-center">
 
           {/* --- Left Section (Updated + Smaller Text) --- */}
           <div className="space-y-6 max-w-3xl">
