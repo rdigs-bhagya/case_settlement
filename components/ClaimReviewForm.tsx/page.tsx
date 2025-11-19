@@ -31,6 +31,7 @@ type FormData = {
   serviceAnswers?: QuestionAnswer[];
   lawyerInfo?: string;
   consent?: boolean;
+  xxTrustedFormCertUrl: String,
 };
 
 type ClaimReviewFormProps = {
@@ -51,6 +52,12 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
 
   const onSubmit = async (data: FormData) => {
     data.service = service;
+    // Pull TrustedForm certificate URL from the DOM
+  const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
+  setValue("xxTrustedFormCertUrl", tfValue || "");
+  data.xxTrustedFormCertUrl = tfValue || "";
+
+  data.service = service;
     try {
       const res = await fetch("https://case-9w55.onrender.com/claims", {
         method: "POST",
@@ -249,6 +256,8 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
                   </p>
                 )}
               </div>
+              <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl" />
+
 
               <div className="flex items-start gap-3 p-5 bg-slate-50 rounded-xl border border-slate-200">
                 <Checkbox
