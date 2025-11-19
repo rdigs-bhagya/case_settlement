@@ -28,6 +28,7 @@ export default function ContactForm() {
     phone: "",
     message: "",
     caseType: "",
+    xxTrustedFormCertUrl: "",
   });
 
   const validate = (payload: typeof formValues) => {
@@ -60,6 +61,10 @@ export default function ContactForm() {
     setLoading(true);
     setStatus("");
 
+     // Get TrustedForm value from DOM (React won't track it automatically)
+  const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
+  formValues.xxTrustedFormCertUrl = tfValue || "";
+
     const newErrors = validate(formValues);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -88,6 +93,7 @@ export default function ContactForm() {
         phone: "",
         message: "",
         caseType: "",
+        xxTrustedFormCertUrl: "",
       });
       setConsentGiven(false);
     } catch (err: any) {
@@ -211,6 +217,7 @@ export default function ContactForm() {
               }
             }}
           />
+          <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl" />
 
           <Label htmlFor="consent" className="text-[9px] text-slate-600">
             I agree to the Privacy Policy and Consent to receive calls, text messages, and emails, including automated and prerecorded messages, from Claim Your Claims and affiliate partners. Consent not required to proceed.
