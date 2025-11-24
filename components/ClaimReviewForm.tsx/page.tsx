@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -22,6 +20,14 @@ type QuestionAnswer = {
   answer: string | string[];
 };
 
+type ClientDetails = {
+  ipAddress?: string;
+  browser?: string;
+  os?: string;
+  device?: string;
+  location?: any;
+};
+
 type FormData = {
   service: string;
   firstName: string;
@@ -31,7 +37,8 @@ type FormData = {
   serviceAnswers?: QuestionAnswer[];
   lawyerInfo?: string;
   consent?: boolean;
-  xxTrustedFormCertUrl: String,
+  xxTrustedFormCertUrl: string;
+  clientDetails?: ClientDetails;
 };
 
 type ClaimReviewFormProps = {
@@ -50,33 +57,87 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
 
   const serviceAnswers = watch("serviceAnswers") || [];
 
-  const onSubmit = async (data: FormData) => {
-    data.service = service;
-    // Pull TrustedForm certificate URL from the DOM
-  const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
-  setValue("xxTrustedFormCertUrl", tfValue || "");
-  data.xxTrustedFormCertUrl = tfValue || "";
-
-  data.service = service;
+  // ⭐ FUNCTION TO GET FULL CLIENT DETAILS
+  const getClientDetails = async () => {
     try {
-      const res = await fetch("https://case-9w55.onrender.com/claims", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      console.log("res", res);
-      const result = await res.json();
+      const ipRes = await fetch("https://ipapi.co/json/");
+      const ipData = await ipRes.json();
 
-      if (res.ok) {
-        alert("✅ Form submitted successfully!");
-        reset();
-      } else {
-        alert("❌ " + result.error);
-      }
-    } catch (err) {
-      console.error(err);
+      const ua = navigator.userAgent;
+
+      return {
+        ipAddress: ipData.ip || "",
+        browser: ua.includes("Chrome")
+          ? "Chrome"
+          : ua.includes("Firefox")
+            ? "Firefox"
+            : ua.includes("Safari") && !ua.includes("Chrome")
+              ? "Safari"
+              : ua.includes("Edg")
+                ? "Edge"
+                : "Unknown",
+        os: ua.includes("Win")
+          ? "Windows"
+          : ua.includes("Mac")
+            ? "MacOS"
+            : ua.includes("Linux")
+              ? "Linux"
+              : ua.includes("Android")
+                ? "Android"
+                : ua.includes("iPhone") || ua.includes("iPad")
+                  ? "iOS"
+                  : "Unknown",
+        device: /mobile/i.test(ua) ? "Mobile" : "Desktop",
+        location: {
+          range: [],
+          country: ipData.country,
+          region: ipData.region,
+          city: ipData.city,
+          timezone: ipData.timezone,
+          ll: [ipData.latitude, ipData.longitude],
+          metro: 0,
+          area: 0
+        }
+      };
+    } catch (error) {
+      console.error("Client Details Error:", error);
+      return {};
     }
   };
+
+
+
+ const onSubmit = async (data: FormData) => {
+  data.service = service;
+
+  // TrustedForm
+  const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
+  data.xxTrustedFormCertUrl = tfValue || "";
+
+  // Get client details
+  const clientDetails = await getClientDetails();
+  (data as any).clientDetails = clientDetails;
+
+  try {
+    const res = await fetch("https://case-9w55.onrender.com/claims", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      alert("✅ Form submitted successfully!");
+      reset();
+    } else {
+      alert("❌ " + result.error);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
   const inputClass =
     "mt-2 h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-600 transition";
@@ -140,7 +201,6 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
         );
 
       case "checkbox":
-        // Ensure `existing?.answer` is string[] or fallback to empty array
         const selected: string[] = Array.isArray(existing?.answer) ? existing.answer : [];
         return (
           <div className="flex flex-col gap-2 mt-2">
@@ -188,7 +248,6 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
         return null;
     }
   };
-
 
   const questionsToRender = SERVICE_QUESTIONS[service] || [];
 
@@ -241,7 +300,7 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
               </div>
             ))}
 
-            {/* Static Questions at the End */}
+            {/* Static Questions */}
             <div className="space-y-6 mt-6">
               <div>
                 <Label className={labelClass}>Do you currently have a lawyer?*</Label>
@@ -256,8 +315,8 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
                   </p>
                 )}
               </div>
-              <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl" />
 
+              <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl" />
 
               <div className="flex items-start gap-3 p-5 bg-slate-50 rounded-xl border border-slate-200">
                 <Checkbox
@@ -267,7 +326,7 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
                   onCheckedChange={(checked) => setValue("consent", checked as boolean)}
                 />
                 <Label htmlFor="consent" className="text-sm text-slate-600">
-                  By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & its network of firms at any telephone number or email address provided by me, including my wireless number, if provided. I understand that my wireless carrier may charge me for such communications. I understand that these communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product and/or service I am inquiring about, to the number I provided above. Consent is not required to utilize services. I understand that this authorization overrides any previous registrations on a federal or state Do Not Call registry.
+                  By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages...
                 </Label>
               </div>
               {errors.consent && (

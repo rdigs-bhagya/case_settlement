@@ -3,110 +3,123 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from "@/components/ui/dialog";
 
-export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [showConsent, setShowConsent] = useState(false);
-  const [consentGiven, setConsentGiven] = useState(false);
-
+export default function FormFields() {
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    message: "",
     caseType: "",
-    xxTrustedFormCertUrl: "",
+    message: "",
   });
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [consentGiven, setConsentGiven] = useState(false);
+  const [showConsent, setShowConsent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  // 🔥 Validation
   const validate = (payload: typeof formValues) => {
-    const newErrors: Record<string, string> = {};
+    const newErrors: Record<string, string> = {}; // ✅ FIXED HERE
+
     if (!payload.firstName || payload.firstName.length < 2)
       newErrors.firstName = "First name must be at least 2 characters.";
+
     if (!payload.lastName || payload.lastName.length < 2)
       newErrors.lastName = "Last name must be at least 2 characters.";
-    if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email))
-      newErrors.email = "Enter a valid email address.";
-    if (!payload.phone || !/^\d{10,}$/.test(payload.phone))
-      newErrors.phone = "Enter a valid phone number (at least 10 digits).";
+
+    if (!payload.email || !payload.email.includes("@"))
+      newErrors.email = "Enter a valid email.";
+
+    if (!payload.phone || payload.phone.length < 8)
+      newErrors.phone = "Phone number must be at least 8 digits.";
+
+    if (!payload.caseType) newErrors.caseType = "Please select a case type.";
+
     if (!payload.message || payload.message.length < 10)
       newErrors.message = "Message must be at least 10 characters.";
-    if (!payload.caseType) newErrors.caseType = "Please select a case type.";
-    if (!consentGiven)
-      newErrors.consent = "You must agree to the consent before submitting.";
+
+    if (!consentGiven) newErrors.consent = "You must agree to proceed.";
+
     return newErrors;
   };
 
+  // On input change
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
-    setFormValues((prev) => ({ ...prev, [name]: value }));
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // Submit Handler
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setStatus("");
+    setLoading(true);
 
-     // Get TrustedForm value from DOM (React won't track it automatically)
-  const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
-  formValues.xxTrustedFormCertUrl = tfValue || "";
+    const validationErrors = validate(formValues);
+    setErrors(validationErrors);
 
-    const newErrors = validate(formValues);
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
+    if (Object.keys(validationErrors).length > 0) {
       setLoading(false);
       return;
     }
-    setErrors({});
+
+    const userPayload = {
+      ...formValues,
+      consent: consentGiven,
+      userDetails: {
+        ipAddress: "",
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+      },
+    };
 
     try {
-      const res = await fetch("https://case-9w55.onrender.com/contact", {
+      const response = await fetch("https://case-9w55.onrender.com/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formValues),
+        body: JSON.stringify(userPayload),
       });
 
-      const data = await res.json();
+      const data = await response.json();
       console.log("API response:", data);
 
-      if (!res.ok) throw new Error(data.message || "Failed to submit");
+      if (!response.ok) throw new Error("Failed to submit");
 
-      setStatus("✅ Message sent successfully!");
+      setStatus("✅ Submitted successfully!");
       setFormValues({
         firstName: "",
         lastName: "",
         email: "",
         phone: "",
-        message: "",
         caseType: "",
-        xxTrustedFormCertUrl: "",
+        message: "",
       });
       setConsentGiven(false);
-    } catch (err: any) {
-      console.error("❌ Submission error:", err);
-      setStatus(`❌ ${err.message}`);
+    } catch (error) {
+      console.error("❌ Submission error:", error);
+      setStatus("❌ Something went wrong.");
     } finally {
       setLoading(false);
     }
   };
 
   const inputStyles =
-    "w-full border border-gray-300 rounded-md px-6 py-2 text-sm " +
-    "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500";
+    "w-full border border-gray-300 rounded-md px-6 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500";
 
   return (
     <>
@@ -124,6 +137,7 @@ export default function ContactForm() {
               <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
             )}
           </div>
+
           <div>
             <Input
               name="lastName"
@@ -162,7 +176,6 @@ export default function ContactForm() {
           <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
         )}
 
-        {/* --- Case Type Dropdown --- */}
         <select
           name="caseType"
           value={formValues.caseType}
@@ -203,24 +216,20 @@ export default function ContactForm() {
           <p className="text-red-500 text-xs mt-1">{errors.message}</p>
         )}
 
-        {/* --- Consent Checkbox --- */}
         <div className="flex items-start gap-3 p-5 bg-slate-50 rounded-xl border border-slate-200">
           <Checkbox
             id="consent"
-            className="border-2 border-blue-200 bg-blue-50 hover:border-blue-300 data-[state=checked]:bg-blue-100 data-[state=checked]:border-blue-300 data-[state=checked]:text-blue-700 transition-colors"
             checked={consentGiven}
             onCheckedChange={() => {
-              if (!consentGiven) {
-                setShowConsent(true);
-              } else {
-                setConsentGiven(false);
-              }
+              if (!consentGiven) setShowConsent(true);
+              else setConsentGiven(false);
             }}
           />
-          <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl" />
+          <input type="hidden" id="xxTrustedFormCertUrl" />
 
           <Label htmlFor="consent" className="text-[9px] text-slate-600">
-            I agree to the Privacy Policy and Consent to receive calls, text messages, and emails, including automated and prerecorded messages, from Claim Your Claims and affiliate partners. Consent not required to proceed.
+            I agree to the Privacy Policy and receive calls, text messages,
+            emails including automated & prerecorded messages.
           </Label>
         </div>
         {errors.consent && (
@@ -230,32 +239,17 @@ export default function ContactForm() {
         <Button type="submit" disabled={loading} className="w-full">
           {loading ? "Submitting..." : "🚀 Submit"}
         </Button>
+
         {status && <p className="text-center text-sm mt-2">{status}</p>}
       </form>
 
-      {/* --- Consent Popup --- */}
       <Dialog open={showConsent} onOpenChange={setShowConsent}>
         <DialogContent className="max-w-lg">
           <DialogHeader>
             <DialogTitle>Consent & Privacy Policy</DialogTitle>
           </DialogHeader>
           <div className="max-h-64 overflow-y-auto text-sm text-slate-600 space-y-3">
-            <p>
-              By checking this box and submitting my request, I confirm that I
-              have read and agree to the privacy policy of this site and that I
-              consent to receive marketing emails, phone calls and/or text
-              messages from Claim Your Claims and our marketing partners &
-              network of firms at any telephone number or email address provided
-              by me, including my wireless number, if provided.
-            </p>
-            <p>
-              I understand that my wireless carrier may charge me for such
-              communications. These communications may be generated using an
-              automatic telephone dialing system and may contain pre-recorded
-              messages related to the product/service I am inquiring about.
-            </p>
-            <p>Consent is not required to utilize services.</p>
-          </div>
+           <p> By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & network of firms at any telephone number or email address provided by me, including my wireless number, if provided. </p> <p> I understand that my wireless carrier may charge me for such communications. These communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product/service I am inquiring about. </p> <p>Consent is not required to utilize services.</p> </div>
           <DialogFooter className="flex justify-end gap-3">
             <Button variant="outline" onClick={() => setShowConsent(false)}>
               Cancel
