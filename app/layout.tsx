@@ -1,28 +1,32 @@
-import type React from "react"
-import type { Metadata } from "next"
-import Script from "next/script"
-import { Space_Grotesk, DM_Sans } from "next/font/google"
-import "./globals.css"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space-grotesk",
-})
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-dm-sans",
-})
+const _geist = Geist({ subsets: ["latin"] });
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Legal Claim & Settlement Assistance | Expert Legal Help",
-  description:
-    "Get expert legal assistance for case settlements and claim support. Professional litigation services with proven results. Contact us for a free consultation.",
-  generator: "v0.app",
+  title: 'Admin Panel',
+  // description: 'Created with v0',
+  // generator: 'v0.app',
+  // icons: {
+  //   icon: [
+  //     {
+  //       url: '/icon-light-32x32.png',
+  //       media: '(prefers-color-scheme: light)',
+  //     },
+  //     {
+  //       url: '/icon-dark-32x32.png',
+  //       media: '(prefers-color-scheme: dark)',
+  //     },
+  //     {
+  //       url: '/icon.svg',
+  //       type: 'image/svg+xml',
+  //     },
+  //   ],
+  //   apple: '/apple-icon.png',
+  // },
 }
 
 export default function RootLayout({
@@ -31,35 +35,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
-      <body className="font-sans">
-
-        <Header />
-
-        {/* TrustedForm Script */}
-        <Script id="trustedform-script" strategy="afterInteractive">
-          {`
-            (function() {
-              var tf = document.createElement('script');
-              tf.type = 'text/javascript';
-              tf.async = true;
-              tf.src = ("https:" == document.location.protocol ? 'https' : 'http') +
-                '://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&use_tagged_consent=true&l=' +
-                new Date().getTime() + Math.random();
-              var s = document.getElementsByTagName('script')[0]; 
-              s.parentNode.insertBefore(tf, s);
-            })();
-          `}
-        </Script>
-
-        <noscript>
-          <img src="https://api.trustedform.com/ns.gif" alt="" />
-        </noscript>
-        {/* End TrustedForm */}
-
+    <html lang="en">
+      <body className={`font-sans antialiased`}>
         {children}
-
-        <Footer />
+        <Analytics />
       </body>
     </html>
   )
