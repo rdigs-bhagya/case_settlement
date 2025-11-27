@@ -12,6 +12,7 @@ interface Contact {
   phone: string
   message: string
   caseType: string
+  consent?: boolean
   createdAt?: string
 
   clientDetails?: {
@@ -82,6 +83,20 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
               <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
                 {contact.caseType}
               </span>
+            </p>
+          </div>
+          <div>
+            <label className="text-sm font-medium text-muted-foreground">Consent</label>
+            <p className="text-lg mt-1">
+              {contact.consent ? (
+                <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                  YES — User Consented
+                </span>
+              ) : (
+                <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                  NO — Not Provided
+                </span>
+              )}
             </p>
           </div>
 
