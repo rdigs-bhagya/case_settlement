@@ -3,6 +3,7 @@
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import jsPDF from "jspdf"
 
 interface QuestionAnswer {
   question: string
@@ -49,6 +50,75 @@ interface ClaimDetailModalProps {
 }
 
 export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
+  const downloadPDF = () => {
+    const doc = new jsPDF()
+
+    doc.setFontSize(16)
+    doc.text("Claim Details", 10, 10)
+
+    let y = 20
+    const addLine = (label: string, value: string | number | undefined) => {
+      doc.setFontSize(12)
+      doc.text(`${label}: ${value || "N/A"}`, 10, y)
+      y += 8
+    }
+
+    addLine("First Name", claim.firstName)
+    addLine("Last Name", claim.lastName)
+    addLine("Email", claim.email)
+    addLine("Phone", claim.phone)
+    addLine("Service", claim.service)
+    addLine("Consent", claim.consent ? "Yes" : "No")
+    if (claim.lawyerInfo) addLine("Lawyer Info", claim.lawyerInfo)
+
+    if (claim.serviceAnswers && claim.serviceAnswers.length > 0) {
+      y += 6
+      doc.setFontSize(14)
+      doc.text("Service Answers", 10, y)
+      y += 8
+      claim.serviceAnswers.forEach((qa) => {
+        addLine("Question", qa.question)
+        addLine("Answer", Array.isArray(qa.answer) ? qa.answer.join(", ") : qa.answer)
+      })
+    }
+
+    if (claim.clientDetails) {
+      y += 6
+      doc.setFontSize(14)
+      doc.text("Client Details", 10, y)
+      y += 8
+
+      addLine("IP Address", claim.clientDetails.ipAddress)
+      addLine("Browser", claim.clientDetails.browser)
+      addLine("OS", claim.clientDetails.os)
+      addLine("Device", claim.clientDetails.device)
+
+      if (claim.clientDetails.location) {
+        y += 6
+        doc.setFontSize(13)
+        doc.text("Location", 10, y)
+        y += 8
+
+        const loc = claim.clientDetails.location
+        addLine("Country", loc.country)
+        addLine("Region", loc.region)
+        addLine("City", loc.city)
+        addLine("Timezone", loc.timezone)
+        addLine("EU", loc.eu)
+        addLine("Metro", String(loc.metro))
+        addLine("Area", String(loc.area))
+        addLine("Range", loc.range?.join(", "))
+        addLine("Coordinates", loc.ll ? loc.ll.join(", ") : "N/A")
+      }
+    }
+
+    if (claim.createdAt) {
+      addLine("Submitted On", new Date(claim.createdAt).toLocaleString())
+    }
+
+    doc.save(`Claim-${claim.firstName}-${claim.lastName}.pdf`)
+  }
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
@@ -60,6 +130,7 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
         </div>
 
         <div className="p-6 space-y-6">
+          {/* ───────────── DETAILS ───────────── */}
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-muted-foreground">First Name</label>
@@ -146,6 +217,10 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
           )}
 
           <div className="flex gap-2 pt-4">
+            <Button onClick={downloadPDF} className="flex-1 bg-green-600 hover:bg-green-700">
+              Download PDF
+            </Button>
+
             <Button onClick={onClose} className="flex-1">
               Close
             </Button>
