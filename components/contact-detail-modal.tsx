@@ -14,6 +14,7 @@ interface Contact {
   message: string
   caseType: string
   consent?: boolean
+  consentText?: string
   createdAt?: string
 
   clientDetails?: {
@@ -65,6 +66,7 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
     addLine("Phone", contact.phone);
     addLine("Case Type", contact.caseType);
     addLine("Consent", contact.consent ? "Yes" : "No");
+    addLine("Consent", contact.consentText),
     addLine("Message", contact.message);
 
     if (contact.clientDetails) {
@@ -159,6 +161,16 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
               )}
             </p>
           </div>
+
+          {/* Consent Text */}
+          {contact.consentText && (
+            <div>
+              <label className="text-sm font-medium text-muted-foreground">Consent Text</label>
+              <p className="text-sm text-foreground mt-2 p-4 bg-muted rounded-md whitespace-pre-wrap leading-relaxed">
+                {contact.consentText}
+              </p>
+            </div>
+          )}
 
           <div>
             <label className="text-sm font-medium text-muted-foreground">Message</label>

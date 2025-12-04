@@ -31,6 +31,7 @@ interface Claim {
   serviceAnswers?: QuestionAnswer[]
   lawyerInfo?: string
   consent?: boolean
+  consentText?: string
   createdAt?: string
 }
 
@@ -161,6 +162,7 @@ export default function ClaimsPage() {
       addLine("Phone", claim.phone)
       addLine("Service", claim.service)
       addLine("Consent", claim.consent ? "Yes" : "No")
+      addLine("Consent", claim.consentText)
       addLine("Lawyer Info", claim.lawyerInfo || "N/A")
 
       // Service Answers
@@ -265,6 +267,7 @@ export default function ClaimsPage() {
         addLine("Phone", claim.phone)
         addLine("Service", claim.service)
         addLine("Consent", claim.consent ? "Yes" : "No")
+        addLine("Consent", claim.consentText)
         addLine("Lawyer Info", claim.lawyerInfo || "N/A")
 
         // Service Answers

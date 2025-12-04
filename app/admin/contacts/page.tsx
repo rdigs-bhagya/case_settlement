@@ -32,6 +32,7 @@ interface Contact {
   message: string;
   caseType: string;
   createdAt?: string;
+  consentText?: string;
   // optional clientDetails retained if present
   clientDetails?: any;
 }
@@ -182,6 +183,7 @@ export default function ContactsPage() {
       addLine("Phone", contact.phone);
       addLine("Case Type", contact.caseType);
       addLine("Consent", (contact as any).consent ? "Yes" : "No");
+      addLine("Consent", contact.consentText);
       addLine("Message", contact.message);
 
       if ((contact as any).clientDetails) {
@@ -268,6 +270,7 @@ export default function ContactsPage() {
       addLine("Phone", contact.phone);
       addLine("Case Type", contact.caseType);
       addLine("Consent", (contact as any).consent ? "Yes" : "No");
+      addLine("Consent", contact.consentText)
       addLine("Message", contact.message);
 
       // Client Details

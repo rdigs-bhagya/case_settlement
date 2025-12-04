@@ -20,6 +20,7 @@ interface Claim {
   serviceAnswers?: QuestionAnswer[]
   lawyerInfo?: string
   consent?: boolean
+  consentText?: string
   createdAt?: string
   clientDetails?: ClientDetails
 }
@@ -69,6 +70,7 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
     addLine("Phone", claim.phone)
     addLine("Service", claim.service)
     addLine("Consent", claim.consent ? "Yes" : "No")
+    addLine("Consent", claim.consentText)
     if (claim.lawyerInfo) addLine("Lawyer Info", claim.lawyerInfo)
 
     if (claim.serviceAnswers && claim.serviceAnswers.length > 0) {
@@ -193,6 +195,15 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
                 ) : (
                   <span className="px-2 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">No</span>
                 )}
+              </p>
+            </div>
+          )}
+
+          {claim.consentText && (
+            <div>
+              <label className="text-sm font-medium text-muted-foreground"></label>
+              <p className="text-sm text-foreground mt-2 p-4 bg-muted rounded-md whitespace-pre-wrap leading-relaxed">
+                {claim.consentText}
               </p>
             </div>
           )}
