@@ -70,7 +70,7 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
     addLine("Phone", claim.phone)
     addLine("Service", claim.service)
     addLine("Consent", claim.consent ? "Yes" : "No")
-    addLine("Consent", claim.consentText)
+    addLine("Consent Text", claim.consentText)
     if (claim.lawyerInfo) addLine("Lawyer Info", claim.lawyerInfo)
 
     if (claim.serviceAnswers && claim.serviceAnswers.length > 0) {
