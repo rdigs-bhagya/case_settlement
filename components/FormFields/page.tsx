@@ -30,6 +30,8 @@ export default function FormFields() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
+  const CONSENT_TEXT = `By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & network of firms at any telephone number or email address provided by me, including my wireless number, if provided. I understand that my wireless carrier may charge me for such communications. These communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product/service I am inquiring about. Consent is not required to utilize services.`;
+
   // 🔥 Validation
   const validate = (payload: typeof formValues) => {
     const newErrors: Record<string, string> = {}; // ✅ FIXED HERE
@@ -80,6 +82,7 @@ export default function FormFields() {
     const userPayload = {
       ...formValues,
       consent: consentGiven,
+      consentText: CONSENT_TEXT, 
       userDetails: {
         ipAddress: "",
         userAgent: navigator.userAgent,
@@ -249,7 +252,7 @@ export default function FormFields() {
             <DialogTitle>Consent & Privacy Policy</DialogTitle>
           </DialogHeader>
           <div className="max-h-64 overflow-y-auto text-sm text-slate-600 space-y-3">
-           <p> By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & network of firms at any telephone number or email address provided by me, including my wireless number, if provided. </p> <p> I understand that my wireless carrier may charge me for such communications. These communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product/service I am inquiring about. </p> <p>Consent is not required to utilize services.</p> </div>
+            <p> By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & network of firms at any telephone number or email address provided by me, including my wireless number, if provided. </p> <p> I understand that my wireless carrier may charge me for such communications. These communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product/service I am inquiring about. </p> <p>Consent is not required to utilize services.</p> </div>
           <DialogFooter className="flex justify-end gap-3">
             <Button variant="outline" onClick={() => setShowConsent(false)}>
               Cancel

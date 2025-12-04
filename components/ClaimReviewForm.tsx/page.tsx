@@ -37,6 +37,7 @@ type FormData = {
   serviceAnswers?: QuestionAnswer[];
   lawyerInfo?: string;
   consent?: boolean;
+  consentText: string, 
   xxTrustedFormCertUrl: string;
   clientDetails?: ClientDetails;
 };
@@ -56,6 +57,8 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
   } = useForm<FormData>({ defaultValues: { serviceAnswers: [] } });
 
   const serviceAnswers = watch("serviceAnswers") || [];
+
+    const CONSENT_TEXT = `By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages....`;
 
   // ⭐ FUNCTION TO GET FULL CLIENT DETAILS
   const getClientDetails = async () => {
@@ -109,6 +112,7 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
 
  const onSubmit = async (data: FormData) => {
   data.service = service;
+  data.consentText = CONSENT_TEXT;
 
   // TrustedForm
   const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
