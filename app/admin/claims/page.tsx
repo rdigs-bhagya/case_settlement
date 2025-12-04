@@ -155,14 +155,18 @@ export default function ClaimsPage() {
         y += wrapped.length * 6 + 2
       }
 
+      // Normalize consent
+      const consentValue = claim.consent === true ? "Yes" : "No"
+      const consentTextValue = claim.consentText ?? "N/A"
+
       // Personal Info
       addLine("First Name", claim.firstName)
       addLine("Last Name", claim.lastName)
       addLine("Email", claim.email)
       addLine("Phone", claim.phone)
       addLine("Service", claim.service)
-      addLine("Consent", claim.consent ? "Yes" : "No")
-       addLine("Consent Text", claim.consentText)
+      addLine("Consent", consentValue)
+      addLine("Consent Text", consentTextValue)
       addLine("Lawyer Info", claim.lawyerInfo || "N/A")
 
       // Service Answers
@@ -261,13 +265,17 @@ export default function ClaimsPage() {
         doc.text(`Claim ${index + 1}`, 10, y)
         y += 8
 
+        // Normalize consent
+        const consentValue = claim.consent === true ? "Yes" : "No"
+        const consentTextValue = claim.consentText ?? "N/A"
+
         addLine("First Name", claim.firstName)
         addLine("Last Name", claim.lastName)
         addLine("Email", claim.email)
         addLine("Phone", claim.phone)
         addLine("Service", claim.service)
-        addLine("Consent", claim.consent ? "Yes" : "No")
-        addLine("Consent Text", claim.consentText)
+        addLine("Consent", consentValue)
+        addLine("Consent Text", consentTextValue)
         addLine("Lawyer Info", claim.lawyerInfo || "N/A")
 
         // Service Answers
@@ -330,6 +338,7 @@ export default function ClaimsPage() {
       alert("Failed to generate bulk PDF")
     }
   }
+
 
   const handleDownloadAll = () => downloadBulkPDF(filteredClaims, "Claims-All.pdf")
   const handleDownloadLatestN = () => {

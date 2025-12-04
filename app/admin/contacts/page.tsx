@@ -31,6 +31,7 @@ interface Contact {
   phone: string;
   message: string;
   caseType: string;
+  consent?: boolean
   createdAt?: string;
   consentText?: string;
   // optional clientDetails retained if present
