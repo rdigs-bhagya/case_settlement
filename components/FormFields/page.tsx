@@ -82,7 +82,7 @@ export default function FormFields() {
     const userPayload = {
       ...formValues,
       consent: consentGiven,
-      consentText: CONSENT_TEXT, 
+      consentText: CONSENT_TEXT,
       userDetails: {
         ipAddress: "",
         userAgent: navigator.userAgent,
@@ -222,6 +222,7 @@ export default function FormFields() {
         <div className="flex items-start gap-3 p-5 bg-slate-50 rounded-xl border border-slate-200">
           <Checkbox
             id="consent"
+            className="border border-blue data-[state=checked]:border-blue"
             checked={consentGiven}
             onCheckedChange={() => {
               if (!consentGiven) setShowConsent(true);
