@@ -40,8 +40,15 @@ export function AdminSidebar() {
 
         <Link href="/admin/claims">
           <Button variant={isActive("/admin/claims") ? "default" : "ghost"} className="w-full justify-start">
-            <FileText className="w-5 h-5 mr-2" />
+            <FileText className="w-5 h-5 mr-2" /> 
             Claims Forms
+          </Button>
+        </Link>
+
+        <Link href="/admin/send-mail">
+          <Button variant={isActive("/admin/send-mail") ? "default" : "ghost"} className="w-full justify-start">
+            <FileText className="w-5 h-5 mr-2" /> 
+            Send Mail
           </Button>
         </Link>
       </nav>
