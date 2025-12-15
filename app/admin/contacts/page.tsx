@@ -31,7 +31,8 @@ interface Contact {
   phone: string;
   message: string;
   caseType: string;
-  consent?: boolean
+  hasLawyer?: string;
+  consent?: boolean;
   createdAt?: string;
   consentText?: string;
   // optional clientDetails retained if present
@@ -183,6 +184,7 @@ export default function ContactsPage() {
       addLine("Email", contact.email);
       addLine("Phone", contact.phone);
       addLine("Case Type", contact.caseType);
+      addLine("Has Lawyer", contact.hasLawyer || "N/A"); // ✅ NEW
       addLine("Consent", (contact as any).consent ? "Yes" : "No");
       addLine("Consent", contact.consentText);
       addLine("Message", contact.message);
@@ -270,6 +272,7 @@ export default function ContactsPage() {
       addLine("Email", contact.email);
       addLine("Phone", contact.phone);
       addLine("Case Type", contact.caseType);
+      addLine("Has Lawyer", contact.hasLawyer || "N/A");
       addLine("Consent", (contact as any).consent ? "Yes" : "No");
       addLine("Consent", contact.consentText)
       addLine("Message", contact.message);

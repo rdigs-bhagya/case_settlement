@@ -13,6 +13,7 @@ interface Contact {
   phone: string
   message: string
   caseType: string
+  hasLawyer?: string
   consent?: boolean
   consentText?: string
   createdAt?: string
@@ -65,9 +66,10 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
     addLine("Email", contact.email);
     addLine("Phone", contact.phone);
     addLine("Case Type", contact.caseType);
+    addLine("Has Lawyer", contact.hasLawyer || "N/A"); // ✅ NEW
     addLine("Consent", contact.consent ? "Yes" : "No");
     addLine("Consent", contact.consentText),
-    addLine("Message", contact.message);
+      addLine("Message", contact.message);
 
     if (contact.clientDetails) {
       y += 6;
@@ -147,6 +149,27 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
               </span>
             </p>
           </div>
+          <div>
+            <label className="text-sm font-medium text-muted-foreground">
+              Lawyer Representation
+            </label>
+            <p className="text-lg mt-1">
+              {contact.hasLawyer === "Yes" ? (
+                <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
+                  YES — Has a Lawyer
+                </span>
+              ) : contact.hasLawyer === "No" ? (
+                <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-semibold">
+                  NO — No Lawyer
+                </span>
+              ) : (
+                <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-semibold">
+                  N/A
+                </span>
+              )}
+            </p>
+          </div>
+
           <div>
             <label className="text-sm font-medium text-muted-foreground">Consent</label>
             <p className="text-lg mt-1">
