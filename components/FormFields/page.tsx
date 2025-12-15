@@ -21,6 +21,7 @@ export default function FormFields() {
     email: "",
     phone: "",
     caseType: "",
+    hasLawyer: "",
     message: "",
   });
 
@@ -110,6 +111,7 @@ export default function FormFields() {
         email: "",
         phone: "",
         caseType: "",
+         hasLawyer: "",
         message: "",
       });
       setConsentGiven(false);
@@ -205,6 +207,25 @@ export default function FormFields() {
         </select>
         {errors.caseType && (
           <p className="text-red-500 text-xs mt-1">{errors.caseType}</p>
+        )}
+
+          {/* ✅ NEW QUESTION */}
+        <select
+          name="hasLawyer"
+          value={formValues.hasLawyer}
+          onChange={handleChange}
+          className={inputStyles}
+        >
+          <option value="">
+            Do you currently have a lawyer representing your claim?
+          </option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        {errors.hasLawyer && (
+          <p className="text-red-500 text-xs mt-1">
+            {errors.hasLawyer}
+          </p>
         )}
 
         <Textarea
