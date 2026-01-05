@@ -42,7 +42,7 @@ export default function SendMailPage() {
       return;
     }
 
-    const res = await fetch("https://case-9w55.onrender.com/sendMail", {
+    const res = await fetch("https://rm97455zj6.execute-api.us-east-1.amazonaws.com/dev/api/v1/sendEmail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
