@@ -58,11 +58,11 @@ export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
 
   const serviceAnswers = watch("serviceAnswers") || [];
 
-  const CONSENT_TEXT = `By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims, Agility Labs Inc. and our marketing partners & network of firms at any telephone number or email address provided by me, including my wireless number, if provided. 
-
-I understand that my wireless carrier may charge me for such communications. These communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product/service I am inquiring about. 
-
-Consent is not required to utilize service`;
+  const CONSENT_TEXT = `I agree that by providing my phone number and/or email, checking this box, and
+submitting this form, that I am consenting by electronic signature to authorize Landmark
+Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners or affiliates to
+contact me with automated, autodialed, artificial or prerecorded marketing calls, text
+messages, and emails. I understand that consent is not required to proceed.`;
 
   // ⭐ FUNCTION TO GET FULL CLIENT DETAILS
   const getClientDetails = async () => {
@@ -334,11 +334,11 @@ Consent is not required to utilize service`;
                   onCheckedChange={(checked) => setValue("consent", checked as boolean)}
                 />
                 <Label htmlFor="consent" className="text-sm text-slate-600">
-                  By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims, Agility Labs Inc. and our marketing partners & network of firms at any telephone number or email address provided by me, including my wireless number, if provided. 
-
-I understand that my wireless carrier may charge me for such communications. These communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product/service I am inquiring about. 
-
-Consent is not required to utilize service
+                  I agree that by providing my phone number and/or email, checking this box, and
+                  submitting this form, that I am consenting by electronic signature to authorize Landmark
+                  Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners or affiliates to
+                  contact me with automated, autodialed, artificial or prerecorded marketing calls, text
+                  messages, and emails. I understand that consent is not required to proceed.
                 </Label>
               </div>
               {errors.consent && (

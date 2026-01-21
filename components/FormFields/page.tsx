@@ -31,7 +31,9 @@ export default function FormFields() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  const CONSENT_TEXT = `By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & network of firms at any telephone number or email address provided by me, including my wireless number, if provided. I understand that my wireless carrier may charge me for such communications. These communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product/service I am inquiring about. Consent is not required to utilize services.`;
+  const CONSENT_TEXT = `By selecting ‘I Agree,’ I confirm that I have read and agree to the terms of use and privacy policy of this site and that I consent by electronic signature to receive automated, autodialed, artificial or prerecorded marketing calls, text messages, or emails from Landmark Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners, affiliates, or network of firms at any telephone number or email address provided by me. I understand that I can opt out of receiving marketing calls, text messages, or emails by following the instructions in the terms of use.
+
+I understand that my wireless carrier may charge me for such communications and that my consent is not required to proceed or use these services.`;
 
   // 🔥 Validation
   const validate = (payload: typeof formValues) => {
@@ -111,7 +113,7 @@ export default function FormFields() {
         email: "",
         phone: "",
         caseType: "",
-         hasLawyer: "",
+        hasLawyer: "",
         message: "",
       });
       setConsentGiven(false);
@@ -209,7 +211,7 @@ export default function FormFields() {
           <p className="text-red-500 text-xs mt-1">{errors.caseType}</p>
         )}
 
-          {/* ✅ NEW QUESTION */}
+        {/* ✅ NEW QUESTION */}
         <select
           name="hasLawyer"
           value={formValues.hasLawyer}
@@ -253,8 +255,11 @@ export default function FormFields() {
           <input type="hidden" id="xxTrustedFormCertUrl" />
 
           <Label htmlFor="consent" className="text-[9px] text-slate-600">
-            I agree to the Privacy Policy and receive calls, text messages,
-            emails including automated & prerecorded messages.
+            I agree that by providing my phone number and/or email, checking this box, and
+            submitting this form, that I am consenting by electronic signature to authorize Landmark
+            Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners or affiliates to
+            contact me with automated, autodialed, artificial or prerecorded marketing calls, text
+            messages, and emails. I understand that consent is not required to proceed.
           </Label>
         </div>
         {errors.consent && (
@@ -274,7 +279,11 @@ export default function FormFields() {
             <DialogTitle>Consent & Privacy Policy</DialogTitle>
           </DialogHeader>
           <div className="max-h-64 overflow-y-auto text-sm text-slate-600 space-y-3">
-            <p> By checking this box and submitting my request, I confirm that I have read and agree to the privacy policy of this site and that I consent to receive marketing emails, phone calls and/or text messages from Claim Your Claims and our marketing partners & network of firms at any telephone number or email address provided by me, including my wireless number, if provided. </p> <p> I understand that my wireless carrier may charge me for such communications. These communications may be generated using an automatic telephone dialing system and may contain pre-recorded messages related to the product/service I am inquiring about. </p> <p>Consent is not required to utilize services.</p> </div>
+            <p> By selecting ‘I Agree,’ I confirm that I have read and agree to the terms of use and privacy policy of this site and that I consent by electronic signature to receive automated, autodialed, artificial or prerecorded marketing calls, text messages, or emails from Landmark Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners, affiliates, or network of firms at any telephone number or email address
+              provided by me. I understand that I can opt out of receiving marketing calls, text messages, or emails by following the instructions in the terms of use.</p>
+
+            <p>I understand that my wireless carrier may charge me for such communications and that
+              my consent is not required to proceed or use these services.</p> </div>
           <DialogFooter className="flex justify-end gap-3">
             <Button variant="outline" onClick={() => setShowConsent(false)}>
               Cancel
