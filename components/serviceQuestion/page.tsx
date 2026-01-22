@@ -518,7 +518,30 @@ export const SERVICE_QUESTIONS: Record<string, QuestionAnswerConfig[]> = {
             "type": "select",
             "options": ["Yes", "No"]
         }
-    ]
+    ],
+
+    "roblox": [
+    {
+        "question": "Last four digits of SSN",
+        "type": "input",
+        "options": []
+    },
+    {
+        "question": "Did your child meet an abuser through Roblox?",
+        "type": "radio",
+        "options": ["Yes", "No", "Unsure"]
+    },
+    {
+        "question": "Was your child under 18 when the abuse began?",
+        "type": "radio",
+        "options": ["Yes", "No", "Unsure"]
+    },
+    {
+        "question": "Did the abuse involve physical assault, grooming, or exchange of explicit content?",
+        "type": "radio",
+        "options": ["Yes", "No", "Unsure"]
+    }
+]
 
 
 };

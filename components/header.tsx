@@ -55,6 +55,7 @@ export function Header() {
     { name: "Zantac Lawsuits", href: "/services/zantac-lawsuite-service" },
     { name: "PFAS Lawsuite", href: "/services/pfas-lawsuite-service" },
     { name: "Silicosis", href: "/services/silicosis" },
+    { name: "Roblox Lawsuit", href: "/services/roblox-service" },
   ]
 
   return (
