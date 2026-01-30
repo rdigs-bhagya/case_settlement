@@ -16,11 +16,11 @@ export default function SendMailPage() {
   // LOAD SENDERS + WEBSITES FROM BACKEND
   // ------------------------------------
   useEffect(() => {
-    fetch("https://rm97455zj6.execute-api.us-east-1.amazonaws.com/dev/api/v1/senders")
+    fetch("https://case-9w55.onrender.com/sendMail/senders")
       .then((res) => res.json())
       .then((data) => setSenders(data));
 
-    fetch("https://rm97455zj6.execute-api.us-east-1.amazonaws.com/dev/api/v1/websites")
+    fetch("https://case-9w55.onrender.com/sendMail/websites")
       .then((res) => res.json())
       .then((data) => setWebsites(data));
   }, []);
