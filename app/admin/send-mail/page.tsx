@@ -10,6 +10,8 @@ export default function SendMailPage() {
   const [links, setLinks] = useState<string[]>([]);
   const [status, setStatus] = useState("");
 
+  const FROM_EMAIL = "help@claimyourclaims.com"; // DISPLAY ONLY
+
   // ------------------------------------
   // LOAD ALLOWED LINKS FROM BACKEND
   // ------------------------------------
@@ -36,11 +38,14 @@ export default function SendMailPage() {
       return;
     }
 
-    const res = await fetch("https://rm97455zj6.execute-api.us-east-1.amazonaws.com/dev/api/v1/sendEmail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    const res = await fetch(
+      "https://rm97455zj6.execute-api.us-east-1.amazonaws.com/dev/api/v1/sendEmail",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    );
 
     const data = await res.json();
 
@@ -70,6 +75,12 @@ export default function SendMailPage() {
       <h2 className="text-2xl font-bold mb-4 text-center">Send Email</h2>
 
       <form onSubmit={sendEmail}>
+
+        {/* SEND FROM (DISPLAY ONLY) */}
+        <label className="font-semibold">Send From</label>
+        <div className="w-full p-2 border rounded mb-4 bg-gray-200 text-gray-700">
+          {FROM_EMAIL}
+        </div>
 
         {/* SEND TO */}
         <label className="font-semibold">Send To (User Email)</label>
