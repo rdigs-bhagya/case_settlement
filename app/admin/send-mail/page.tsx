@@ -3,26 +3,20 @@ import { useEffect, useState } from "react";
 
 export default function SendMailPage() {
   const [formData, setFormData] = useState({
-    fromEmail: "",
     toEmail: "",
-    website: "",
+    websiteLink: "",
   });
 
-  const [senders, setSenders] = useState<string[]>([]);
-  const [websites, setWebsites] = useState<any>({});
+  const [links, setLinks] = useState<string[]>([]);
   const [status, setStatus] = useState("");
 
   // ------------------------------------
-  // LOAD SENDERS + WEBSITES FROM BACKEND
+  // LOAD ALLOWED LINKS FROM BACKEND
   // ------------------------------------
   useEffect(() => {
-    fetch("https://case-9w55.onrender.com/sendMail/senders")
+    fetch("https://case-9w55.onrender.com/sendMail/links")
       .then((res) => res.json())
-      .then((data) => setSenders(data));
-
-    fetch("https://case-9w55.onrender.com/sendMail/websites")
-      .then((res) => res.json())
-      .then((data) => setWebsites(data));
+      .then((data) => setLinks(data));
   }, []);
 
   const handleChange = (e: any) => {
@@ -77,22 +71,6 @@ export default function SendMailPage() {
 
       <form onSubmit={sendEmail}>
 
-        {/* SEND FROM */}
-        <label className="font-semibold">Send From (Company Email)</label>
-        <select
-          name="fromEmail"
-          className="w-full p-2 border rounded mb-4"
-          required
-          onChange={handleChange}
-        >
-          <option value="">-- Select Sender Email --</option>
-          {senders.map((email) => (
-            <option key={email} value={email}>
-              {email}
-            </option>
-          ))}
-        </select>
-
         {/* SEND TO */}
         <label className="font-semibold">Send To (User Email)</label>
         <input
@@ -104,18 +82,18 @@ export default function SendMailPage() {
           onChange={handleChange}
         />
 
-        {/* WEBSITE DROPDOWN */}
-        <label className="font-semibold">Select Website</label>
+        {/* WEBSITE LINK */}
+        <label className="font-semibold">Select Website Link</label>
         <select
-          name="website"
+          name="websiteLink"
           className="w-full p-2 border rounded mb-4"
           required
           onChange={handleChange}
         >
-          <option value="">-- Select Website --</option>
-          {Object.keys(websites).map((item) => (
-            <option key={item} value={item}>
-              {item}
+          <option value="">-- Select Website Link --</option>
+          {links.map((link) => (
+            <option key={link} value={link}>
+              {link}
             </option>
           ))}
         </select>
