@@ -164,12 +164,8 @@ export default function ComposeEmail() {
                 className="form-input"
                 required
               >
-                <option value="">-- Select Website Link --</option>
-                {links.map((link) => (
-                  <option key={link} value={link}>
-                    {link}
-                  </option>
-                ))}
+                <option value='www.claimyourclaims.com'>www.claimyourclaims.com</option>
+                <option value='https://casesettlementnow.com/mva-intake-now'>www.caseettelment.com</option>
               </select>
             )}
           </div>
