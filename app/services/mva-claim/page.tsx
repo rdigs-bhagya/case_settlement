@@ -289,12 +289,6 @@ export default function MVAPage() {
 
                     <section className="py-10 bg-gradient-to-b from-background to-muted/30 mb-6">
                         <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg border p-8">
-                            <h2 className="text-3xl font-bold text-center mb-2">
-                                Free Claim Review
-                            </h2> 
-                            <p className="text-center text-gray-600 mb-8">
-                                No obligation. Get a quick review of your accident claim.
-                            </p>
 
                             <form onSubmit={submitLead} className="space-y-6">
 
