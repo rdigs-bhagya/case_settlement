@@ -202,6 +202,8 @@ I understand that my wireless carrier may charge me for such communications and 
             "PFAS Lawsuite",
             "Silicosis",
             "Roblox",
+            "Asbestos",
+            "Other"
           ].map((caseType) => (
             <option key={caseType} value={caseType}>
               {caseType}
