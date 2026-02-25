@@ -521,28 +521,81 @@ export const SERVICE_QUESTIONS: Record<string, QuestionAnswerConfig[]> = {
     ],
 
     "roblox": [
-    {
-        "question": "Last four digits of SSN",
-        "type": "input",
-        "options": []
-    },
-    {
-        "question": "Did your child meet an abuser through Roblox?",
-        "type": "radio",
-        "options": ["Yes", "No", "Unsure"]
-    },
-    {
-        "question": "Was your child under 18 when the abuse began?",
-        "type": "radio",
-        "options": ["Yes", "No", "Unsure"]
-    },
-    {
-        "question": "Did the abuse involve physical assault, grooming, or exchange of explicit content?",
-        "type": "radio",
-        "options": ["Yes", "No", "Unsure"]
-    }
-]
+        {
+            "question": "Last four digits of SSN",
+            "type": "input",
+            "options": []
+        },
+        {
+            "question": "Did your child meet an abuser through Roblox?",
+            "type": "radio",
+            "options": ["Yes", "No", "Unsure"]
+        },
+        {
+            "question": "Was your child under 18 when the abuse began?",
+            "type": "radio",
+            "options": ["Yes", "No", "Unsure"]
+        },
+        {
+            "question": "Did the abuse involve physical assault, grooming, or exchange of explicit content?",
+            "type": "radio",
+            "options": ["Yes", "No", "Unsure"]
+        }
+    ],
 
+    "asbestos": [
+        {
+            "question": "Were you (or a loved one) diagnosed with lung cancer or mesothelioma?",
+            "type": "radio",
+            "options": [
+                "Mesothelioma",
+                "Lung Cancer",
+                "No, I wasn't diagnosed"
+            ]
+        },
+        {
+            "question": "Have you (or a loved one) been exposed to asbestos for at least 5 years during work?",
+            "type": "radio",
+            "options": [
+                "Yes",
+                "No"
+            ]
+        },
+        {
+            "question": "What year were you (or a loved one) born?",
+            "type": "radio",
+            "options": [
+                "1959 or before",
+                "1960-1969",
+                "1970-1979",
+                "1980 or later"
+            ]
+        },
+        {
+            "question": "In what year were you (or a loved one) diagnosed with cancer?",
+            "type": "radio",
+            "options": [
+                "Less than one year ago",
+                "1 year ago",
+                "2 years ago",
+                "3 years ago",
+                "4 years ago",
+                "5 years ago",
+                "6 years ago",
+                "7 years ago",
+                "8 or more years ago",
+                "Not diagnosed with cancer"
+            ]
+        },
+        {
+            "question": "Are you a smoker?",
+            "type": "radio",
+            "options": [
+                "Yes",
+                "No"
+            ]
+        }
+    ]
 
 };
 
