@@ -43,7 +43,7 @@ const AsbestosSection = () => {
             </div>
 
             <img
-              src="/asbestos/asbeston1.png"
+              src="\asbestos\Asbestos-Exposure-Lawsuit.png"
               alt="Asbestos Exposure"
               className="rounded-2xl shadow-xl"
             />
@@ -55,7 +55,7 @@ const AsbestosSection = () => {
       <section className="py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
           <img
-            src="/asbestos/asbestos2.png"
+            src="\asbestos\Asbestos-Exposure-Lawsuit-Image-2.png"
             alt="Asbestos Workplace"
             className="rounded-2xl shadow-xl"
           />
