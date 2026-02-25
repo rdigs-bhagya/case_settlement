@@ -56,6 +56,7 @@ export function Header() {
     { name: "PFAS Lawsuite", href: "/services/pfas-lawsuite-service" },
     { name: "Silicosis", href: "/services/silicosis" },
     { name: "Roblox Lawsuit", href: "/services/roblox-service" },
+    { name: "Asbestos Lawsuit", href: "/services/asbestos-service" },
   ]
 
   return (
@@ -143,7 +144,7 @@ export function Header() {
               <div className="space-y-2">
                 <div className="font-semibold text-gray-900">Services</div>
                 <div className="grid grid-cols-1 gap-2 pl-4">
-                  {services.slice(0, 10).map((service, index) => (
+                  {services.map((service, index) => (
                     <a
                       key={index}
                       href={service.href}
