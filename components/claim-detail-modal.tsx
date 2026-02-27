@@ -23,6 +23,7 @@ interface Claim {
   consentText?: string
   createdAt?: string
   clientDetails?: ClientDetails
+  xxTrustedFormCertUrl?: string
 }
 
 interface ClientLocation {
@@ -152,6 +153,11 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
           <div>
             <label className="text-sm font-medium text-muted-foreground">Phone</label>
             <p className="text-lg text-foreground mt-1">{claim.phone}</p>
+          </div>
+
+           <div>
+            <label className="text-sm font-medium text-muted-foreground">TrustedForm Certificate URL</label>
+            <p className="text-sm text-foreground mt-1">{claim.xxTrustedFormCertUrl}</p>
           </div>
 
           <div>
