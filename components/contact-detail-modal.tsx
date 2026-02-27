@@ -17,6 +17,7 @@ interface Contact {
   consent?: boolean
   consentText?: string
   createdAt?: string
+  xxTrustedFormCertUrl?: string
 
   clientDetails?: {
     os: string
@@ -139,6 +140,11 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
           <div>
             <label className="text-sm font-medium text-muted-foreground">Phone</label>
             <p className="text-lg text-foreground mt-1">{contact.phone}</p>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-muted-foreground">TrustedForm Certificate URL</label>
+            <p className="text-sm text-foreground mt-1">{contact.xxTrustedFormCertUrl}</p>
           </div>
 
           <div>
