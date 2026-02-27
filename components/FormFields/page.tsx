@@ -23,6 +23,7 @@ export default function FormFields() {
     caseType: "",
     hasLawyer: "",
     message: "",
+    xxTrustedFormCertUrl: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -69,6 +70,7 @@ I understand that my wireless carrier may charge me for such communications and 
   };
 
   // Submit Handler
+  // Submit Handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("");
@@ -82,10 +84,21 @@ I understand that my wireless carrier may charge me for such communications and 
       return;
     }
 
+    // ✅ WAIT for TrustedForm to populate
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    // ✅ Get TrustedForm Certificate AFTER delay
+    const tfValue = (
+      document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement
+    )?.value;
+
+    console.log("TrustedForm Cert:", tfValue); // 🔍 Debug
+
     const userPayload = {
       ...formValues,
       consent: consentGiven,
       consentText: CONSENT_TEXT,
+      xxTrustedFormCertUrl: tfValue || "", // ✅ Now guaranteed
       userDetails: {
         ipAddress: "",
         userAgent: navigator.userAgent,
@@ -115,6 +128,7 @@ I understand that my wireless carrier may charge me for such communications and 
         caseType: "",
         hasLawyer: "",
         message: "",
+        xxTrustedFormCertUrl: "",
       });
       setConsentGiven(false);
     } catch (error) {
@@ -256,7 +270,12 @@ I understand that my wireless carrier may charge me for such communications and 
               else setConsentGiven(false);
             }}
           />
-          <input type="hidden" id="xxTrustedFormCertUrl" />
+
+          <input
+            type="hidden"
+            id="xxTrustedFormCertUrl"
+            name="xxTrustedFormCertUrl"
+          />
 
           <Label htmlFor="consent" className="text-[9px] text-slate-600">
             I agree that by providing my phone number and/or email, checking this box, and
