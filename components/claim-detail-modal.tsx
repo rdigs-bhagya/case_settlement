@@ -155,7 +155,7 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
             <p className="text-lg text-foreground mt-1">{claim.phone}</p>
           </div>
 
-           <div>
+          <div>
             <label className="text-sm font-medium text-muted-foreground">TrustedForm Certificate URL</label>
             <p className="text-sm text-foreground mt-1">{claim.xxTrustedFormCertUrl}</p>
           </div>
@@ -215,15 +215,41 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
           )}
 
           {claim.clientDetails && (
-            <div>
-              <label className="text-sm font-medium text-muted-foreground block mb-3">
-                Client Details
-              </label>
+            <section className="p-4 border rounded-md bg-slate-50">
+              <h3 className="font-semibold mb-3">Client Details</h3>
 
-              <pre className="bg-muted p-4 rounded-md text-sm overflow-x-auto whitespace-pre-wrap">
-                {JSON.stringify(claim.clientDetails, null, 2)}
-              </pre>
-            </div>
+              <p><strong>IP Address:</strong> {claim.clientDetails.ipAddress || "N/A"}</p>
+              <p><strong>Browser:</strong> {claim.clientDetails.browser || "N/A"}</p>
+              <p><strong>OS:</strong> {claim.clientDetails.os || "N/A"}</p>
+              <p><strong>Device:</strong> {claim.clientDetails.device || "N/A"}</p>
+
+              {/* ─────────── LOCATION BLOCK ─────────── */}
+              {claim.clientDetails.location && (
+                <div className="mt-4 p-3 bg-white border rounded-md">
+                  <h4 className="font-semibold mb-2">Location</h4>
+
+                  <p><strong>Country:</strong> {claim.clientDetails.location.country}</p>
+                  <p><strong>Region:</strong> {claim.clientDetails.location.region}</p>
+                  <p><strong>City:</strong> {claim.clientDetails.location.city}</p>
+                  <p><strong>Timezone:</strong> {claim.clientDetails.location.timezone}</p>
+                  <p><strong>EU:</strong> {claim.clientDetails.location.eu}</p>
+                  <p><strong>Metro:</strong> {claim.clientDetails.location.metro}</p>
+                  <p><strong>Area:</strong> {claim.clientDetails.location.area}</p>
+
+                  <p>
+                    <strong>Range:</strong>{" "}
+                    {claim.clientDetails.location.range?.join(" , ") || "N/A"}
+                  </p>
+
+                  <p>
+                    <strong>Coordinates (ll):</strong>{" "}
+                    {claim.clientDetails.location.ll
+                      ? `${claim.clientDetails.location.ll[0]}, ${claim.clientDetails.location.ll[1]}`
+                      : "N/A"}
+                  </p>
+                </div>
+              )}
+            </section>
           )}
 
           {claim.createdAt && (
