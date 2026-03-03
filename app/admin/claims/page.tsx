@@ -54,27 +54,34 @@ export default function ClaimsPage() {
   const [endDate, setEndDate] = useState("")
 
   useEffect(() => {
-    const fetchClaims = async () => {
-      try {
-        const response = await fetch("https://case-9w55.onrender.com/claims")
-        const data = await response.json()
+  const fetchClaims = async () => {
+    try {
+      const response = await fetch("https://case-9w55.onrender.com/claims")
+      const data = await response.json()
 
-        let claimsList: Claim[] = []
-        if (Array.isArray(data)) claimsList = data
-        else if (data?.data && Array.isArray(data.data)) claimsList = data.data
-        else if (data?.claims && Array.isArray(data.claims)) claimsList = data.claims
+      let claimsList: Claim[] = []
+      if (Array.isArray(data)) claimsList = data
+      else if (data?.data && Array.isArray(data.data)) claimsList = data.data
+      else if (data?.claims && Array.isArray(data.claims)) claimsList = data.claims
 
-        setClaims(claimsList.reverse())
-        setFilteredClaims(claimsList.reverse())
-      } catch (err) {
-        console.error("Error fetching claims:", err)
-      } finally {
-        setLoading(false)
-      }
+      // ✅ SORT BY DATE (LATEST FIRST)
+      const sortedClaims = [...claimsList].sort((a, b) => {
+        const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0
+        const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0
+        return dateB - dateA
+      })
+
+      setClaims(sortedClaims)
+      setFilteredClaims(sortedClaims)
+    } catch (err) {
+      console.error("Error fetching claims:", err)
+    } finally {
+      setLoading(false)
     }
+  }
 
-    fetchClaims()
-  }, [])
+  fetchClaims()
+}, [])
 
   // Search filter
   useEffect(() => {
