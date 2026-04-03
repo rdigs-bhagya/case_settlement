@@ -218,6 +218,7 @@ I understand that my wireless carrier may charge me for such communications and 
             "Roblox",
             "Asbestos",
             "Mesothelioma",
+            "Depo-Provera",
             "Other"
           ].map((caseType) => (
             <option key={caseType} value={caseType}>
