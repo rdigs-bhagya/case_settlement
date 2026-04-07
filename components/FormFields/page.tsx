@@ -203,7 +203,7 @@ I understand that my wireless carrier may charge me for such communications and 
           onChange={handleChange}
           className={inputStyles}
         >
-          <option value="" disabled hidden>Select Your Case Type</option>
+          <option value="">Select Your Case Type</option>
           {[
             "AFFF Lawsuit Support",
             "NEC Lawsuit Assistance",
