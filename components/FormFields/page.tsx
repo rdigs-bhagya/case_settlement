@@ -213,12 +213,13 @@ I understand that my wireless carrier may charge me for such communications and 
             "Roundup Lawsuit",
             "Hair Relaxer Claims",
             "Zantac Lawsuits",
-            "PFAS Lawsuite",
+            "PFAS Lawsuite",   
             "Silicosis",
             "Roblox",
             "Asbestos",
             "Mesothelioma",
             "Depo-Provera",
+            "please add - Social Media Addiction",
             "Other"
           ].map((caseType) => (
             <option key={caseType} value={caseType}>
