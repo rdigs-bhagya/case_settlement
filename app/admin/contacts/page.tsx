@@ -35,6 +35,7 @@ interface Contact {
   consent?: boolean;
   createdAt?: string;
   consentText?: string;
+  xxTrustedFormCertUrl?: string;
   // optional clientDetails retained if present
   clientDetails?: any;
 }
@@ -183,6 +184,7 @@ export default function ContactsPage() {
       addLine("Last Name", contact.lastName);
       addLine("Email", contact.email);
       addLine("Phone", contact.phone);
+      addLine("TrustedForm Certificate URL", contact.xxTrustedFormCertUrl);
       addLine("Case Type", contact.caseType);
       addLine("Has Lawyer", contact.hasLawyer || "N/A"); // ✅ NEW
       addLine("Consent", (contact as any).consent ? "Yes" : "No");
@@ -271,6 +273,7 @@ export default function ContactsPage() {
       addLine("Last Name", contact.lastName);
       addLine("Email", contact.email);
       addLine("Phone", contact.phone);
+      addLine("TrustedForm Certificate URL", contact.xxTrustedFormCertUrl);
       addLine("Case Type", contact.caseType);
       addLine("Has Lawyer", contact.hasLawyer || "N/A");
       addLine("Consent", (contact as any).consent ? "Yes" : "No");

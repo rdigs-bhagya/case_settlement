@@ -69,6 +69,7 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
     addLine("Last Name", claim.lastName)
     addLine("Email", claim.email)
     addLine("Phone", claim.phone)
+    addLine("TrustedForm Certificate URL", claim.xxTrustedFormCertUrl)
     addLine("Service", claim.service)
     addLine("Consent", claim.consent ? "Yes" : "No")
     addLine("Consent Text", claim.consentText)

@@ -33,6 +33,7 @@ interface Claim {
   consent?: boolean
   consentText?: string
   createdAt?: string
+  xxTrustedFormCertUrl?: string
 }
 
 export default function ClaimsPage() {
@@ -171,6 +172,7 @@ export default function ClaimsPage() {
       addLine("Last Name", claim.lastName)
       addLine("Email", claim.email)
       addLine("Phone", claim.phone)
+      addLine("TrustedForm Certificate URL", claim.xxTrustedFormCertUrl)
       addLine("Service", claim.service)
       addLine("Consent", consentValue)
       addLine("Consent Text", consentTextValue)
@@ -280,6 +282,7 @@ export default function ClaimsPage() {
         addLine("Last Name", claim.lastName)
         addLine("Email", claim.email)
         addLine("Phone", claim.phone)
+        addLine("TrustedForm Certificate URL", claim.xxTrustedFormCertUrl)
         addLine("Service", claim.service)
         addLine("Consent", consentValue)
         addLine("Consent Text", consentTextValue)

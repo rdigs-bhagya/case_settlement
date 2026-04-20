@@ -66,6 +66,7 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
     addLine("Last Name", contact.lastName);
     addLine("Email", contact.email);
     addLine("Phone", contact.phone);
+    addLine("TrustedForm Certificate URL", contact.xxTrustedFormCertUrl);
     addLine("Case Type", contact.caseType);
     addLine("Has Lawyer", contact.hasLawyer || "N/A"); // ✅ NEW
     addLine("Consent", contact.consent ? "Yes" : "No");
