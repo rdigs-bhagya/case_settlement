@@ -77,6 +77,11 @@ export function Footer() {
                   Privacy Policy
                 </a>
               </li>
+              <li>
+                <a href="/terms-of-use" className="hover:text-primary transition-colors">
+                  Terms of Use
+                </a>
+              </li>
             </ul>
           </div>
 

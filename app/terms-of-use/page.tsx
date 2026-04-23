@@ -1,0 +1,465 @@
+"use client";
+
+import React from "react";
+
+export default function TermsOfUse() {
+    const formatContent = (text: string) => {
+        const lines = text.split("\n");
+
+        return lines.map((line, index) => {
+            const trimmed = line.trim();
+
+            if (!trimmed) return <br key={index} />;
+
+            // Main headings (numbered sections)
+            if (/^\d+\./.test(trimmed)) {
+                return (
+                    <h2 key={index} className="text-xl font-bold mt-6 mb-2 text-gray-900">
+                        {trimmed}
+                    </h2>
+                );
+            }
+
+            // Sub-headings (a., b., c.)
+            if (/^[a-z]\./i.test(trimmed)) {
+                return (
+                    <h3 key={index} className="font-semibold mt-4 text-gray-800">
+                        {trimmed}
+                    </h3>
+                );
+            }
+
+            // ALL CAPS headings (like WARRANTY DISCLAIMERS)
+            if (trimmed === trimmed.toUpperCase() && trimmed.length > 10) {
+                return (
+                    <h2 key={index} className="text-base font-semibold mt-6 text-gray-500">
+                        {trimmed}
+                    </h2>
+                );
+            }
+
+            // Bullet points
+            if (trimmed.startsWith("●") || trimmed.startsWith("-")) {
+                return (
+                    <li key={index} className="ml-6 list-disc text-gray-700">
+                        {parseLinks(trimmed.replace(/^●|-/, "").trim())}
+                    </li>
+                );
+            }
+
+            return (
+                <p key={index} className="text-gray-700 leading-relaxed">
+                    {parseLinks(trimmed)}
+                </p>
+            );
+        });
+    };
+
+    const parseLinks = (text: string) => {
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g;
+
+        return text
+            .split(urlRegex)
+            .map((part, i) =>
+                urlRegex.test(part) ? (
+                    <a
+                        key={i}
+                        href={part}
+                        target="_blank"
+                        className="text-blue-600 underline"
+                    >
+                        {part}
+                    </a>
+                ) : part
+            )
+            .map((part, i) =>
+                typeof part === "string" && emailRegex.test(part) ? (
+                    <a
+                        key={i}
+                        href={`mailto:${part}`}
+                        className="text-blue-600 underline"
+                    >
+                        {part}
+                    </a>
+                ) : (
+                    part
+                )
+            );
+    };
+
+    const content = `
+ARBITRATION NOTICE: SECTION 10 CONTAINS A MANDATORY ARBITRATION
+PROVISION AND CLASS-ACTION WAIVER, WHICH REQUIRES YOU AND LANDMARK DEMAND d/b/a CLAIM YOUR CLAIMS TO RESOLVE MOST DISPUTES AND CLAIMS BY BINDING, INDIVIDUAL ARBITRATION AND NOT BY MEANS OF A CLASS ARBITRATION, A CLASS ACTION, ANY OTHER KIND OF REPRESENTATIVE PROCEEDING, OR A JURY TRIAL.
+
+Landmark Demand d/b/a Claim Your Claims (hereinafter “Claim Your Claims”, “we”, “us”, or “our”) operates the https://www.claimyourclaims.com/ website (the “Site”). These Terms of Use (these “Terms”) apply to the Site and to any other website or application offered by us that references or links to these Terms (collectively, the “Services”).
+
+Please read these Terms carefully before registering with, accessing, or using the Services.
+
+BY ACCESSING OR USING THE SERVICES OR VISITING THE SITE, YOU ACCEPT AND
+CONSENT TO ALL OF THESE TERMS. IF YOU DO NOT AGREE WITH ANY OF THESE
+TERMS OR OUR PRIVACY POLICY, THEN YOU MUST NOT USE THE SERVICES, OR
+ACCESS, USE, OR VISIT THE SITE.
+
+1. Use of Our Services. The Services are for your personal, non-commercial, and lawful use only. Other than as expressly permitted in these Terms, you may not copy, reproduce,
+distribute, transmit, display, perform, publish, license, modify, translate, adapt, create derivative works from, transfer, sell, or otherwise exploit the Services or any content, information, software, products, or services obtained from the Services, for any commercial purpose or enterprise. You may not use the Services, or any content within the Services, for any purpose that is unlawful or prohibited by these Terms, or to solicit the performance of an illegal activity or other activity that infringes our rights or the rights of other individuals or entities.
+
+Subject to your compliance with these Terms, you may access the Services and display and
+use the content of the Services made available via the Site, and, subject to any expressly stated restrictions or limitations relating to specific material on the Services, electronically copy or download onto your device or other technology used to access the Services portions of the content from the Services, strictly for your personal, non-commercial, lawful use.
+
+If you make any other use of the Services, except as otherwise provided above, you may violate copyright and other laws of the United States, and other countries, as well as applicable state laws, and may be subject to liability for such unauthorized use.
+
+
+2. Not Legal, Financial, or Professional Advice. The information posted here by Claim Your Claims or any third party should not be considered legal, financial, or other professional advice, and is not intended to replace consultation with a suitably qualified lawyer or other relevant professional on any specific problem or matter.
+
+3. Prohibited Uses. You may not (a) decompile, disassemble, or reverse engineer the
+Services or any portion thereof; (b) attempt to gain unauthorized access to the Services, any
+portion thereof, including content accessible via the Services, or any other system or platform through the Services; (c) use any automatic device, program, algorithm, or methodology, or engage in harvesting of email addresses or other personal information, unsolicited emailing, phone calling, or mailings, spoofing, flooding, overloading, spidering, screen scraping, database scraping, or any similar or equivalent manual process to access, acquire, copy or monitor any portion of the Services or any content on the Services; or (d) reverse look up, trace or seek to trace any information on any other user of or visitor to the Services to its source. You agree that you will not use the Services in any manner that could damage, disable, overburden, or impair the Services or interfere with any other party’s use and enjoyment of the Services.  You may not obtain or attempt to obtain any materials or information through any means not intentionally made available or provided for through the Services.
+
+You will not use the Services to violate any applicable law, rule, or regulation, and you will not encourage or enable others to violate any applicable law, rule, or regulation.
+
+4. Intellectual Property. The Services and all content and materials on the Services,
+including, without limitation, all graphics, interfaces, features, functions, text, button icons, data compilations, software, code, and materials thereon, the “look and feel”, selection, and
+arrangement, design, and organization of the Services, trademarks and logos, audio and video clips, are owned by, or licensed to, us. We and our licensors and service providers reserve and shall retain the entire right, title, and interest in and to the Services, including, without limitation, all copyrights, trademarks, and other intellectual property rights therein or relating thereto, except as expressly granted to you in these Terms. You shall not (i) remove, delete, alter, or obscure any trademarks or any notices of copyright, trademark, patent or other intellectual property or proprietary rights from the Services, including any copy thereof; or (ii) rent, lease, lend, sell, sublicense, assign, distribute, publish, transfer or otherwise make available the Services, or any features or functionality of the Services, to any third party for any reason, including, without limitation, by making the Services available on a network where it is capable of being accessed by more than one device at a time.
+
+5. Privacy. Along with these Terms, please read our Privacy Policy, which is hereby
+incorporated and made part of these Terms. If you provide contact information to us via the
+Services for anyone else, you represent and warrant that you all have the necessary rights and permissions to share such contact information with us and for us to use such information. You, not us, shall be responsible for obtaining all such rights and permissions.
+
+6. Updates and Unavailability. You agree that we have no obligation to provide any
+updates or to continue to provide or enable any particular features or functionality. You
+acknowledge that the Services may, from time to time, be unavailable due to events like
+scheduled and unscheduled maintenance, system upgrades, internet outages, and other
+reasons, some of which are beyond our control. We cannot, and do not, guarantee any specific minimum availability of the Services.
+
+
+
+7. Feedback. We welcome your feedback, testimonials, comments, ideas, and reviews
+about the Services (“Feedback”). Unless specifically otherwise stated, you agree that by
+submitting Feedback to us, (a) such Feedback shall be deemed to be non-confidential, and (b) you grant to us, our successors, affiliates, representatives and agents a perpetual, royalty-free, fully paid-up, irrevocable, transferable, worldwide right and license to use, transmit, copy, reproduce, publicly display or perform, create derivative works of, or otherwise use such Feedback, without compensation, acknowledgement or notice to you. You also represent and warrant to us that you have the necessary permissions and rights to provide such Feedback to us.
+
+8. WARRANTY DISCLAIMERS. Your use of the Services is at your sole risk. THE
+SERVICES, INCLUDING, WITHOUT LIMITATION, ANY MATERIALS, INFORMATION,
+CONTENT, FUNCTIONS, PRODUCTS, TEXT, GRAPHICS, AND LINKS THEREON, ARE
+PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS, AND ARE PROVIDED WITHOUT
+WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, NON-INTERFERENCE, DATA ACCURACY, SYSTEM INTEGRATION, AND WARRANTIES ARISING FROM TRADE USAGE, COURSE OF DEALING, OR COURSE OF PERFORMANCE. THE PROTECTED ENTITIES DO NOT WARRANT THAT (A) THE SERVICE AND SERVICES WILL FUNCTION UNINTERRUPTED, SECURELY, OR BE AVAILABLE AT ANY PARTICULAR TIME OR LOCATION; (B) ANY ERRORS OR DEFECTS WILL BE CORRECTED; (C) THE SERVICES ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS; OR (D) THE RESULTS OF USING THE SERVICES WILL MEET YOUR REQUIREMENTS. WE DO NOT MAKE ANY WARRANTIES OR REPRESENTATIONS REGARDING THE USE OF CONTENT ON THE SERVICES OR WITH RESPECT TO ITS COMPLETENESS, ACCURACY, TRUTHFULNESS, AVAILABILITY, ADEQUACY, USEFULNESS, TIMELINESS, SECURITY, RELIABILITY, OR OTHERWISE. IF YOU ARE DISSATISFIED WITH THE SERVICES, YOUR SOLE REMEDY IS TO DISCONTINUE USING THE SERVICES.  YOU AGREE THAT WE, IN OUR SOLE DISCRETION, MAY IMMEDIATELY TERMINATE YOUR ACCESS TO THE SERVICES AT ANY TIME, FOR ANY REASON.  YOU AGREE THAT WE WILL NOT BE LIABLE TO YOU OR ANY OTHER PARTY FOR ANY TERMINATION OF YOUR ACCESS TO THE SERVICES OR DELETION OF YOUR ACCOUNT. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF OR LIMITATIONS ON IMPLIED WARRANTIES OR THE LIMITATIONS ON THE APPLICABLE STATUTORY RIGHTS OF A CONSUMER, SO SOME OR ALL OF THE ABOVE EXCLUSIONS AND LIMITATIONS MAY NOT APPLY TO YOU.
+
+
+9. INDEMNIFICATION. YOU AGREE TO INDEMNIFY, DEFEND, AND HOLD HARMLESS US, OUR LICENSORS, AND OUR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, SUCCESSORS, AND ASSIGNS, AS WELL AS OTHER USERS OF THE SERVICES, FROM AND AGAINST ANY AND ALL LOSSES, DAMAGES, LIABILITIES,
+DEFICIENCIES, CLAIMS, ACTIONS, JUDGMENTS, SETTLEMENTS, INTERESTS, AWARDS, PENALTIES, FINES, COSTS, OR EXPENSES OF WHATEVER KIND, INCLUDING, WITHOUT LIMITATION, ALL REASONABLE ATTORNEYS’ FEES, ARISING FROM OR RELATING TO (A) USE AND ACCESS OF THE SERVICES, BY YOU OR ANY PERSON USING YOUR ACCOUNT; (B) BREACH OF OR FAILURE TO COMPLY WITH THESE TERMS BY YOU OR ANY PERSON USING YOUR ACCOUNT; (C) VIOLATION OF THE LAW OR ANY THIRD-PARTY RIGHT BY YOU OR ANY PERSON USING YOUR ACCOUNT; (D) YOUR CONTENT OR ANY OTHER INFORMATION YOU PROVIDE TO US VIA THE SERVICES AND (E) ANY ACTIVITY OTHERWISE RELATED TO USE OF THE SERVICES (INCLUDING NEGLIGENT OR WRONGFUL CONDUCT) BY YOU OR ANY PERSON USING YOUR ACCOUNT.
+
+10. Dispute Resolution of Claims; Binding Arbitration.
+PLEASE READ THIS CAREFULLY. IT AFFECTS YOUR RIGHTS.
+
+PLEASE READ THIS SECTION CAREFULLY BECAUSE IT REQUIRES YOU AND CLAIM YOUR CLAIMS TO ARBITRATE CERTAIN DISPUTES AND CLAIMS AND LIMIT THE MANNER IN WHICH YOU AND CLAIM YOUR CLAIMS CAN SEEK RELIEF FROM EACH OTHER. ARBITRATION PRECLUDES YOU AND CLAIM YOUR CLAIMS FROM SUING IN COURT OR HAVING A JURY TRIAL. YOU AND CLAIM YOUR CLAIMS AGREE THAT ARBITRATION WILL BE SOLELY ON AN INDIVIDUAL BASIS AND NOT AS A CLASS ARBITRATION, CLASS ACTION, OR ANY OTHER KIND OF REPRESENTATIVE PROCEEDING. YOU AND CLAIM YOUR CLAIMS ARE EACH WAIVING THE RIGHT TO TRIAL BY A JURY. THE PARTIES TO THESE TERMS ACKNOWLEDGE THAT THE TERMS OF THIS SECTION ARE INTENDED TO REDUCE THE FINANCIAL BURDENS ASSOCIATED WITH RESOLVING THEIR DISPUTES AND ARE NOT INTENDED TO DELAY ADJUDICATION OF ANY PARTY’S CLAIMS. FOLLOW THE INSTRUCTIONS BELOW IN SECTION k IF YOU WISH TO OPT OUT OF THE REQUIREMENT OF ARBITRATION.
+
+a. Claims to Which this Section Applies. The dispute resolution and binding
+arbitration terms in this Section 10 apply to all Claims between you and Claim Your Claims. A “Claim” is any dispute, claim, or controversy (excluding those exceptions
+listed below) between you and Claim Your Claims, whether based in contract, tort,
+statute, fraud, misrepresentation, or any other legal theory, that either party
+wishes to seek legal recourse for and that arises from or relates to these Terms
+or the Services or any Tests, including any privacy or data-security claims or
+claims related to the validity, enforceability, or scope of the arbitration
+requirement or any portion of it. These Terms, however, do not prevent you from
+bringing a Claim to the attention of any government agency.
+
+b. Informal Dispute Resolution Prior to Arbitration. If you have a Claim against
+Claim Your Claims or if Claim Your Claims has a Claim against you, you and Claim Your Claims will first attempt to resolve the Claim informally for faster resolution and to reduce costs for both parties. You and Claim Your Claims will make a good-faith effort to negotiate the resolution of any Claim for 60 days, or such longer period as
+mutually agreed in writing (email suffices) by the parties, (“Informal Resolution
+Period”) from the day either party receives a written notice of a dispute from the
+other party (a “Claimant Notice”) in accordance with these Terms. You will send
+any Claimant Notice to Claim Your Claims by overnight mail addressed to Claim Your Claims, [insert physical address]. Claim Your Claims will send any Claimant Notice to you by overnight mail. The Claimant Notice sent by either party must (i)include the
+sender’s name, address, email address, and telephone number; (ii) describe the
+nature and basis of the Claim; and (iii) set forth the specific relief sought. The
+Informal Resolution Period is designed to allow the party who has received a
+Claimant Notice to make a fair, fact-based offer of settlement if it chooses to do
+so. You or Claim Your Claims can file a Claim in arbitration only after the end of the
+Informal Resolution Period. You or Claim Your Claims cannot proceed to arbitration
+before the end of the Informal Resolution Period. If you or Claim Your Claims file a
+Claim in court or proceed to arbitration without complying with the requirements
+in Section 10, including waiting until the conclusion of the Informal Resolution
+Period, the other party reserves the right to seek relief from a court to enjoin the
+filing and seek damages from the party that has not followed the requirements in
+this Section to reimburse it for any arbitration fees and costs already incurred as
+a foreseeable consequence of that breach. The statute of limitations and any
+filing fee deadlines for a Claim will be tolled for the duration of the Informal
+Resolution Period for that Claim so that the parties can engage in this informal
+dispute-resolution process.
+
+c. Claims Subject to Binding Arbitration; Exceptions. Except for individual
+disputes that qualify for small claims court (provided that the small-claims court
+does not permit class or similar representative actions or relief) and any disputes
+exclusively related to the intellectual property or intellectual-property rights of you
+or Claim Your Claims, including any disputes in which you or Claim Your Claims seek injunctive or other equitable relief for the alleged unlawful use of your or Claim Your Claims’ intellectual property or other infringement of your or Claim Your Claims’ intellectual property rights (“IP Claims”), all Claims, including Claims that are not related to intellectual property or intellectual-property rights but are jointly filed with IP
+Claims, that are not resolved in accordance with Section 10(b) will be resolved by
+a neutral arbitrator through final and binding arbitration instead of in a court by a
+judge or jury. Such Claims include, without limitation, disputes arising out of or
+relating to interpretation or application of this arbitration provision, including the
+enforceability, revocability, or validity of the arbitration provision or any portion of
+the arbitration provision. The arbitrator will have the authority to grant any
+remedy or relief that would otherwise be available in court.
+
+d. Binding Individual Arbitration. Subject to the terms of this section, Claims may
+only be settled by binding individual arbitration conducted by the American
+Arbitration Association (the “AAA”), https://adr.org/, according to the Federal
+Arbitration Act, 9 U.S.C. § 1, et seq., (“FAA”). For Claims arbitrated by the AAA, if
+you are a “Consumer,” the then-current version of the AAA’s Consumer
+Arbitration Rules are the rules applicable to Claims between you and Claim Your Claims as modified by these Terms (the “Rules”). For Claims arbitrated by the AAA, if you are not a Consumer, the then-current version of the AAA’s Commercial Arbitration Rules and Mediation Procedures are the Rules applicable to Claims
+between you and Claim Your Claims as modified by these Terms. The Rules are
+available at www.adr.org or by calling 1- 800-778-7879. These Terms affect
+interstate commerce, and the enforceability of this Section 10 will be
+substantively and procedurally governed by the FAA to the extent permitted by
+law. As limited by the FAA, these Terms, and the Rules, the arbitrator will have
+exclusive authority to make all procedural and substantive decisions regarding
+any Claim and to grant any remedy that would otherwise be available in court,
+including the power to determine the question of arbitrability. To the fullest extent
+allowed by applicable law, the arbitrator may only award legal or equitable remedies that are individual to you or Claim Your Claims to satisfy one of our individual Claims (that the arbitrator determines are supported by credible relevant evidence). To the extent that you prevail on a Claim and seek public injunctive relief (that is, injunctive relief whose primary purpose and effect is to prohibit and enjoin conduct harmful to the general public), the entitlement to and extent of such relief must be litigated in a civil court of competent jurisdiction and not in arbitration. The parties agree that litigation of any issues of public injunctive relief shall be stayed pending the outcome of the merits of any individual Claims in Arbitration.
+
+e. Claims to Which This Section Applies. You or Claim Your Claims may initiate
+arbitration of any Claim not resolved during the Informal Resolution Period and
+not excluded under Section 10(c) by filing a demand for arbitration with AAA in
+accordance with the Rules. Instructions for filing a demand for with AAA are
+available on the AAA website. You will send a copy of any demand for arbitration
+to Claim Your Claims by overnight mail addressed to Claim Your Claims at Claim Your Claims, [insert physical address]. Claim Your Claims will send any demand for arbitration to you by overnight mail using the contact information you have provided to Claim Your Claims. The arbitration will be conducted by a single arbitrator in the English language. You and Claim Your Claims both agree that the arbitrator will be bound by these Terms.
+
+For Claims in which the claimant seeks less than USD $10,000, the arbitrator will
+decide the matter solely based on written submissions, without a formal hearing,
+unless the arbitrator decides that a formal hearing is necessary. For Claims in
+which the claimant seeks USD $10,000 or more, or smaller matters in which the
+arbitrator determines a hearing to be necessary, hearings will be conducted by
+video or telephone, unless the arbitrator determines an in-person hearing to be
+necessary. If an in-person hearing is required and you reside in the United
+States, the hearing will take place in Dallas County, Texas, unless you are a
+Consumer and the arbitrator determines that this would pose a hardship for you,
+in which case the in-person hearing may be conducted in the claimant’s state
+and county of residence. If you reside outside the United States, the site of any
+in-person hearing will be determined by the applicable Rules. The arbitrator (not
+a judge or jury) will resolve all Claims in arbitration. Unless you and Claim Your Claims agree otherwise, any decision or award will include a written statement stating the decision of each Claim and the basis for the award, including the arbitrator’s essential factual and legal findings and conclusions. An arbitration award, and any judgment confirming it, apply only to that specific case; it cannot be used or
+offered as precedent in any other case except to enforce the award itself unless
+the parties agree prior to issuance of the award. Any arbitration decision or
+award may be enforced as a final judgment by any court of competent jurisdiction
+or, if applicable, application may be made to such court for judicial confirmation
+of any award and an order of enforcement.
+
+
+f. Arbitration Fees. Each Party will be responsible for arbitration fees in
+accordance with the applicable Rules and these Terms.
+
+g. Frivolous or Improper Claims. To the extent permitted by applicable law, a
+claimant must pay all costs incurred by the responding party, including any
+attorney fees, related to a Claim if an arbitrator determines that (i) the Claim was
+frivolous or (ii) the Claim was filed in arbitration for any improper purpose, such
+as to harass the defending party, cause unnecessary delay, or needlessly
+increase the cost of dispute resolution.
+
+h. Confidentiality. If you or Claim Your Claims serve a Claimant Notice or submit a Claim to arbitration, you and Claim Your Claims Labs agree to cooperate to seek protection (from the arbitrator or otherwise) for any confidential, proprietary, trade-secret, or otherwise sensitive information, documents, testimony, and other materials that might be exchanged or the subject of any discovery. You and Claim Your Claims Labs agree to seek such protection before any such information, documents, testimony, or materials are exchanged or otherwise become the subject of discovery.
+
+i. One Year to Assert Claims. To the extent permitted by law, any Claim by you or
+Claim Your Claims against the other must be filed within one year after such Claim
+arises; otherwise, the Claim is permanently barred, which means that you or
+Claim Your Claims will no longer have the right to assert that Claim.
+
+j. Mass Arbitrations. If 30 or more Claimant Notices are received by a party that
+raise similar claims and have the same or coordinated counsel, these will be
+considered “Mass Arbitrations” and will be treated as mass arbitrations according
+to the AAA’s Mass Arbitration Supplementary Rules, if and to the extent Mass
+Arbitrations are filed in arbitration as set forth in these Terms. You or Claim Your Claims may advise the other of your or Claim Your Claims’ belief that Claims are Mass Arbitrations, and disputes over whether a Claim meets the definition of “Mass
+Arbitrations” will be decided by the arbitration provider as an administrative
+matter. To the extent either party is asserting the same Claim as other persons
+and are represented by common or coordinated counsel, that party waives any
+objection that the joinder of all such persons is impracticable. The following
+procedures are intended to supplement the AAA’s Mass Arbitration
+Supplementary Rules, and to the extent the procedures conflict with those Rules,
+to supersede them. Mass Arbitrations may only be filed in arbitration as permitted
+by the process set forth below. Applicable statutes of limitations will be tolled for
+Claims asserted in Mass Arbitrations from the time a compliant Claimant Notice
+has been received by a party until these Terms permits such Mass Arbitration to
+be filed in arbitration or court.
+
+i. Initial Bellwether: The bellwether process set forth in this section will not
+proceed until counsel representing the Mass Arbitrations has advised the
+other party in writing (email suffices) that all or substantially all the
+Claimant Notices for the Mass Arbitrations have been submitted. After
+that point, counsel for the parties will select 30 Mass Arbitrations to
+proceed in arbitration as a bellwether to allow each side to test the merits
+of its arguments. Each side will select 15 claimants who have provided
+compliant Claimant Notices for this purpose, and only those chosen
+cases may be filed with the arbitration provider. The parties acknowledge
+that resolution of some Mass Arbitrations will be delayed by this
+bellwether process. Any remaining Mass Arbitrations shall not be filed or
+deemed filed in arbitration, nor shall any arbitration fees be assessed in
+connection with those Claims, unless and until they are selected to be
+filed in individual arbitration proceedings as set out in this Section 10(j). A
+single arbitrator will preside over each Mass Arbitration chosen for a
+bellwether proceeding, and only one Mass Arbitration may be assigned to
+each arbitrator as part of a bellwether process unless the parties agree
+otherwise. Each Mass Arbitration chosen for a bellwether will otherwise
+be subject to the terms of this section generally applicable to Claims filed
+in arbitration.
+
+ii. Mediation: Once the arbitrations that are part of the bellwether process
+have concluded (or sooner if the claimants and the other party agree),
+counsel for the parties must engage in a single mediation of all remaining
+Mass Arbitrations, with the mediator’s fee paid for by Claim Your Claims.
+Counsel for the claimants and the other party must agree on a mediator
+within 30 days after the conclusion of the last bellwether arbitration. If
+counsel for the claimants and the other party cannot agree on a mediator
+within 30 days, the arbitration provider will appoint a mediator as an
+administrative matter. All parties will cooperate for the purpose of
+ensuring that the mediation is scheduled as quickly as practicable after
+the mediator is appointed.
+
+iii. Remaining Claims: If the mediation process concludes with 100
+or more unresolved Mass Arbitrations remaining, any party to a remaining
+Mass Arbitration may elect to no longer have the arbitration requirement
+in this Section 10 apply to all remaining Mass Arbitrations for which a
+compliant Claimant Notice was received by the other party but that were
+not resolved in the bellwether process or global mediation. To be
+effective, such an election must be communicated in writing (email
+suffices) to counsel for the opposing party (or to the opposing party if they
+do not have counsel) within 30 days of mediation concluding. Mass
+Arbitrations released from the arbitration requirement must be resolved in
+accordance with Section 12, GOVERNING LAW AND VENUE, below. If
+the mediation process concludes with fewer than 100 Mass Arbitrations
+remaining or if no party makes a timely election as provided for in the
+previous paragraph, the AAA will randomly select 50 Mass Arbitrations (or
+the total remaining amount if less than 50) to proceed in arbitration as a
+second batch. The AAA will randomly select eligible claimants who have
+provided compliant Claimant Notices for this purpose, and only those
+chosen cases may be filed with the arbitration provider. A single arbitrator
+will preside over each Mass Arbitration chosen for this second batch, and
+only one Mass Arbitration may be assigned to each arbitrator as part of
+this second batch unless the parties agree otherwise. Once all
+arbitrations in the foregoing process are complete, the parties will repeat
+this process until all Mass Arbitrations have been arbitrated. Each Mass
+Arbitration chosen for a batch will otherwise be subject to the terms of this
+section generally applicable to Claims filed in arbitration. If Mass
+Arbitrations released from the arbitration requirement are brought in court,
+claimants may seek class treatment, but to the fullest extent allowed by
+applicable law, the classes sought may comprise only the claimants in
+Mass Arbitrations for which a compliant Claimant Notice was received by
+the other party. Any party may contest class certification at any stage of
+the litigation and on any available basis. A court will have authority to
+enforce the bellwether and mediation processes defined in this section
+and may enjoin the filing of lawsuits or arbitration demands not made
+incompliance with it.
+
+k. Opting Out of Arbitration. You have the right to opt out of binding arbitration
+within 30 days of the date you first accepted these Terms by sending notice by
+mail addressed to Claim Your Claims, [insert physical address]. To be effective, the
+opt-out notice must be received by us within the 30-day period and must include
+your full name, mailing address, and email address. The notice must also clearly
+indicate your intent to opt out of binding arbitration to be valid. By opting out of
+binding arbitration, you are agreeing to resolve disputes in accordance with
+Section 12 below.
+
+l. Rejection of Future Arbitration Changes. You may reject any change we make
+to Section 10 (except address changes) by sending us notice of your rejection
+within 30 days of the change via mail addressed to Claim Your Claims, [insert
+physical address]. To be effective, your rejection must be received by us within
+the 30-day period and must include your full name, mailing address, and email
+address and clearly indicate your intent to reject changes. Changes to Section 10
+may only be rejected as a whole, and you may not reject only certain changes to
+Section 10. If you reject changes made to Section 10, the most recent version of
+Section 10 that you have not rejected will continue to apply.
+
+m. Severability. If any portion of this Section 10 is found to be unenforceable or
+unlawful for any reason, including but not limited to because it is found to be
+unconscionable, (i) the unenforceable or unlawful provision will be severed from
+these Terms; (ii) severance of the unenforceable or unlawful provision will have
+no impact whatsoever on the remainder of this Section 10 or the parties’ ability to
+compel arbitration of any remaining claims on an individual basis pursuant to this
+Section 10; and (iii) to the extent that any claims must therefore proceed on a
+class, collective, consolidated, or representative basis, such claims must be
+litigated in a civil court of competent jurisdiction, in accordance with these Terms,
+and not in arbitration. The litigation of those claims will be stayed pending the
+outcome of any individual claims in arbitration. Further, if any part of this Section
+10 is found to prohibit an individual claim seeking public injunctive relief, that
+provision will have no effect to the extent such relief is allowed to be sought out
+of arbitration, and the remainder of this Section 10 will be enforceable.
+11. LIMITATION OF LIABILITY. WE AND OUR OFFICERS, DIRECTORS, EMPLOYEES,
+AGENTS, SUCCESSORS AND ASSIGNS SHALL HAVE NO LIABILITY TO YOU OR TO ANY THIRD PARTY ARISING OUT OF OR RELATED TO YOUR CONTENT OR ANY OTHER INFORMATION YOU SHARE WITH US. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL WE OR OUR RESPECTIVE LICENSORS OR
+SERVICE PROVIDERS, HAVE ANY LIABILITY ARISING FROM OR RELATED TO THESE
+TERMS OR YOUR USE OF OR INABILITY TO USE THE SERVICES FOR: (A) PERSONAL
+INJURY, DEATH, PROPERTY DAMAGE, LOST PROFITS, COST OF SUBSTITUTE GOODS OR SERVICES, LOSS OF DATA, LOSS OF GOODWILL, BUSINESS INTERRUPTION, COMPUTER FAILURE OR MALFUNCTION, OR ANY OTHER CONSEQUENTIAL, INCIDENTAL, INDIRECT, EXEMPLARY, SPECIAL, OR PUNITIVE DAMAGES; OR (B) DIRECT DAMAGES IN AMOUNTS THAT IN THE AGGREGATE EXCEED FIFTY DOLLARS ($50.00).  THE FOREGOING LIMITATIONS WILL APPLY WHETHER SUCH DAMAGES ARISE OUT OF BREACH OF CONTRACT, TORT (INCLUDING, WITHOUT LIMITATION, NEGLIGENCE), OR OTHERWISE AND REGARDLESS OF WHETHER SUCH DAMAGES WERE FORESEEABLE OR COMPANY WAS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. YOU AGREE THAT ANY CLAIM OR CAUSE OF ACTION RELATED TO THE SERVICES AND/OR THESE TERMS MUST BE FILED WITHIN ONE (1) YEAR AFTER SUCH CLAIM OR CAUSE OF ACTION AROSE OR BE FOREVER BARRED. SOME JURISDICTIONS DO NOT ALLOW CERTAIN LIMITATIONS OF LIABILITY SO SOME OR ALL OF THE ABOVE LIMITATIONS OF LIABILITY MAY NOT APPLY TO YOU.
+
+12. Governing Law and Venue. These Terms and the relationship between you and us will
+be governed and construed in accordance with the laws of Texas, without regard to conflict-of-laws principles and you agree to submit to the personal jurisdiction and venue of the courts of Texas. You and Claim Your Claims waive any objection to venue in any such courts. Any Claim that is not subject to arbitration or cannot be heard in small claims court will be resolved exclusively in the state or federal courts of Texas and the United States, respectively, sitting in Dallas County, Texas.
+
+13. Entire Agreement; No Waiver; Assignment. These Terms, together with our Privacy
+Policy, each as may be amended from time to time, constitute the entire agreement between
+you and us regarding the Services. Neither the course of conduct between us nor trade practice shall act to modify these Terms. No failure to exercise, and no delay in exercising, on the part of either party, any right or any power under these Terms will act as a waiver thereof, nor will a single or partial exercise of any right or power under these Terms preclude further exercise of that or any other right under these Terms. These Terms, and any rights and licenses granted hereunder, may not be delegated, transferred or assigned by you, but may be assigned by us without restriction. Any purported delegation, transfer or assignment by you shall be null and void.
+
+14. Severability. If any provision of these Terms is found to be illegal, invalid or
+unenforceable by a court of competent jurisdiction, such provision will be deleted from these
+Terms and the remaining provisions will continue with full force and effect.
+
+15. Jurisdictional Issues. The Services is operated out of the United States and are
+intended for use in the United States only. We make no representation that the Services, or
+content or information available via the Services, is appropriate or available for use outside of the United States, and access to it from jurisdictions where the content is illegal is prohibited. Those who choose to access the Services from outside the United States do so at their own initiative and are responsible for compliance with all applicable local laws.
+
+16. Changes. We reserve the right, at our sole discretion, to modify or replace these Terms
+at any time. Any changes to these Terms will become effective upon posting of revised terms.
+
+17. Copyright.  If you believe your copyright or other intellectual property or privacy right
+has been violated by content accessible via the Services, please contact us at
+https://www.claimyourclaims.com/contact-us.
+
+18. Contact Us. If you have any questions about these Terms or our Services, please
+contact us at https://www.claimyourclaims.com/contact-us.
+
+Text Messaging Terms and Conditions
+
+1. The terms of service for Claim Your Claims SMS are outlined below. You can expect to receive transactional and informational messages sent via SMS (text message). Message examples include information related to services you requested via the Claim Your Claims website. We offer one or more text messaging programs (each, a “Program”), which you agree are subject to these Text Messaging Terms and Conditions. By opting into or participating in any of our Programs, you accept and agree to these Text Messaging Terms and Conditions and the Terms, including, without limitation, your agreement to resolve any disputes as detailed in the “Dispute Resolution; Binding Arbitration” section above. The message frequency varies.
+
+2. When you opt-in to the Program, we will send you an SMS message to confirm your signup. By participating in the Program, you agree to receive autodialed or prerecorded marketing SMS messages at the phone number associated with your opt-in, and you understand that consent is not required to make any purchase from us. While you consent to receive messages sent using an autodialer, the foregoing shall not be interpreted to suggest or imply that any or all of our SMS messages are sent using an automatic telephone dialing system (“ATDS” or “autodialer”). Message and data rates may apply. By opting into the Program and providing us with a mobile phone number when you opt-in, you represent that you are the subscriber for or authorized user of the mobile phone number that you provided to us, are authorized to consent to the receipt of text messages at that number, and that you are authorized to approve any related charges for messaging and data applied by your wireless carrier.
+
+3. You can cancel this service at any time. Text “STOP”, “QUIT”, “END”, “CANCEL” or
+“UNSUBSCRIBE” to “XXXXX.” After you send the message “STOP”, “QUIT”, “END”, “CANCEL” or “UNSUBSCRIBE” to us, we will send you a reply message to confirm you have been unsubscribed. After this, you will no longer receive messages from us. You also understand and agree that any other method of opting out, including, but not limited to, texting words other than those set forth above or verbally requesting one of our employees to remove you from our list is not a reasonable means of opting out. If you want to join again, then sign up as you did the first time, and we will begin sending messages to you again.
+
+4. If at any time you forget which keywords are supported, then text “HELP” to “XXXXX.” After you send the message “HELP” to us, we will respond with instructions on how to use our service, as well as how to unsubscribe. You may also please contact us at
+https://www.claimyourclaims.com/contact-us.
+
+5. Carriers, including T-Mobile and Verizon, are not liable for delayed or undelivered messages. The Program is offered on an “as-is” basis and may not be available in all areas at all times and may not continue to work in the event of product, software, coverage, or other changes made by your wireless carrier. We will not be liable for any delays or failures in the receipt of any SMS messages connected with a Program. Delivery of SMS messages is subject to effective transmission from your wireless service provider/network operator, and is outside of our control.
+
+6. As always, message and data rates may apply for messages sent to you from us and to us from you. Message frequency will vary. If you have any questions about your text plan or data plan, then contact your wireless provider. For questions about the services provided by this short code, please contact us at https://www.claimyourclaims.com/contact-us.
+
+7. If you have any questions regarding privacy, then read our Privacy Policy.
+
+8. Consent to Receipt of Electronic Information and E-Sign. Notwithstanding anything herein to the contrary, you understand that applicable law may require Claim Your Claims to provide certain information to you in writing in connection with any consent to receive advertising and
+telemarketing telephone calls and text messages. By opting-in to a mobile texting program
+involving the provision of advertising and/or telemarketing messages, you authorize Claim Your Claims to provide this information to you electronically instead of in a separate paper document. You understand that you may withdraw this consent, update your information, or request a free paper copy of the information by contacting us at https://www.claimyourclaims.com/contact-us.
+You understand that to access and retain a copy of this webpage, you will need: (i) a device
+(such as a computer or mobile phone) with a web browser and Internet access; and 
+(ii) available storage space on that device to download a copy of this webpage of a connected printer to print a copy of this webpage.
+
+9. When you complete forms online or otherwise provide us information in connection with the Programs, you agree to provide accurate, complete, and true information. You agree not to use a false or misleading name or a name that you are not authorized to use. If, in our sole discretion, we believe that any such information is untrue, inaccurate, or incomplete, or you have opted into any of the Program for an ulterior purpose, we may refuse you access to such Program and pursue any appropriate legal remedies.
+
+10. We reserve the right to revise these Text Messaging Terms and Conditions from time to
+time. If we do revise these Text Messaging Terms and Conditions, the revised terms will
+supersede prior revisions. Please visit this site periodically to keep up to date with the current terms regarding the Program. To the fullest extent permitted under all applicable laws, rules, regulations and requirements (collectively, “Applicable Laws”), your continued participation in each Program constitutes your acceptable of any revisions and reaffirms your continuing agreement to the then-current Terms. If you do not agree to the revisions, you must opt out of the applicable Program(s).
+
+`;
+
+    return (
+        <section className="relative py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+            <div className="container mx-auto px-6 lg:px-16 mt-[95px]">
+                <div className="max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg border space-y-3">
+
+                    <h1 className="text-3xl font-bold text-gray-900">
+                        Terms of Use
+                    </h1>
+
+                    <p className="font-medium">
+                        Last Updated Date: 21 April 2026
+                    </p>
+
+                    <div className="space-y-2 text-sm md:text-base">
+                        {formatContent(content)}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    );
+}
