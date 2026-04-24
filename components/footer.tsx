@@ -121,13 +121,13 @@ export function Footer() {
         {/* Disclaimer + Copyright */}
         <div className="border-t border-background/20 mt-12 pt-8 text-center max-w-6xl mx-auto">
           <p className="text-[10px] text-background/50 leading-relaxed mb-6 tracking-wide uppercase">
-            BY SUBMITTING THIS FORM, YOU GIVE YOUR CONSENT TO CLAIMYOURCLAIMS.COM AND OUR MARKETING PARTNERS TO CONTACT YOU VIA AUTOMATED CALLS, PRE-RECORDED MESSAGES, AND TEXT MESSAGES AT THE TELEPHONE NUMBER(S) PROVIDED. THESE COMMUNICATIONS MAY BE RELATED TO POTENTIAL LEGAL SERVICES OR ASSISTANCE. STANDARD MESSAGE AND DATA RATES MAY APPLY. TO OPT OUT OF RECEIVING THESE COMMUNICATIONS, DO NOT SUBMIT THE FORM OR REFRAIN FROM PROVIDING YOUR CONTACT INFORMATION. I CONFIRM THAT I WAS NOT COACHED AND I WAS NOT OFFERED ANY COMPENSATION FOR THIS CLAIM. I UNDERSTAND I WILL BE ASKED FOR MEDICAL RECORDS, AND IF FALSIFIED, I WILL BE HELD LIABLE FOR KNOWINGLY PROVIDING FALSE INFORMATION, AND THE LAW FIRM RESERVES THE RIGHT TO SEEK ALL AVAILABLE REMEDIES UNDER THE LAW.
+            <b>ADVERTISEMENT:</b> LandMark Demand d/b/a Claim Your Claims is a lead generation company, not a law firm or a qualified lawyer referral service. We do not provide legal advice, and your use of this site does not create an attorney-client relationship. All case evaluations are performed by independent participating attorneys. Past performance does not guarantee future results, and no specific outcome is promised or guaranteed.
           </p>
 
-          <p className="text-[11px] text-background/60 tracking-wide uppercase">
+          {/* <p className="text-[11px] text-background/60 tracking-wide uppercase">
             Copyright 2025 @ Claim Your Claims. All Rights Reserved. | Attorney Advertising | Prior Results Do Not Guarantee A
             Similar Outcome.
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>
