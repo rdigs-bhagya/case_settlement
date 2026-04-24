@@ -78,9 +78,9 @@ export function ProcessSection() {
                 </Link>
 
                 {/* Call button linking to phone */}
-                <a href="tel:8338441999">
+                <a href="tel: (229) 261-7123">
                   <Button size="lg" variant="outline">
-                    Call (833) 844-1999
+                    Call (229) 261-7123
                   </Button>
                 </a>
               </div>

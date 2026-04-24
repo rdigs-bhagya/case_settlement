@@ -66,15 +66,15 @@ export function Header() {
       <div className="bg-blue-800 text-white py-2">
         <div className="flex justify-between items-center text-xs sm:text-sm px-8">
           <div className="flex items-center gap-2 sm:gap-4">
-            <a href="tel:8338441999" className="flex items-center gap-1 sm:gap-2 hover:underline text-white">
+            <a href="tel:2292617123" className="flex items-center gap-1 sm:gap-2 hover:underline text-white">
               <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span className="hidden sm:inline">(833) 844-1999</span>
+              <span className="hidden sm:inline">(229) 261-7123</span>
               <span className="sm:hidden">Call Now</span>
             </a>
 
-            <a href="mailto:contact@legalassistance.com" className="hidden sm:flex items-center gap-2 hover:underline text-white">
+            <a href="mailto:help@claimyourclaims.com" className="hidden sm:flex items-center gap-2 hover:underline text-white">
               <Mail className="h-4 w-4" />
-              <span>contact@claimyourclaims.com</span>
+              <span>help@claimyourclaims.com</span>
             </a>
 
           </div>
@@ -89,8 +89,8 @@ export function Header() {
       <div className="px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link href="/" className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-              <div className="text-white font-bold text-2xl">⚖</div>
+            <Link href="/" className="w-30 h-12 flex items-center justify-center">
+              <img src="/logo.png" alt="Claim Your Claims Logo" />
             </Link>
           </div>
 

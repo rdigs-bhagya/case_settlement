@@ -2,7 +2,7 @@
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background py-16">
+    <footer className="bg-foreground text-background py-16 pb-6">
       <div className="container mx-auto px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -90,19 +90,19 @@ export function Footer() {
             <h4 className="font-bold font-space-grotesk mb-4">Contact Info</h4>
             <div className="space-y-3 text-background/80">
               <div className="flex items-center gap-2">
-                <a href="tel:8338441999" className="flex items-center gap-2 hover:underline text-white">
+                <a href="tel:2292617123" className="flex items-center gap-2 hover:underline text-white">
                   <Phone className="h-4 w-4" />
-                  <span>(833) 844-1999</span>
+                  <span>(229) 261-7123</span>
                 </a>
               </div>
 
               <div className="flex items-center gap-2">
                 <a
-                  href="mailto:contact@claimyourclaims.com"
+                  href="mailto:help@claimyourclaims.com"
                   className="flex items-center gap-2 hover:underline text-white"
                 >
                   <Mail className="h-4 w-4" />
-                  <span>contact@claimyourclaims.com</span>
+                  <span>help@claimyourclaims.com</span>
                 </a>
               </div>
 
@@ -120,7 +120,7 @@ export function Footer() {
 
         {/* Disclaimer + Copyright */}
         <div className="border-t border-background/20 mt-12 pt-8 text-center max-w-6xl mx-auto">
-          <p className="text-[10px] text-background/50 leading-relaxed mb-6 tracking-wide uppercase">
+          <p className="text-[10px] text-background/50 leading-relaxed mb-6 tracking-wide">
             <b>ADVERTISEMENT:</b> LandMark Demand d/b/a Claim Your Claims is a lead generation company, not a law firm or a qualified lawyer referral service. We do not provide legal advice, and your use of this site does not create an attorney-client relationship. All case evaluations are performed by independent participating attorneys. Past performance does not guarantee future results, and no specific outcome is promised or guaranteed.
           </p>
 

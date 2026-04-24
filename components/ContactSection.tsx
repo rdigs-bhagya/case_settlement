@@ -49,7 +49,7 @@ export function ContactSection() {
               {
                 icon: Phone,
                 title: "Call Now",
-                value: "(833) 844-1999",
+                value: " (229) 261-7123",
                 color: "from-blue-600 to-purple-600",
               },
               {

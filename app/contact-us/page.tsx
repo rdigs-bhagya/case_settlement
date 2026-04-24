@@ -35,7 +35,7 @@ export default function ContactUs() {
                 </div>
                 <div>
                   <h4 className="text-base font-semibold text-gray-900">Quickly Call Us</h4>
-                  <p className="text-primary font-medium text-sm">+1 323 843 5995</p>
+                  <p className="text-primary font-medium text-sm">(229) 261-7123</p>
                 </div>
               </div>
 
@@ -47,7 +47,7 @@ export default function ContactUs() {
                 <div>
                   <h4 className="text-base font-semibold text-gray-900">Drop a Message</h4>
                   <p className="text-primary font-medium text-sm">
-                    contact@claimyourclaims.com
+                    help@claimyourclaims.com
                   </p>
                 </div>
               </div>
