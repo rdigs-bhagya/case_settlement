@@ -8,8 +8,8 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">L</span>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                 <img src="/CYC White logo.png" alt="Claim Your Claims Logo" />
               </div>
               <div>
                 <h3 className="font-bold text-xl font-space-grotesk">Claim Your Claims</h3>
