@@ -183,9 +183,9 @@ export default function MVAPage() {
                     {/* Second Row (Image Left - Text Right) */}
                     <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[450px] ">
                         <div className="order-1 lg:order-1 relative">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../Motorvehicleaccedentimages/courtroomimages.png"
+                                    src="../Motorvehicleaccedentimages/Motor Vehicle Accident 2.png"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />
