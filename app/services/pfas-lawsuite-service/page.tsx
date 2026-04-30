@@ -24,7 +24,7 @@ const PFASSection = () => {
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../PFAS/PFAS-2.png"
+                                    src="../PFAS/PFAS-3.png"
                                     alt="Firefighters using AFFF foam at emergency scene"
                                     className="w-full h-auto"
                                 />
@@ -38,7 +38,7 @@ const PFASSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                  src="../PFAS/PFAS-3.png"
+                                  src="../PFAS/PFAS-2.png"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />

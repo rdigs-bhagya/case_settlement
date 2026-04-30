@@ -62,27 +62,52 @@ export function ProcessSection() {
           ))}
         </div>
 
-        <div className="text-center">
-          <div className="bg-secondary/10 rounded-2xl p-6 lg:p-8 max-w-4xl mx-auto">
-            <h3 className="text-xl lg:text-2xl font-bold font-space-grotesk mb-4">Ready to Get Started?</h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              Don't wait - there may be time limits on your claim. Contact us today for your free consultation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <div className="flex gap-4 pt-4 justify-center items-center">
-                {/* Get Started button linking to contact page */}
-                <Link href="/contact-us">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Get Started Today
-                  </Button>
-                </Link>
+        <div className="text-center px-4">
+          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] min-h-[350px] sm:min-h-[450px]">
+            <img
+              src="/contact-us-today-bg.png"
+              alt="Legal Consultation"
+              className="absolute inset-0 h-full w-full object-cover object-[center_right]"
+            />
 
-                {/* Call button linking to phone */}
-                <a href="tel: (229) 261-7123">
-                  <Button size="lg" variant="outline">
-                    Call (229) 261-7123
-                  </Button>
-                </a>
+            {/* 
+      - items-start: Starts the text from the top.
+      - pt-20 sm:pt-32 lg:pt-40: Pushes the text down significantly.
+      - pl-8 sm:pl-20 lg:pl-40: Moves the text closer to the girl.
+    */}
+            <div className="relative z-10 flex min-h-[350px] sm:min-h-[450px] items-start justify-start px-8 sm:pl-20 lg:pl-40 pt-20 sm:pt-32 lg:pt-36">
+
+              <div className="max-w-2xl text-left text-white">
+
+                <h3 className="font-space-grotesk text-3xl font-bold sm:text-4xl lg:text-[46px] leading-tight mt-[30px]">
+                  Ready to Get Started?
+                </h3>
+
+                <p className="mt-4 text-lg leading-relaxed text-white/90 sm:text-xl max-w-lg">
+                  Don't wait – there may be time limits on your claim. <br className="hidden sm:block" />
+                  Contact us today for your free consultation.
+                </p>
+
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+                  <Link href="/contact-us">
+                    <Button
+                      size="lg"
+                      className="w-full bg-[#3b82f6] text-white hover:bg-blue-600 border-none sm:w-auto px-8 h-12 text-lg rounded-xl shadow-lg"
+                    >
+                      Get Started Today
+                    </Button>
+                  </Link>
+
+                  <a href="tel:8338441999">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full border-none bg-white text-[#1a365d] hover:bg-gray-100 sm:w-auto px-8 h-12 text-lg rounded-xl shadow-lg"
+                    >
+                      Call (833) 844-1999
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

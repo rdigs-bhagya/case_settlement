@@ -14,11 +14,11 @@ const SilicosisSection = () => {
                     <div className="flex flex-wrap items-start gap-10">
                         <div className="w-full md:w-1/3 mt-16">
                             <Image
-                                src="/silicosis/silicosis.png"
+                                src="/silicosis/Silicosis.png"
                                 alt="Silicosis lung disease illustration"
                                 width={500}
                                 height={300}
-                                className="rounded-xl shadow-lg w-full h-auto"
+                                className=" w-full h-auto"
                             />
                         </div>
                         <div className="flex-1 space-y-6">
@@ -53,11 +53,11 @@ const SilicosisSection = () => {
                     <div className="flex flex-wrap items-start gap-10">
                         <div className="w-full md:w-1/3">
                             <Image
-                                src="/silicosis/silicosis1.png"
+                                src="/silicosis/Silicosis 2.png"
                                 alt="Health conditions lawsuit illustration"
                                 width={500}
                                 height={300}
-                                className="rounded-xl shadow-lg w-full h-auto"
+                                className=" w-full h-auto"
                             />
                         </div>
                         <div className="flex-1 space-y-6">
@@ -99,11 +99,11 @@ const SilicosisSection = () => {
                     <div className="flex flex-wrap items-start gap-10">
                         <div className="w-full md:w-1/3">
                             <Image
-                                src="/RoundUp/Rooundup2.png"
+                                src="/silicosis/Silicosis 3.png"
                                 alt="Roundup lawsuit illustration"
                                 width={500}
                                 height={300}
-                                className="rounded-xl shadow-lg w-full h-auto"
+                                className=" w-full h-auto"
                             />
                         </div>
                         <div className="flex-1 space-y-6">
