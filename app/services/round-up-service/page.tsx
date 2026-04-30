@@ -21,7 +21,7 @@ const RoundUpSection = () => {
                             </div>
                         </div>
                         <div className="order-1 lg:order-2 relative">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
                                     src="../RoundUp/Roundup.png"
                                     alt="Firefighters using AFFF foam at emergency scene"
@@ -35,9 +35,9 @@ const RoundUpSection = () => {
                     {/* Second Row (Image Left - Text Right) */}
                     <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[450px] ">
                         <div className="order-1 lg:order-1 relative">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../RoundUp/Roundup1.png"
+                                    src="../RoundUp/Roundup 2.png"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />
@@ -87,9 +87,9 @@ const RoundUpSection = () => {
                             </div>
                         </div>
                         <div className="order-1 lg:order-2 relative">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../RoundUp/Rooundup2.png"
+                                    src="../RoundUp/Roundup 3.png"
                                     alt="Firefighters using AFFF foam at emergency scene"
                                     className="w-full h-auto"
                                 />

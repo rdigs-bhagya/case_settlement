@@ -46,11 +46,11 @@ export function HeroSection() {
 
             {/* Logos Section */}
             <div className="flex flex-wrap items-center gap-5 pt-2 ml-[20px]">
-              <Image src="\Home_logos\reuters.png" alt="Logo 1" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
-              <Image src="\Home_logos\image.png" alt="Logo 2" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
-              <Image src="\Home_logos\fox-business.png" alt="Logo 3" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
-              <Image src="\Home_logos\cnn.png" alt="Logo 4" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
-              <Image src="\Home_logos\abcnews.png" alt="Logo 5" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
+              <Image src="\Home_logos\Logo 1.png" alt="Logo 1" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
+              <Image src="\Home_logos\Logo 2.png" alt="Logo 2" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
+              <Image src="\Home_logos\Logo 3.png" alt="Logo 3" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
+              {/* <Image src="\Home_logos\cnn.png" alt="Logo 4" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
+              <Image src="\Home_logos\abcnews.png" alt="Logo 5" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" /> */}
             </div>
 
             {/* CTA Button */}
