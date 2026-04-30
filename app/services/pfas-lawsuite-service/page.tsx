@@ -22,9 +22,9 @@ const PFASSection = () => {
                             </div>
                         </div>
                         <div className="order-1 lg:order-2 relative">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../PFAS/pfas.png"
+                                    src="../PFAS/PFAS-2.png"
                                     alt="Firefighters using AFFF foam at emergency scene"
                                     className="w-full h-auto"
                                 />
@@ -36,9 +36,9 @@ const PFASSection = () => {
                     {/* Second Row (Image Left - Text Right) */}
                     <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[450px] ">
                         <div className="order-1 lg:order-1 relative">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                  src="../PFAS/pfas1.png"
+                                  src="../PFAS/PFAS-3.png"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />

@@ -1,4 +1,4 @@
- import { Phone, Mail, MapPin } from "lucide-react"
+import { Phone, Mail, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
@@ -6,16 +6,8 @@ export function Footer() {
       <div className="container mx-auto px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center">
-                 <img src="/CYC White logo.png" alt="Claim Your Claims Logo" />
-              </div>
-              <div>
-                <h3 className="font-bold text-xl font-space-grotesk">Claim Your Claims</h3>
-                <p className="text-xs text-background/70">Claims & Settlements</p>
-              </div>
-            </div>
+          <div className="space-y-3">
+            <img src="/CYC White logo trimmed.png" alt="Claim Your Claims Logo" className="w-40 h-auto" />
             <p className="text-background/80">
               Expert Claim assistance for case settlements, claims, and litigation with over 15 years of proven results.
             </p>
