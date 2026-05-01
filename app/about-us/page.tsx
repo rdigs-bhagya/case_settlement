@@ -44,16 +44,16 @@ export default function AboutUs() {
           </div>
           <div className="relative mt-15">
             <Image
-              src="/PFAS/pfas1.png"
+              src="/Who We Are.png"
               alt="Our Legal Expertise"
               width={600}
               height={400}
-              className="rounded-2xl shadow-lg object-cover w-full"
+              className="rounded-2xl  object-cover w-full"
             />
-            <div className="absolute bottom-5 left-5 bg-white/90 px-5 py-3 rounded-xl shadow-md">
+            {/* <div className="absolute bottom-5 left-5 bg-white/90 px-5 py-3 rounded-xl shadow-md">
               <h3 className="text-blue-700 font-bold text-lg">10+ Years</h3>
               <p className="text-gray-600 text-sm">of Experience</p>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -74,25 +74,50 @@ export default function AboutUs() {
       </div>
 
       {/* --- Trusted Partner Section --- */}
-      <div className="bg-blue-50 py-6">
-        <div className="max-w-5xl mx-auto px-6 md:px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            A Trusted <span className="text-primary font-extrabold">Partner in Justice</span>
+      <div className="bg-[#7c98d6] py-2 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+    {/* 👇 CENTER THE WHOLE BLOCK */}
+    <div className="flex justify-center">
+
+      <div className="flex items-center w-fit">
+
+        {/* ===== LEFT TEXT ===== */}
+        <div className="text-left">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1f3c88] leading-tight mb-6 whitespace-nowrap">
+            A Trusted Partner in Justice
           </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
+
+          <p className="text-gray-900 leading-relaxed mb-5 text-base md:text-lg max-w-xl">
             You don’t have to face the legal system alone. <strong>ClaimYourClaims.com</strong> stands
             behind individuals and families seeking honest answers, accountability, and
             fair compensation. With a seamless online process and a nationwide network
             of qualified attorneys, we ensure your claim is handled quickly and
             responsibly.
           </p>
-          <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
+
+          <p className="text-gray-900 leading-relaxed text-base md:text-lg max-w-xl">
             If you’ve been harmed — your recovery is our priority. Submit your
             information to see if you qualify and take your first step toward justice
             today.
           </p>
         </div>
+
+        {/* ===== RIGHT IMAGE ===== */}
+        <div className="-ml-8 md:-ml-16 lg:-ml-24">
+          <img
+            src="/A Trusted Partner in Justice.png"
+            alt="Legal Expert"
+            className="w-[360px] md:w-[440px] lg:w-[500px] object-contain"
+          />
+        </div>
+
       </div>
+
+    </div>
+
+  </div>
+</div>
 
       {/* --- Our Values Section --- */}
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-6 py-8">

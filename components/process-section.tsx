@@ -1,94 +1,133 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link";
-import { FileText, Users, DollarSign, CheckCircle } from "lucide-react"
+import { FileText, Users, Headphones, DollarSign, CheckCircle, ShieldCheck } from "lucide-react"
 
-const steps = [
-  {
-    icon: FileText,
-    step: "01",
-    title: "Fill out the Quiz Form",
-    description: "Answer a few questions about your case to determine if you qualify for compensation.",
-  },
-  {
-    icon: Users,
-    step: "02",
-    title: "Speak With Our Team",
-    description: "Our experienced legal team will review your case and match you with an experienced attorney.",
-  },
-  {
-    icon: DollarSign,
-    step: "03",
-    title: "Potential Compensation",
-    description: "Receive the compensation you deserve. Get the help you need without upfront costs.",
-  },
-  {
-    icon: CheckCircle,
-    step: "04",
-    title: "Case Resolution",
-    description: "We handle all paperwork and legal proceedings to ensure you get the maximum settlement possible.",
-  },
-]
 
 export function ProcessSection() {
   return (
-    <section id="process" className="py-6 bg-background">
+    <section id="process" className="py-4 px-8 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-14">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-space-grotesk">
-            How Do I Get <span className="text-primary">Compensated?</span>
-          </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our streamlined process ensures you get the legal help you need quickly and efficiently
-          </p>
-        </div>
+        <div className="max-w-7xl mx-auto lg:px-4 py-10">
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-10">
-          {steps.map((step, index) => (
-            <Card key={index} className="text-center group hover:shadow-lg transition-all duration-300">
-              <CardContent className="p-6 lg:p-8 space-y-4">
-                <div className="relative">
-                  <div className="mx-auto w-14 h-14 lg:w-16 lg:h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <step.icon className="h-7 w-7 lg:h-8 lg:w-8 text-primary" />
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* LEFT SIDE */}
+            <div className="text-center lg:text-left">
+              <h2 className="text-4xl lg:text-5xl font-bold text-[#1f3c88] leading-tight">
+                How Do I Get <br /> Compensated?
+              </h2>
+
+              <p className="mt-4 text-gray-500 text-lg max-w-md mx-auto lg:mx-0">
+                Our streamlined process ensures you get the legal help you need quickly and efficiently
+              </p>
+
+              <div className="mt-10 flex justify-center lg:justify-start">
+                <img
+                  src="/Home_logos/How Do I Get Compensated.png"
+                  alt="Process"
+                  className="w-full max-w-sm"
+                />
+              </div>
+            </div>
+
+            {/* RIGHT SIDE */}
+            <div className="space-y-5">
+
+              {[
+                {
+                  step: "01",
+                  title: "Fill out the Quiz Form",
+                  desc: "Answer a few questions about your case to determine if you qualify for compensation.",
+                  icon: FileText,
+                },
+                {
+                  step: "02",
+                  title: "Speak With Our Team",
+                  desc: "Our experienced legal team will review your case & match you with an experienced attorney.",
+                  icon: Headphones,
+                },
+                {
+                  step: "03",
+                  title: "Potential Compensation",
+                  desc: "Receive the compensation you deserve. Get the help you need without upfront costs.",
+                  icon: DollarSign,
+                },
+                {
+                  step: "04",
+                  title: "Case Resolution",
+                  desc: "We handle all paperwork & legal proceedings to ensure you get the maximum settlement possible.",
+                  icon: ShieldCheck,
+                },
+              ].map((item, i) => (
+                <div key={i} className="relative flex items-center">
+
+                  {/* STEP */}
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center z-10">
+
+                    {/* Circle (reduced) */}
+                    <div className="w-[58px] h-[58px] rounded-full border-[8px] border-[#1f3c88] bg-white flex items-center justify-center text-[#1f3c88] font-semibold text-[15px]">
+                      {item.step}
+                    </div>
+
+                    {/* Arrow (reduced) */}
+                    <div className="-ml-[3px] w-0 h-0 
+          border-t-[10px] border-b-[10px] border-l-[14px]
+          border-t-transparent border-b-transparent border-l-[#1f3c88]">
+                    </div>
                   </div>
-                  <div className="absolute -top-2 -right-2 w-7 h-7 lg:w-8 lg:h-8 bg-secondary rounded-full flex items-center justify-center text-secondary-foreground text-xs lg:text-sm font-bold">
-                    {step.step}
+
+                  {/* CARD */}
+                  <div className="ml-[75px] w-full bg-[#f3f4f6] rounded-[16px] shadow-[0_4px_14px_rgba(0,0,0,0.06)] flex items-center justify-between px-6 py-4">
+
+                    {/* TEXT */}
+                    <div>
+                      <h3 className="text-[16px] font-semibold text-[#1f3c88]">
+                        {item.title}
+                      </h3>
+                      <p className="text-[13px] text-gray-500 mt-1 leading-relaxed max-w-[480px]">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* ICON */}
+                    <div className="hidden sm:flex items-center justify-center w-[38px] h-[38px] rounded-lg bg-[#e5e7eb] ml-4">
+                      <item.icon className="w-4 h-4 text-gray-400" />
+                    </div>
+
                   </div>
+
                 </div>
-                <h3 className="text-lg lg:text-xl font-bold font-space-grotesk">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+              ))}
+
+            </div>
+
+          </div>
         </div>
 
-        <div className="text-center px-4">
-          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] min-h-[350px] sm:min-h-[450px]">
+        <div className="text-center px-6">
+          <div className="relative mx-auto max-w-6xl min-h-[350px] sm:min-h-[400px]">
             <img
               src="/contact-us-today-bg.png"
               alt="Legal Consultation"
-              className="absolute inset-0 h-full w-full object-cover object-[center_right]"
+              className="absolute inset-0 h-full w-full object-contain object-center scale-110"
             />
 
-            {/* 
-      - items-start: Starts the text from the top.
-      - pt-20 sm:pt-32 lg:pt-40: Pushes the text down significantly.
-      - pl-8 sm:pl-20 lg:pl-40: Moves the text closer to the girl.
-    */}
-            <div className="relative z-10 flex min-h-[350px] sm:min-h-[450px] items-start justify-start px-8 sm:pl-20 lg:pl-40 pt-20 sm:pt-32 lg:pt-36">
+
+            <div className="relative z-10 flex min-h-[350px] sm:min-h-[450px] items-start justify-start px-8 sm:pl-20 lg:pl-40 pt-10 sm:pt-20 lg:pt-36">
 
               <div className="max-w-2xl text-left text-white">
 
-                <h3 className="font-space-grotesk text-3xl font-bold sm:text-4xl lg:text-[46px] leading-tight mt-[30px]">
+                <h3 className="font-space-grotesk text-3xl font-bold sm:text-4xl lg:text-[44px] leading-tight mt-[22px]">
                   Ready to Get Started?
                 </h3>
 
-                <p className="mt-4 text-lg leading-relaxed text-white/90 sm:text-xl max-w-lg">
+                <p className="mt-2 text-lg leading-relaxed text-white/90 sm:text-xl max-w-lg">
                   Don't wait – there may be time limits on your claim. <br className="hidden sm:block" />
                   Contact us today for your free consultation.
                 </p>
 
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
                   <Link href="/contact-us">
                     <Button
                       size="lg"
