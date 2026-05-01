@@ -105,47 +105,54 @@ export function ProcessSection() {
           </div>
         </div>
 
-        <div className="text-center px-6">
-          <div className="relative mx-auto max-w-6xl min-h-[350px] sm:min-h-[400px]">
+        <div className="text-center">
+
+          {/* Full-width background image */}
+          <div className="relative w-full">
+
             <img
               src="/contact-us-today-bg.png"
               alt="Legal Consultation"
-              className="absolute inset-0 h-full w-full object-contain object-center scale-110"
+              className="w-full h-auto object-contain"
             />
 
+            {/* Content overlay */}
+            <div className="absolute inset-0 flex items-center justify-center sm:items-start
+                    px-4 sm:px-6">
 
-            <div className="relative z-10 flex min-h-[350px] sm:min-h-[450px] items-start justify-start px-8 sm:pl-20 lg:pl-40 pt-10 sm:pt-20 lg:pt-36">
+              <div className="w-full max-w-6xl mx-auto
+                flex justify-center sm:justify-start sm:ml-14 lg:ml-28
+                pt-6 sm:pt-20 lg:pt-32">
 
-              <div className="max-w-2xl text-left text-white">
+                <div className="max-w-2xl text-white text-center sm:text-left">
 
-                <h3 className="font-space-grotesk text-3xl font-bold sm:text-4xl lg:text-[44px] leading-tight mt-[22px]">
-                  Ready to Get Started?
-                </h3>
+                  <h3 className="font-space-grotesk text-2xl sm:text-4xl lg:text-[44px] font-bold leading-tight mt-[-22px]">
+                    Ready to Get Started?
+                  </h3>
 
-                <p className="mt-2 text-lg leading-relaxed text-white/90 sm:text-xl max-w-lg">
-                  Don't wait – there may be time limits on your claim. <br className="hidden sm:block" />
-                  Contact us today for your free consultation.
-                </p>
+                  <p className="mt-3 text-base sm:text-lg lg:text-xl text-white/90 max-w-lg mx-auto sm:mx-0">
+                    Don't wait – there may be time limits on your claim.
+                    <br className="hidden sm:block" />
+                    Contact us today for your free consultation.
+                  </p>
 
-                <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <Link href="/contact-us">
-                    <Button
-                      size="lg"
-                      className="w-full bg-[#3b82f6] text-white hover:bg-blue-600 border-none sm:w-auto px-8 h-12 text-lg rounded-xl shadow-lg"
-                    >
-                      Get Started Today
-                    </Button>
-                  </Link>
+                  <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center 
+                          justify-center sm:justify-start">
 
-                  <a href="tel:8338441999">
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="w-full border-none bg-white text-[#1a365d] hover:bg-gray-100 sm:w-auto px-8 h-12 text-lg rounded-xl shadow-lg"
-                    >
-                      Call (833) 844-1999
-                    </Button>
-                  </a>
+                    <Link href="/contact-us">
+                      <Button className="w-full sm:w-auto bg-[#3b82f6] text-white hover:bg-blue-600 px-6 py-3 rounded-xl shadow-lg">
+                        Get Started Today
+                      </Button>
+                    </Link>
+
+                    <a href="tel:8338441999">
+                      <Button className="w-full sm:w-auto bg-white text-[#1a365d] hover:bg-gray-100 px-6 py-3 rounded-xl shadow-lg">
+                        Call (833) 844-1999
+                      </Button>
+                    </a>
+
+                  </div>
+
                 </div>
               </div>
             </div>
