@@ -14,7 +14,7 @@ const SilicosisSection = () => {
                     <div className="flex flex-wrap items-start gap-10">
                         <div className="w-full md:w-1/3 mt-16">
                             <Image
-                                src="\silicosis\Silicosis.png"
+                                src="/silicosis/Silicosis (3).png"
                                 alt="Silicosis lung disease illustration"
                                 width={500}
                                 height={300}
