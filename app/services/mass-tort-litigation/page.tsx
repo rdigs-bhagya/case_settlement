@@ -1,6 +1,26 @@
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+const massTortData = {
+  mainTitle: "Do You Qualify for Mass Tort Compensation?",
+  subTitle: "If you or a loved one has been affected by widespread harm from a corporation, defective product, or environmental hazard, you may be eligible to join a mass tort case and seek compensation.",
+  steps: [
+    {
+      title: "Exposure or Involvement",
+      description: "You were exposed to a defective product, harmful corporate practice, or environmental hazard."
+    },
+    {
+      title: "Harm or Injury",
+      description: "You experienced medical issues, financial loss, or other damages linked to the exposure or negligence."
+    },
+    {
+      title: "Connection to Mass Tort Case",
+      description: "Your injury or loss is consistent with claims made in an existing mass tort or class action lawsuit."
+    }
+  ]
+};
 
 const MassTortSection = () => {
     return (
@@ -72,7 +92,7 @@ const MassTortSection = () => {
                         <div className="text-center">
                             <Button
                                 size="lg"
-                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold"
+                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold mb-5"
                             >
                                 Get Free Consultation
                             </Button>
@@ -80,7 +100,8 @@ const MassTortSection = () => {
                     </div>
                 </div>
             </section>
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+            <ServiceProcess mainTitle={massTortData.mainTitle} subTitle={massTortData.subTitle} steps={massTortData.steps} />
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -138,7 +159,7 @@ const MassTortSection = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <div>
                 <ClaimReviewForm service={"mass-tort-litigation"} />
 

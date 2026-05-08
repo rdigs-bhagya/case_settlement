@@ -1,6 +1,26 @@
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+const robloxData = {
+  mainTitle: "Who Is Eligible for the Roblox Lawsuit?",
+  subTitle: "You may qualify for legal assistance and representation if your child suffered abuse, exploitation, or grooming after meeting an abuser through Roblox.",
+  steps: [
+    {
+      title: "Connection to Abuser",
+      description: "Your child met the abuser through Roblox. Communication may have later occurred on another platform."
+    },
+    {
+      title: "Age Requirement",
+      description: "The victim was under 18 years old at the time the abuse or grooming began."
+    },
+    {
+      title: "Type of Abuse & Impact",
+      description: "Includes grooming, sextortion, sexual assault, trafficking, explicit material, mental health diagnoses, therapy, school issues, or suicide attempts resulting from the abuse."
+    }
+  ]
+};
 
 const RobloxSection = () => {
     return (
@@ -82,7 +102,7 @@ const RobloxSection = () => {
                     <div className="flex gap-4 pt-2 justify-center items-center">
                         <Button
                             size="lg"
-                            className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold"
+                            className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold mb-5"
                         >
                             Get Free Consultation
                         </Button>
@@ -90,8 +110,10 @@ const RobloxSection = () => {
                 </div>
             </section>
 
+            <ServiceProcess mainTitle={robloxData.mainTitle} subTitle={robloxData.subTitle} steps={robloxData.steps} />
+
             {/* ELIGIBILITY SECTION */}
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -111,7 +133,7 @@ const RobloxSection = () => {
 
                     <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-                        {/* Card 1 */}
+                        
                         <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-navy-blue text-center">
                             <h3 className="text-2xl font-bold text-navy-blue mb-3">
                                 Connection to Abuser
@@ -122,7 +144,7 @@ const RobloxSection = () => {
                             </p>
                         </div>
 
-                        {/* Card 2 */}
+                        
                         <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-navy-blue text-center">
                             <h3 className="text-2xl font-bold text-navy-blue mb-3">
                                 Age Requirement
@@ -132,7 +154,7 @@ const RobloxSection = () => {
                             </p>
                         </div>
 
-                        {/* Card 3 */}
+                        
                         <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-navy-blue text-center">
                             <h3 className="text-2xl font-bold text-navy-blue mb-3">
                                 Type of Abuse & Impact
@@ -146,7 +168,7 @@ const RobloxSection = () => {
 
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* FORM (UNCHANGED) */}
             <ClaimReviewForm service="roblox" />

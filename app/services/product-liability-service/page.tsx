@@ -1,6 +1,26 @@
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+const productLiabilityData = {
+  mainTitle: "Do You Qualify for Product Liability Compensation?",
+  subTitle: "If you or a loved one has been harmed by a defective product — such as pharmaceuticals, medical devices, or consumer products — you may be entitled to significant compensation.",
+  steps: [
+    {
+      title: "Product Use",
+      description: "You used a pharmaceutical drug, medical device, or consumer product as intended or directed."
+    },
+    {
+      title: "Injury or Illness",
+      description: "You suffered side effects, injuries, or medical complications linked to the defective product."
+    },
+    {
+      title: "Timeline Connection",
+      description: "Your injury or illness occurred after using the product, and medical or legal records connect it to the defect or failure."
+    }
+  ]
+};
 
 const ProductLiabilitySection = () => {
     return (
@@ -72,7 +92,7 @@ const ProductLiabilitySection = () => {
                         <div className="text-center">
                             <Button
                                 size="lg"
-                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold"
+                                className="bg-blue-900 hover:bg-blue-800 text-white mb-5 px-8 py-3 text-lg font-bold"
                             >
                                 Get Free Consultation
                             </Button>
@@ -80,7 +100,8 @@ const ProductLiabilitySection = () => {
                     </div>
                 </div>
             </section>
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+            <ServiceProcess mainTitle={productLiabilityData.mainTitle} subTitle={productLiabilityData.subTitle} steps={productLiabilityData.steps} />
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -138,7 +159,7 @@ const ProductLiabilitySection = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <div>
                 <ClaimReviewForm service={"product-liability"} />
 

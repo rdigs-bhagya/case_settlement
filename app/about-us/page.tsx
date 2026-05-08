@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { Handshake, Heart, ShieldCheck, BadgeCheck, Target, Quote } from "lucide-react";
 
 export default function AboutUs() {
   return (
     <section className="relative bg-white">
-      {/* --- Hero Section --- */}
+      {/* --- Hero Section (Kept as provided) --- */}
       {/* <div className="relative w-full h-[500px] md:h-[600px]">
         <Image
           src="/PFAS/pfas1.png"
@@ -21,10 +22,10 @@ export default function AboutUs() {
       </div> */}
 
       {/* --- Introduction --- */}
-      <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-6 py-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-12 md:py-16 mt-15">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 mt-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Who <span className="text-primary font-extrabold">We Are</span>
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
@@ -42,18 +43,14 @@ export default function AboutUs() {
               documentation — protecting both consumers and legal partners.
             </p>
           </div>
-          <div className="relative mt-15">
+          <div className="relative">
             <Image
               src="/Who We Are.png"
               alt="Our Legal Expertise"
               width={600}
               height={400}
-              className="rounded-2xl  object-cover w-full"
+              className="rounded-2xl object-cover w-full"
             />
-            {/* <div className="absolute bottom-5 left-5 bg-white/90 px-5 py-3 rounded-xl shadow-md">
-              <h3 className="text-blue-700 font-bold text-lg">10+ Years</h3>
-              <p className="text-gray-600 text-sm">of Experience</p>
-            </div> */}
           </div>
         </div>
 
@@ -74,126 +71,127 @@ export default function AboutUs() {
       </div>
 
       {/* --- Trusted Partner Section --- */}
-      <div className="bg-[#7c98d6] py-2 overflow-hidden">
-  <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
-    {/* 👇 CENTER THE WHOLE BLOCK */}
-    <div className="flex justify-center">
-
-      <div className="flex items-center w-fit">
-
-        {/* ===== LEFT TEXT ===== */}
-        <div className="text-left">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1f3c88] leading-tight mb-6 whitespace-nowrap">
-            A Trusted Partner in Justice
-          </h2>
-
-          <p className="text-gray-900 leading-relaxed mb-5 text-base md:text-lg max-w-xl">
-            You don’t have to face the legal system alone. <strong>ClaimYourClaims.com</strong> stands
-            behind individuals and families seeking honest answers, accountability, and
-            fair compensation. With a seamless online process and a nationwide network
-            of qualified attorneys, we ensure your claim is handled quickly and
-            responsibly.
-          </p>
-
-          <p className="text-gray-900 leading-relaxed text-base md:text-lg max-w-xl">
-            If you’ve been harmed — your recovery is our priority. Submit your
-            information to see if you qualify and take your first step toward justice
-            today.
-          </p>
-        </div>
-
-        {/* ===== RIGHT IMAGE ===== */}
-        <div className="-ml-8 md:-ml-16 lg:-ml-24">
-          <img
-            src="/A Trusted Partner in Justice.png"
-            alt="Legal Expert"
-            className="w-[360px] md:w-[440px] lg:w-[500px] object-contain"
-          />
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</div>
-
-      {/* --- Our Values Section --- */}
-      <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-6 py-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12">
-          ✅ Our <span className="text-primary font-extrabold">Values</span>
-        </h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Integrity",
-              desc: "We operate with transparency, honesty, and compliance.",
-            },
-            {
-              title: "Compassion",
-              desc: "Every claimant is treated with respect and dignity.",
-            },
-            {
-              title: "Security",
-              desc: "Your data and privacy are protected at the highest standard.",
-            },
-            {
-              title: "Accountability",
-              desc: "We work only with trusted legal partners who uphold ethical standards.",
-            },
-            {
-              title: "Results",
-              desc: "Our focus is to connect you with the help you need to pursue rightful compensation.",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="bg-white border border-gray-200 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
-            >
-              <h3 className="text-xl font-semibold text-blue-700 mb-3">
-                {item.title}
-              </h3>
-              <p className="text-gray-700">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* --- Message From Team --- */}
-      <div className="bg-gradient-to-r from-blue-100 to-blue-50 py-8">
-        <div className="max-w-5xl mx-auto px-6 md:px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">
-            A Message <span className="text-primary font-extrabold">From Our Team</span>
-          </h2>
-
-          <div className="bg-white p-10 rounded-2xl shadow-lg">
-            <p className="text-gray-700 leading-relaxed mb-4">
-              At <strong>ClaimYourClaims.com</strong>, we understand that injuries change lives —
-              physically, financially, and emotionally. Our mission is to make your first
-              step toward justice the easiest one.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-8">
-              You’re not just a lead — you’re a person who deserves answers and support. We
-              are here to help you take back control.
-            </p>
-
-            <div className="border-t border-gray-300 pt-6 text-center">
-              <h3 className="text-primary font-extrabold mb-3">
-                🛡 Your Justice Journey Starts Here
-              </h3>
-              <p className="text-gray-700 leading-relaxed">If you’ve been harmed, don’t wait.</p>
-              <p className="text-gray-700 leading-relaxed">Your rights matter.</p>
-              <p className="text-gray-700 leading-relaxed">Your story matters.</p>
-              <p className="text-gray-700 leading-relaxed">
-                Your claim matters. Start your free case evaluation today and take the first
-                step toward justice and recovery.
-              </p>
+      <div className="bg-[#7c98d6] py-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex justify-center">
+            <div className="flex items-center w-fit">
+              <div className="text-left">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1f3c88] leading-tight mb-6 whitespace-nowrap">
+                  A Trusted Partner in Justice
+                </h2>
+                <p className="text-gray-900 leading-relaxed mb-5 text-base md:text-lg max-w-xl">
+                  You don’t have to face the legal system alone. <strong>ClaimYourClaims.com</strong> stands
+                  behind individuals and families seeking honest answers, accountability, and
+                  fair compensation. With a seamless online process and a nationwide network
+                  of qualified attorneys, we ensure your claim is handled quickly and
+                  responsibly.
+                </p>
+                <p className="text-gray-900 leading-relaxed text-base md:text-lg max-w-xl">
+                  If you’ve been harmed — your recovery is our priority. Submit your
+                  information to see if you qualify and take your first step toward justice
+                  today.
+                </p>
+              </div>
+              <div className="-ml-8 md:-ml-16 lg:-ml-24">
+                <img
+                  src="/A Trusted Partner in Justice.png"
+                  alt="Legal Expert"
+                  className="w-[360px] md:w-[440px] lg:w-[500px] object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* --- REFINED: Our Values Section (Removed extra space) --- */}
+      <section className="bg-[#f3f4f6] py-16 px-6 font-sans">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#1d3a8a] text-center mb-10">
+            Our Values
+          </h2>
+
+          {/* Centered 3-over-2 Layout */}
+          <div className="flex flex-wrap justify-center gap-6 mb-16">
+            {[
+              {
+                icon: <Handshake className="w-10 h-10 text-[#3b82f6]" />,
+                title: "Integrity",
+                desc: "We operate with transparency, honesty, and compliance.",
+              },
+              {
+                icon: <Heart className="w-10 h-10 text-[#3b82f6]" />,
+                title: "Compassion",
+                desc: "Every claimant is treated with respect and dignity.",
+              },
+              {
+                icon: <ShieldCheck className="w-10 h-10 text-[#3b82f6]" />,
+                title: "Security",
+                desc: "Your data and privacy are protected at the highest standard.",
+              },
+              {
+                icon: <BadgeCheck className="w-10 h-10 text-[#3b82f6]" />,
+                title: "Accountability",
+                desc: "We work only with trusted legal partners who uphold ethical standards.",
+              },
+              {
+                icon: <Target className="w-10 h-10 text-[#3b82f6]" />,
+                title: "Results",
+                desc: "Our focus is to connect you with the help you need to pursue rightful compensation.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-[24px] p-8 shadow-sm flex flex-col items-center text-center w-full md:w-[calc(33.33%-1.5rem)] min-w-[280px] max-w-[340px] hover:shadow-md transition-shadow"
+              >
+                <div className="mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold text-[#1d3a8a] mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 font-medium text-[15px] leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* --- REFINED: Message From Team (Compact & Pill Shape) --- */}
+          {/* --- Message From Team (With Fixed Quote Spacing) --- */}
+          <div className="bg-[#8cb3ff] rounded-[40px] md:rounded-[50px] p-8 md:p-14 text-center text-white relative shadow-lg max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1d3a8a] mb-6">
+              A Message From Our Team
+            </h2>
+
+            <div className="max-w-3xl mx-auto space-y-4 text-base md:text-lg font-medium leading-relaxed">
+              <p>
+                At ClaimYourClaims.com, we understand that injuries change lives — physically, financially, and emotionally.
+                Our mission is to make your first step toward justice the easiest one.
+              </p>
+              <p>
+                You’re not just a lead — you’re a person who deserves answers and support. We are here to help you take back control.
+              </p>
+
+              {/* Tighter Quote Block: Icons now hug the text */}
+              <div className="flex justify-center items-center gap-3 md:gap-6 py-4 px-2">
+                <Quote className="w-8 h-8 md:w-12 md:h-12 text-[#1d3a8a] opacity-30 -scale-x-100 flex-shrink-0 self-start mt-1" />
+                
+                <div className="text-[#1d3a8a] text-xl md:text-3xl font-black  tracking-tight leading-tight">
+                  <p>Your Justice Journey Starts Here</p>
+                  <p>If you’ve been harmed, don’t wait.</p>
+                  <p>Your rights matter.</p>
+                  <p>Your story matters.</p>
+                </div>
+
+                <Quote className="w-8 h-8 md:w-12 md:h-12 text-[#1d3a8a] opacity-30 rotate-180 flex-shrink-0 self-end mb-1" />
+              </div>
+
+              <p className="pt-2 text-white/95 text-sm md:text-base">
+                Your claim matters. Start your free case evaluation today and take the first step toward justice and recovery.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 }

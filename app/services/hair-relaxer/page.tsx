@@ -1,6 +1,26 @@
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+const hairRelaxerData = {
+    mainTitle: "Do You Qualify for a Hair Relaxer Lawsuit?",
+    subTitle: "If you or a loved one developed serious health issues after prolonged use of chemical hair relaxers, you may qualify to seek compensation.",
+    steps: [
+        {
+            title: "Product Use",
+            description: "You regularly used chemical hair relaxer or straightening products as intended over a period of time."
+        },
+        {
+            title: "Diagnosis",
+            description: "You have been diagnosed with a qualifying condition such as uterine cancer, ovarian cancer, endometrial cancer, fibroids, or other reproductive health issues."
+        },
+        {
+            title: "Timeline Connection",
+            description: "Your diagnosis occurred after consistent use of hair relaxers, and medical records or history link your condition to product exposure."
+        }
+    ]
+};
 
 const Hair_RelaxerSection = () => {
     return (
@@ -22,7 +42,7 @@ const Hair_RelaxerSection = () => {
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                     src="../Hair_Relaxer/Hair Relaxer .png"
+                                    src="../Hair_Relaxer/Hair Relaxer .png"
                                     alt="Firefighters using AFFF foam at emergency scene"
                                     className="w-full h-auto"
                                 />
@@ -57,11 +77,11 @@ const Hair_RelaxerSection = () => {
                     </div>
 
                     {/* CTA Buttons (shared for both sections) */}
-                    <div className="flex gap-4 pt-2 justify-center items-center">
+                    <div className="flex gap-4 pt-2 mb-5 justify-center items-center">
                         <div className="text-center">
                             <Button
                                 size="lg"
-                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold"
+                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold mb-5"
                             >
                                 Get Free Consultation
                             </Button>
@@ -69,7 +89,13 @@ const Hair_RelaxerSection = () => {
                     </div>
                 </div>
             </section>
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+
+            <ServiceProcess
+                mainTitle={hairRelaxerData.mainTitle}
+                subTitle={hairRelaxerData.subTitle}
+                steps={hairRelaxerData.steps}
+            />
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -127,7 +153,7 @@ const Hair_RelaxerSection = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <div>
                 <ClaimReviewForm service={"hair-relaxer"} />
 

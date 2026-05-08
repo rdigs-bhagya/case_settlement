@@ -1,6 +1,26 @@
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+const roundupData = {
+  mainTitle: "Do You Qualify for a Roundup Lawsuit?",
+  subTitle: "If you or a loved one has been diagnosed with cancer after prolonged use of Roundup, you may qualify to pursue compensation.",
+  steps: [
+    {
+      title: "Exposure History",
+      description: "You regularly used Roundup herbicide in agricultural, landscaping, gardening, or related work."
+    },
+    {
+      title: "Cancer Diagnosis",
+      description: "You have been diagnosed with a qualifying condition such as non-Hodgkin lymphoma, leukemia, mantle cell lymphoma, or other related cancers."
+    },
+    {
+      title: "Timeline Connection",
+      description: "Your cancer diagnosis occurred after extended exposure to Roundup, and medical records or history support the link."
+    }
+  ]
+};
 
 const RoundUpSection = () => {
     return (
@@ -104,7 +124,7 @@ const RoundUpSection = () => {
                         <div className="text-center">
                             <Button
                                 size="lg"
-                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold"
+                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold mb-5"
                             >
                                 Get Free Consultation
                             </Button>
@@ -112,7 +132,12 @@ const RoundUpSection = () => {
                     </div>
                 </div>
             </section>
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+            <ServiceProcess 
+            mainTitle={roundupData.mainTitle} 
+            subTitle={roundupData.subTitle} 
+            steps={roundupData.steps} />
+
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -169,7 +194,7 @@ const RoundUpSection = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <div>
                 <ClaimReviewForm service={"roundUp"} />
 

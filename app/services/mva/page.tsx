@@ -1,6 +1,26 @@
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+const mvaQualificationData = {
+        mainTitle: "Do You Qualify for Motor Vehicle Accident Compensation?",
+        subTitle: "If you or a loved one has been injured in a motor vehicle accident, you may be entitled to financial compensation for medical bills, lost wages, and pain and suffering.",
+        steps: [
+            {
+                title: "Accident Involvement",
+                description: "You were involved in a car, truck, motorcycle, bicycle, pedestrian, or other motor vehicle accident."
+            },
+            {
+                title: "Injury Diagnosis",
+                description: "You sustained physical injuries such as fractures, head trauma, spinal injuries, or other serious medical conditions."
+            },
+            {
+                title: "Timeline Connection",
+                description: "Your injuries and related expenses occurred directly after the accident caused by another driver’s negligence."
+            }
+        ]
+    };
 
 const MotorVehicleAccidentSection = () => {
     return (
@@ -69,7 +89,12 @@ const MotorVehicleAccidentSection = () => {
                     </div>
                 </div>
             </section>
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+            <ServiceProcess
+                mainTitle={mvaQualificationData.mainTitle}
+                subTitle={mvaQualificationData.subTitle}
+                steps={mvaQualificationData.steps}
+            />
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -127,7 +152,7 @@ const MotorVehicleAccidentSection = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <div>
                 <ClaimReviewForm service={"mva"} />
 

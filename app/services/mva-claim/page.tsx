@@ -1,7 +1,27 @@
 "use client";
 
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+
+const mvaQualificationData = {
+        mainTitle: "Do You Qualify for Motor Vehicle Accident Compensation?",
+        subTitle: "If you or a loved one has been injured in a motor vehicle accident, you may be entitled to financial compensation for medical bills, lost wages, and pain and suffering.",
+        steps: [
+            {
+                title: "Accident Involvement",
+                description: "You were involved in a car, truck, motorcycle, bicycle, pedestrian, or other motor vehicle accident."
+            },
+            {
+                title: "Injury Diagnosis",
+                description: "You sustained physical injuries such as fractures, head trauma, spinal injuries, or other serious medical conditions."
+            },
+            {
+                title: "Timeline Connection",
+                description: "Your injuries and related expenses occurred directly after the accident caused by another driver’s negligence."
+            }
+        ]
+    };
 
 /* ===============================
    🕒 TIME BUCKET CALCULATOR
@@ -155,7 +175,7 @@ export default function MVAPage() {
     return (
         <>
             <section className=" text-black relative overflow-hidden">
-                <div className="container mx-auto px-8 py-4 relative z-10 mt-18">
+                <div className="container mx-auto px-8 py-10 relative z-10 mt-18">
                     {/* First Row (Text Left - Image Right) */}
                     <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[500px]">
                         <div className="order-2 lg:order-1 space-y-4">
@@ -218,7 +238,12 @@ export default function MVAPage() {
                     </div>
                 </div>
             </section>
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+            <ServiceProcess
+                mainTitle={mvaQualificationData.mainTitle}
+                subTitle={mvaQualificationData.subTitle}
+                steps={mvaQualificationData.steps}
+            />
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -276,7 +301,7 @@ export default function MVAPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             {/* ================= FORM SECTION ================= */}
             <section className="py-10 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg border p-8">

@@ -1,6 +1,26 @@
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+const zantacData = {
+  mainTitle: "Do You Qualify for a Zantac Lawsuit?",
+  subTitle: "If you or a loved one developed cancer or other serious health issues after using Zantac, you may be eligible to pursue compensation.",
+  steps: [
+    {
+      title: "Usage History",
+      description: "You regularly used Zantac (ranitidine) for heartburn, acid reflux, or related conditions."
+    },
+    {
+      title: "Health Diagnosis",
+      description: "You have been diagnosed with a qualifying condition such as stomach cancer, bladder cancer, esophageal cancer, or other NDMA-linked illnesses."
+    },
+    {
+      title: "Causal Link",
+      description: "Your diagnosis occurred after extended Zantac use, and medical or exposure history supports the connection."
+    }
+  ]
+};
 
 const ZantacSection = () => {
     return (
@@ -61,7 +81,7 @@ const ZantacSection = () => {
                         <div className="text-center">
                             <Button
                                 size="lg"
-                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold"
+                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold mb-5"
                             >
                                 Get Free Consultation
                             </Button>
@@ -69,7 +89,8 @@ const ZantacSection = () => {
                     </div>
                 </div>
             </section>
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+            <ServiceProcess mainTitle={zantacData.mainTitle} subTitle={zantacData.subTitle} steps={zantacData.steps} />
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -127,7 +148,7 @@ const ZantacSection = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <div>
                 <ClaimReviewForm service={"zantac-lawsuite-service"} />
 

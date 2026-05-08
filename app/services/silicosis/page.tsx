@@ -1,8 +1,28 @@
 
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+
+const silicosisData = {
+  mainTitle: "Do You Qualify for a Silicosis Lawsuit?",
+  subTitle: "If you or a loved one developed silicosis or other respiratory issues after exposure to silica dust in the workplace, you may be entitled to compensation.",
+  steps: [
+    {
+      title: "Occupational Exposure",
+      description: "You were exposed to silica dust while working in construction, stone cutting (especially engineered stone countertops), mining, or sandblasting."
+    },
+    {
+      title: "Medical Diagnosis",
+      description: "You have been officially diagnosed with silicosis, lung cancer, chronic obstructive pulmonary disease (COPD), or other silica-related illnesses."
+    },
+    {
+      title: "Timeline Connection",
+      description: "Your respiratory issues developed after extended exposure to silica dust, and your medical or employment history supports the link to your workplace."
+    }
+  ]
+};
 
 const SilicosisSection = () => {
     return (
@@ -137,7 +157,9 @@ const SilicosisSection = () => {
                 </div>
             </section>
 
-            <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
+            <ServiceProcess mainTitle={silicosisData.mainTitle} subTitle={silicosisData.subTitle} steps={silicosisData.steps} />
+
+            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-4">
                         <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
@@ -194,7 +216,7 @@ const SilicosisSection = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <div>
                 <ClaimReviewForm service={"silicosis"} />
             </div>
