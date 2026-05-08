@@ -1,6 +1,26 @@
 'use client'
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
+import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+const pfasData = {
+  mainTitle: "Do You Qualify for a PFAS Lawsuit?",
+  subTitle: "If you or a loved one developed serious health issues after exposure to PFAS 'forever chemicals' in drinking water or the workplace, you may be entitled to compensation.",
+  steps: [
+    {
+      title: "Exposure History",
+      description: "You lived or worked in an area with documented PFAS water contamination, or had direct exposure through firefighting foam (AFFF) or industrial work."
+    },
+    {
+      title: "Medical Diagnosis",
+      description: "You have been diagnosed with a qualifying condition such as kidney cancer, testicular cancer, thyroid cancer, liver cancer, or ulcerative colitis."
+    },
+    {
+      title: "Timeline Connection",
+      description: "Your diagnosis occurred after a period of prolonged exposure, and medical or environmental records support the link to PFAS contamination."
+    }
+  ]
+};
 
 const PFASSection = () => {
     return (
@@ -73,7 +93,7 @@ const PFASSection = () => {
                         <div className="text-center">
                             <Button
                                 size="lg"
-                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold"
+                                className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg font-bold mb-5"
                             >
                                 Get Free Consultation
                             </Button>
@@ -81,65 +101,9 @@ const PFASSection = () => {
                     </div>
                 </div>
             </section>
-            {/* <section className="py-1 bg-gradient-to-b from-background to-muted/30 mb-6">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-4">
-                        <div className="inline-block bg-navy-blue text-white px-6 rounded-full text-sm font-semibold mb-6">
-                            Qualification Check
-                        </div>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-navy-blue mb-6">
-                            Do You Qualify for a Hair Relaxer Lawsuit?
-                        </h2>
-                        <p className="text-muted-foreground text-xl max-w-4xl mx-auto leading-relaxed">
-                            If you or a loved one developed serious health issues after prolonged use of chemical hair relaxers, you may qualify to seek compensation.
-                        </p>
-                    </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        <div className="group relative">
-                            <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center h-full border-t-4 border-navy-blue">
-                                <div className="w-15 h-15 bg-gradient-to-br from-navy-blue to-navy-blue-dark text-blue rounded-2xl flex items-center justify-center mx-auto mb-2 text-3xl font-bold group-hover:scale-110 transition-transform">
-                                    1
-                                </div>
-                                <h3 className="text-2xl font-bold text-navy-blue mb-2">
-                                    Product Use
-                                </h3>
-                                <p className="text-muted-foreground text-lg leading-relaxed">
-                                    You regularly used chemical hair relaxer or straightening products as intended over a period of time.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="group relative">
-                            <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center h-full border-t-4 border-navy-blue">
-                                <div className="w-15 h-15 bg-gradient-to-br from-navy-blue to-navy-blue-dark text-blue rounded-2xl flex items-center justify-center mx-auto mb-2 text-3xl font-bold group-hover:scale-110 transition-transform">
-                                    2
-                                </div>
-                                <h3 className="text-2xl font-bold text-navy-blue mb-4">
-                                    Diagnosis
-                                </h3>
-                                <p className="text-muted-foreground text-lg leading-relaxed">
-                                    You have been diagnosed with a qualifying condition such as uterine cancer, ovarian cancer, endometrial cancer, fibroids, or other reproductive health issues.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="group relative">
-                            <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center h-full border-t-4 border-navy-blue">
-                                <div className="w-18 h-18 bg-gradient-to-br from-navy-blue to-navy-blue-dark text-blue rounded-2xl flex items-center justify-center mx-auto mb-2 text-3xl font-bold group-hover:scale-110 transition-transform">
-                                    3
-                                </div>
-                                <h3 className="text-2xl font-bold text-navy-blue mb-4">
-                                    Timeline Connection
-                                </h3>
-                                <p className="text-muted-foreground text-lg leading-relaxed">
-                                    Your diagnosis occurred after consistent use of hair relaxers, and medical records or history link your condition to product exposure.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
+            <ServiceProcess mainTitle={pfasData.mainTitle} subTitle={pfasData.subTitle} steps={pfasData.steps} />
+           
             <div>
                 <ClaimReviewForm service={"pfas-lawsuite-service"} />
 
