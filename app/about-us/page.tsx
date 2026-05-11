@@ -115,27 +115,27 @@ export default function AboutUs() {
           <div className="flex flex-wrap justify-center gap-6 mb-16">
             {[
               {
-                icon: <Handshake className="w-10 h-10 text-[#3b82f6]" />,
+                image: "/about-us-images/integrity.png",
                 title: "Integrity",
                 desc: "We operate with transparency, honesty, and compliance.",
               },
               {
-                icon: <Heart className="w-10 h-10 text-[#3b82f6]" />,
+                image: "/about-us-images/comapasion.png",
                 title: "Compassion",
                 desc: "Every claimant is treated with respect and dignity.",
               },
               {
-                icon: <ShieldCheck className="w-10 h-10 text-[#3b82f6]" />,
+                image: "/about-us-images/security.png",
                 title: "Security",
                 desc: "Your data and privacy are protected at the highest standard.",
               },
               {
-                icon: <BadgeCheck className="w-10 h-10 text-[#3b82f6]" />,
+                image: "/about-us-images/accountability.png",
                 title: "Accountability",
                 desc: "We work only with trusted legal partners who uphold ethical standards.",
               },
               {
-                icon: <Target className="w-10 h-10 text-[#3b82f6]" />,
+                image: "/about-us-images/results.png",
                 title: "Results",
                 desc: "Our focus is to connect you with the help you need to pursue rightful compensation.",
               },
@@ -144,10 +144,18 @@ export default function AboutUs() {
                 key={index}
                 className="bg-white rounded-[24px] p-8 shadow-sm flex flex-col items-center text-center w-full md:w-[calc(33.33%-1.5rem)] min-w-[280px] max-w-[340px] hover:shadow-md transition-shadow"
               >
-                <div className="mb-4">{item.icon}</div>
+                <div className="mb-4">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-10 h-10 object-contain"
+                  />
+                </div>
+
                 <h3 className="text-xl font-bold text-[#1d3a8a] mb-3">
                   {item.title}
                 </h3>
+
                 <p className="text-gray-600 font-medium text-[15px] leading-relaxed">
                   {item.desc}
                 </p>
@@ -174,7 +182,7 @@ export default function AboutUs() {
               {/* Tighter Quote Block: Icons now hug the text */}
               <div className="flex justify-center items-center gap-3 md:gap-6 py-4 px-2">
                 <Quote className="w-8 h-8 md:w-12 md:h-12 text-[#1d3a8a] opacity-30 -scale-x-100 flex-shrink-0 self-start mt-1" />
-                
+
                 <div className="text-[#1d3a8a] text-xl md:text-3xl font-black  tracking-tight leading-tight">
                   <p>Your Justice Journey Starts Here</p>
                   <p>If you’ve been harmed, don’t wait.</p>
