@@ -78,7 +78,7 @@ export default function ContactsPage() {
               : [];
 
         // If server returns oldest-first, reverse to show newest first
-        const sortedList = contactsList.reverse();
+        const sortedList = [...contactsList].reverse();
         setContacts(sortedList);
         setFilteredContacts(sortedList);
       } catch (error) {
@@ -93,19 +93,26 @@ export default function ContactsPage() {
 
   // Filtering by searchTerm
   useEffect(() => {
-    const filtered = contacts.filter(
-      (contact) =>
-        (contact.firstName || "")
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) ||
-        (contact.lastName || "")
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) ||
-        (contact.email || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (contact.caseType || "")
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase())
-    );
+    const term = searchTerm.toLowerCase().trim();
+
+    const filtered = contacts.filter((contact) => {
+      // ✅ Added .toString() safety and included phone search
+      const first = (contact.firstName || "").toString().toLowerCase();
+      const last = (contact.lastName || "").toString().toLowerCase();
+      const full = `${first} ${last}`.trim();
+      const email = (contact.email || "").toString().toLowerCase();
+      const phone = (contact.phone || "").toString().toLowerCase(); // Added Phone search
+      const caseType = (contact.caseType || "").toString().toLowerCase();
+
+      return (
+        first.includes(term) ||
+        last.includes(term) ||
+        full.includes(term) ||
+        email.includes(term) ||
+        phone.includes(term) || // ✅ Now user can search by phone number
+        caseType.includes(term)
+      );
+    });
 
     setFilteredContacts(filtered);
     setCurrentPage(1);
@@ -228,112 +235,112 @@ export default function ContactsPage() {
   }
 
   async function downloadBulkPDF(list: Contact[], filename = "Contacts-Report.pdf") {
-  try {
-    const jsPDF = (await import("jspdf")).default;
-    const doc = new jsPDF();
+    try {
+      const jsPDF = (await import("jspdf")).default;
+      const doc = new jsPDF();
 
-    let y = 20;
+      let y = 20;
 
-    const newPage = () => {
-      doc.addPage();
-      y = 20;
-    };
+      const newPage = () => {
+        doc.addPage();
+        y = 20;
+      };
 
-    const heading = (text: string) => {
-      doc.setFontSize(16);
-      doc.setFont("Helvetica", "bold");
-      doc.text(text, 10, y);
-      y += 10;
-    };
-
-    const addLine = (label: string, value: any) => {
-      doc.setFontSize(11);
-      doc.setFont("Helvetica", "normal");
-      const finalText = `${label}: ${value ?? "N/A"}`;
-      const wrapped = doc.splitTextToSize(finalText, 180);
-
-      if (y + wrapped.length * 7 > 280) newPage();
-      doc.text(wrapped, 10, y);
-      y += wrapped.length * 7;
-    };
-
-    heading("Contacts Report");
-
-    list.forEach((contact, index) => {
-      if (y > 260) newPage();
-
-      // Lead Title
-      doc.setFontSize(14);
-      doc.setFont("Helvetica", "bold");
-      doc.text(`Lead ${index + 1}`, 10, y);
-      y += 10;
-
-      // Main Details
-      addLine("First Name", contact.firstName);
-      addLine("Last Name", contact.lastName);
-      addLine("Email", contact.email);
-      addLine("Phone", contact.phone);
-      addLine("TrustedForm Certificate URL", contact.xxTrustedFormCertUrl);
-      addLine("Case Type", contact.caseType);
-      addLine("Has Lawyer", contact.hasLawyer || "N/A");
-      addLine("Consent", (contact as any).consent ? "Yes" : "No");
-      addLine("Consent", contact.consentText)
-      addLine("Message", contact.message);
-
-      // Client Details
-      if (contact.clientDetails) {
-        const cd = contact.clientDetails;
-
-        y += 6;
-        doc.setFontSize(13);
+      const heading = (text: string) => {
+        doc.setFontSize(16);
         doc.setFont("Helvetica", "bold");
-        doc.text("Client Details", 10, y);
-        y += 8;
+        doc.text(text, 10, y);
+        y += 10;
+      };
 
-        addLine("IP Address", cd.ipAddress);
-        addLine("Browser", cd.browser);
-        addLine("OS", cd.os);
-        addLine("Device", cd.device);
+      const addLine = (label: string, value: any) => {
+        doc.setFontSize(11);
+        doc.setFont("Helvetica", "normal");
+        const finalText = `${label}: ${value ?? "N/A"}`;
+        const wrapped = doc.splitTextToSize(finalText, 180);
 
-        if (cd.location) {
-          y += 4;
+        if (y + wrapped.length * 7 > 280) newPage();
+        doc.text(wrapped, 10, y);
+        y += wrapped.length * 7;
+      };
+
+      heading("Contacts Report");
+
+      list.forEach((contact, index) => {
+        if (y > 260) newPage();
+
+        // Lead Title
+        doc.setFontSize(14);
+        doc.setFont("Helvetica", "bold");
+        doc.text(`Lead ${index + 1}`, 10, y);
+        y += 10;
+
+        // Main Details
+        addLine("First Name", contact.firstName);
+        addLine("Last Name", contact.lastName);
+        addLine("Email", contact.email);
+        addLine("Phone", contact.phone);
+        addLine("TrustedForm Certificate URL", contact.xxTrustedFormCertUrl);
+        addLine("Case Type", contact.caseType);
+        addLine("Has Lawyer", contact.hasLawyer || "N/A");
+        addLine("Consent", (contact as any).consent ? "Yes" : "No");
+        addLine("Consent", contact.consentText)
+        addLine("Message", contact.message);
+
+        // Client Details
+        if (contact.clientDetails) {
+          const cd = contact.clientDetails;
+
+          y += 6;
           doc.setFontSize(13);
           doc.setFont("Helvetica", "bold");
-          doc.text("Location", 10, y);
+          doc.text("Client Details", 10, y);
           y += 8;
 
-          addLine("Country", cd.location.country);
-          addLine("Region", cd.location.region);
-          addLine("City", cd.location.city);
-          addLine("Timezone", cd.location.timezone);
-          addLine(
-            "Coordinates",
-            cd.location.ll ? cd.location.ll.join(", ") : "N/A"
-          );
+          addLine("IP Address", cd.ipAddress);
+          addLine("Browser", cd.browser);
+          addLine("OS", cd.os);
+          addLine("Device", cd.device);
+
+          if (cd.location) {
+            y += 4;
+            doc.setFontSize(13);
+            doc.setFont("Helvetica", "bold");
+            doc.text("Location", 10, y);
+            y += 8;
+
+            addLine("Country", cd.location.country);
+            addLine("Region", cd.location.region);
+            addLine("City", cd.location.city);
+            addLine("Timezone", cd.location.timezone);
+            addLine(
+              "Coordinates",
+              cd.location.ll ? cd.location.ll.join(", ") : "N/A"
+            );
+          }
         }
-      }
 
-      // Submitted At
-      addLine(
-        "Submitted At",
-        contact.createdAt
-          ? new Date(contact.createdAt).toLocaleString()
-          : "N/A"
-      );
+        // Submitted At
+        addLine(
+          "Submitted At",
+          contact.createdAt
+            ? new Date(contact.createdAt).toLocaleString()
+            : "N/A"
+        );
 
-      // Divider Line
-      y += 5;
-      doc.setDrawColor(180);
-      doc.line(10, y, 200, y);
-      y += 12;
-    });
+        // Divider Line
+        y += 5;
+        doc.setDrawColor(180);
+        doc.line(10, y, 200, y);
+        y += 12;
+      });
 
-    doc.save(filename);
-  } catch (err) {
-    console.error("PDF error", err);
-    alert("Bulk PDF failed to generate");
+      doc.save(filename);
+    } catch (err) {
+      console.error("PDF error", err);
+      alert("Bulk PDF failed to generate");
+    }
   }
-}
 
 
   // Bulk actions triggered by UI
@@ -386,7 +393,8 @@ export default function ContactsPage() {
         <div className="flex gap-3 items-center w-full sm:w-auto">
           <input
             type="text"
-            placeholder="Search by name, email, or case type..."
+            // UPDATED LABEL BELOW
+            placeholder="Search by first, last, full name, or case type..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full sm:w-64 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"

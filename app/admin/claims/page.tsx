@@ -55,47 +55,59 @@ export default function ClaimsPage() {
   const [endDate, setEndDate] = useState("")
 
   useEffect(() => {
-  const fetchClaims = async () => {
-    try {
-      const response = await fetch("https://case-9w55.onrender.com/claims")
-      const data = await response.json()
+    const fetchClaims = async () => {
+      try {
+        const response = await fetch("https://case-9w55.onrender.com/claims")
+        const data = await response.json()
 
-      let claimsList: Claim[] = []
-      if (Array.isArray(data)) claimsList = data
-      else if (data?.data && Array.isArray(data.data)) claimsList = data.data
-      else if (data?.claims && Array.isArray(data.claims)) claimsList = data.claims
+        let claimsList: Claim[] = []
+        if (Array.isArray(data)) claimsList = data
+        else if (data?.data && Array.isArray(data.data)) claimsList = data.data
+        else if (data?.claims && Array.isArray(data.claims)) claimsList = data.claims
 
-      // ✅ SORT BY DATE (LATEST FIRST)
-      const sortedClaims = [...claimsList].sort((a, b) => {
-        const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0
-        const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0
-        return dateB - dateA
-      })
+        // ✅ SORT BY DATE (LATEST FIRST)
+        const sortedClaims = [...claimsList].sort((a, b) => {
+          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0
+          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0
+          return dateB - dateA
+        })
 
-      setClaims(sortedClaims)
-      setFilteredClaims(sortedClaims)
-    } catch (err) {
-      console.error("Error fetching claims:", err)
-    } finally {
-      setLoading(false)
+        setClaims(sortedClaims)
+        setFilteredClaims(sortedClaims)
+      } catch (err) {
+        console.error("Error fetching claims:", err)
+      } finally {
+        setLoading(false)
+      }
     }
-  }
 
-  fetchClaims()
-}, [])
+    fetchClaims()
+  }, [])
 
   // Search filter
+  // Search filter
   useEffect(() => {
-    const filtered = claims.filter(
-      (claim) =>
-        claim.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        claim.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        claim.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        claim.service.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    setFilteredClaims(filtered)
-    setCurrentPage(1)
-  }, [searchTerm, claims])
+    const term = searchTerm.toLowerCase().trim();
+
+    const filtered = claims.filter((claim) => {
+      const firstName = (claim.firstName || "").toLowerCase();
+      const lastName = (claim.lastName || "").toLowerCase();
+      const fullName = `${firstName} ${lastName}`;
+      const email = (claim.email || "").toLowerCase();
+      const service = (claim.service || "").toLowerCase();
+
+      return (
+        firstName.includes(term) ||
+        lastName.includes(term) ||
+        fullName.includes(term) || // Allows searching for "John Doe"
+        email.includes(term) ||
+        service.includes(term)
+      );
+    });
+
+    setFilteredClaims(filtered);
+    setCurrentPage(1);
+  }, [searchTerm, claims]);
 
   // Pagination
   const indexOfLastRecord = currentPage * recordsPerPage
@@ -376,7 +388,8 @@ export default function ClaimsPage() {
         <div className="flex gap-3 items-center w-full sm:w-auto">
           <input
             type="text"
-            placeholder="Search by name, email, or service..."
+            // UPDATED LABEL BELOW
+            placeholder="Search by first, last, full name, or service..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full sm:w-64 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
