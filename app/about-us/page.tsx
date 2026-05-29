@@ -30,9 +30,9 @@ export default function AboutUs() {
       <div className="max-w-7xl mx-auto px-6 md:px-6 lg:px-8 py-12 md:py-16 mt-15">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Who <span className="text-primary font-extrabold">We Are</span>
-            </h2>
+            </h1>
             <p className="text-gray-700 leading-relaxed mb-4">
               At <strong>ClaimYourClaims.com</strong>, we help injury victims get the justice and
               financial compensation they deserve. Our mission is simple — connect

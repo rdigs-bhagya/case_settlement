@@ -19,12 +19,12 @@ export default function ContactUs() {
         <div className="grid lg:grid-cols-2 gap-14 items-start">
           {/* Left Side - Text + Info */}
           <div className="space-y-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-snug">
+            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-snug">
               Reach Our{" "}
               <span className="text-primary">
                 Expert Team
               </span>
-            </h2>
+            </h1>
             <p className="text-base text-gray-700 leading-relaxed">
               Have questions or need legal help? Our dedicated team is ready to
               assist you with expert guidance. Reach out through the contact
