@@ -1,7 +1,13 @@
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Necrotizing Enterocolitis Claim | NEC Lawsuit Support",
+  description: "NEC claim for premature infants? Our attorneys fight for compensation in necrotizing enterocolitis cases involving formula milk brands. Free case review.",
+}
+
 
 const afffData = {
   mainTitle: "Do You Qualify for AFFF Cancer Compensation?",

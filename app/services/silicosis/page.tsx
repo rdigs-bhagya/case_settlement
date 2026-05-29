@@ -1,9 +1,14 @@
-
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Silicosis Lawsuit | Silica Dust Injury Claims",
+  description: "Occupational silica dust exposure? Our attorneys fight for compensation in silicosis and lung disease cases.",
+}
+
 
 const silicosisData = {
   mainTitle: "Do You Qualify for a Silicosis Lawsuit?",

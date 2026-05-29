@@ -1,7 +1,13 @@
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Hair Relaxer Lawsuit | Hair Straightener Injury Claims",
+  description: "Hair relaxer caused uterine fibroids or cancer? Our legal team handles hair straightener injury claims with extensive expertise and results.",
+}
+
 
 const hairRelaxerData = {
     mainTitle: "Do You Qualify for a Hair Relaxer Lawsuit?",

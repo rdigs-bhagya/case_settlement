@@ -1,7 +1,12 @@
-"use client"
-
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page"
 import { Button } from "@/components/ui/button"
+
+export const metadata: Metadata = {
+  title: "Asbestos Exposure Lawsuit | Mesothelioma Claim Support",
+  description: "Exposed to asbestos? Our attorneys handle mesothelioma and asbestos-related illness claims. Get compensation for occupational and environmental exposure.",
+}
+
 
 const qualifications = [
   "Documented exposure in construction, shipbuilding, automotive repair, insulation, or manufacturing.",

@@ -1,7 +1,13 @@
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Mass Tort Litigation & Class Action Support",
+  description: "Injured in a mass tort or class action? We connect you with experienced attorneys who handle large-scale injury claims with proven results.",
+}
+
 
 const massTortData = {
   mainTitle: "Do You Qualify for Mass Tort Compensation?",

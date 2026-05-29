@@ -1,7 +1,13 @@
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Zantac Heartburn Medication Lawsuit | Ranitidine Cancer Claims",
+  description: "Zantac or generic ranitidine caused cancer? Our legal team handles NDMA contamination lawsuits and provides expert representation.",
+}
+
 
 const zantacData = {
   mainTitle: "Do You Qualify for a Zantac Lawsuit?",

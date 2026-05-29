@@ -1,7 +1,13 @@
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Roundup Herbicide Lawsuit | Roundup Cancer Claims",
+  description: "Roundup weedkiller caused cancer? Our lawyers handle Roundup non-Hodgkin's lymphoma lawsuits against Monsanto/Bayer. Free consultation.",
+}
+
 
 const roundupData = {
   mainTitle: "Do You Qualify for a Roundup Lawsuit?",

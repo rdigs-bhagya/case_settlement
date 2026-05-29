@@ -1,8 +1,12 @@
-"use client";
-
-
+import type { Metadata } from "next"
 import FormFields from "@/components/FormFields/page";
 import { Phone, Mail, CalendarDays, Clock } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact Us | ClaimYourClaims Legal Support",
+  description: "Get in touch with our legal team for a free consultation. We're available 24/7 to answer your questions and help you with your injury claim.",
+}
+
 
 export default function ContactUs() {
   return (

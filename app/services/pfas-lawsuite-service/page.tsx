@@ -1,7 +1,13 @@
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "PFAS Contamination Lawsuit | Water Contamination Claims",
+  description: "PFAS contamination in your water supply? Our attorneys handle PFOA/PFOS drinking water lawsuits against responsible manufacturers.",
+}
+
 
 const pfasData = {
   mainTitle: "Do You Qualify for a PFAS Lawsuit?",

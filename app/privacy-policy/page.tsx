@@ -1,6 +1,11 @@
-"use client";
-
+import type { Metadata } from "next"
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | ClaimYourClaims",
+  description: "Learn how we protect your personal information. Read our privacy policy to understand data collection, usage, and your privacy rights.",
+}
+
 
 export default function PrivacyPolicy() {
   return (

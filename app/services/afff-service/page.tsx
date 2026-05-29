@@ -1,7 +1,13 @@
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "AFFF Firefighting Foam Lawsuit | AFFF Contamination Claims",
+  description: "AFFF contamination exposure claim? Our attorneys handle firefighter and military PFOA/PFOS lawsuits. Get compensation for water contamination and health effects.",
+}
+
 
 const afffData = {
   mainTitle: "Do You Qualify for AFFF Cancer Compensation?",

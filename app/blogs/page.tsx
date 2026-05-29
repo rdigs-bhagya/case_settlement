@@ -1,6 +1,11 @@
-'use client';
-
+import type { Metadata } from "next"
 import { CalendarDays, User } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: "Legal Blogs & Resources | ClaimYourClaims",
+  description: "Read our latest blog posts and legal resources about injury claims, settlements, and your rights. Expert insights to help you make informed decisions.",
+}
+
 
 const posts = [
   {

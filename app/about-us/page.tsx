@@ -1,7 +1,12 @@
-"use client";
-
+import type { Metadata } from "next"
 import Image from "next/image";
 import { Handshake, Heart, ShieldCheck, BadgeCheck, Target, Quote } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About ClaimYourClaims | Legal Claim Assistance",
+  description: "Learn about ClaimYourClaims, your trusted partner in legal claim support. We connect injury victims with qualified attorneys nationwide for fair compensation.",
+}
+
 
 export default function AboutUs() {
   return (

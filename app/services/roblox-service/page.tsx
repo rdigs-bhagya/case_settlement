@@ -1,7 +1,13 @@
-'use client'
+import type { Metadata } from "next"
 import ClaimReviewForm from "@/components/ClaimReviewForm.tsx/page";
 import ServiceProcess from "@/components/ServiceProcess.tsx/page";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Roblox Platform Harm Lawsuit | Online Gaming Injury Claims",
+  description: "Harmed by Roblox platform? Our attorneys handle cases involving online gaming exploitation and harm to users.",
+}
+
 
 const robloxData = {
   mainTitle: "Who Is Eligible for the Roblox Lawsuit?",

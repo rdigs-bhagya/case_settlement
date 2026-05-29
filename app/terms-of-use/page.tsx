@@ -1,6 +1,11 @@
-"use client";
-
+import type { Metadata } from "next"
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Terms of Use | ClaimYourClaims",
+  description: "Read the terms and conditions for using ClaimYourClaims. Understand your rights and responsibilities when using our legal claim assistance platform.",
+}
+
 
 export default function TermsOfUse() {
   return (
