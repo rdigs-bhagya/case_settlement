@@ -48,8 +48,8 @@ const ZantacSection = () => {
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../zantac/Zantac.png"
-                                    alt="Firefighters using AFFF foam at emergency scene"
+                                    src="/zantac/Zantac.webp"
+                                    alt="zantac lawsuit illustration"
                                     className="w-full h-auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-blue/20 to-transparent"></div>
@@ -62,8 +62,8 @@ const ZantacSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../zantac/Zantac 2.png"
-                                    alt="AFFF lawsuit victims illustration"
+                                    src="/zantac/Zantac 2.webp"
+                                    alt="zantac lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-blue/20 to-transparent"></div>

@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-3">
-            <img src="/CYC White logo trimmed.png" alt="Claim Your Claims Logo" className="w-40 h-auto" />
+            <img src="/CYC White logo trimmed.webp" alt="Claim Your Claims Logo" className="w-40 h-auto" />
             <p className="text-background/80">
               Expert Claim assistance for case settlements, claims, and litigation with over 15 years of proven results.
             </p>

@@ -50,7 +50,7 @@ export default function AboutUs() {
           </div>
           <div className="relative">
             <Image
-              src="/Who We Are.png"
+              src="/Who We Are.webp"
               alt="Our Legal Expertise"
               width={600}
               height={400}
@@ -99,7 +99,7 @@ export default function AboutUs() {
               </div>
               <div className="-ml-8 md:-ml-16 lg:-ml-24">
                 <img
-                  src="/A Trusted Partner in Justice.png"
+                  src="/A Trusted Partner in Justice.webp"
                   alt="Legal Expert"
                   className="w-[360px] md:w-[440px] lg:w-[500px] object-contain"
                 />
@@ -120,27 +120,27 @@ export default function AboutUs() {
           <div className="flex flex-wrap justify-center gap-6 mb-16">
             {[
               {
-                image: "/about-us-images/integrity.png",
+                image: "/about-us-images/inetegrity.webp",
                 title: "Integrity",
                 desc: "We operate with transparency, honesty, and compliance.",
               },
               {
-                image: "/about-us-images/comapasion.png",
+                image: "/about-us-images/comapasion.webp",
                 title: "Compassion",
                 desc: "Every claimant is treated with respect and dignity.",
               },
               {
-                image: "/about-us-images/security.png",
+                image: "/about-us-images/security.webp",
                 title: "Security",
                 desc: "Your data and privacy are protected at the highest standard.",
               },
               {
-                image: "/about-us-images/accountability.png",
+                image: "/about-us-images/accountability.webp",
                 title: "Accountability",
                 desc: "We work only with trusted legal partners who uphold ethical standards.",
               },
               {
-                image: "/about-us-images/results.png",
+                image: "/about-us-images/result.webp",
                 title: "Results",
                 desc: "Our focus is to connect you with the help you need to pursue rightful compensation.",
               },

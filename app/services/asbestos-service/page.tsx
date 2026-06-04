@@ -70,7 +70,7 @@ const AsbestosSection = () => {
             </div>
 
             <img
-              src="\asbestos\Asbestos-Exposure-Lawsuit.png"
+              src="/asbestos/Asbestos-Exposure-Lawsuit.webp"
               alt="Asbestos Exposure"
               className="rounded-2xl shadow-xl"
             />
@@ -82,7 +82,7 @@ const AsbestosSection = () => {
       <section className="py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
           <img
-            src="\asbestos\Asbestos-Exposure-Lawsuit-Image-2.png"
+            src="/asbestos/Asbestos-Exposure-Lawsuit-Image-2.webp"
             alt="Asbestos Workplace"
             className="rounded-2xl shadow-xl"
           />
@@ -184,7 +184,7 @@ const AsbestosSection = () => {
             <div className="flex justify-center lg:justify-end">
               <div className="w-full max-w-[550px] lg:max-w-[570px]">
                 <img
-                  src="/asbestos/Asbestos Lawsuit.png"
+                  src="/asbestos/Asbestos Lawsuit.webp"
                   alt="Legal Representation Illustration"
                   className="w-full h-auto object-contain"
                 />
@@ -218,7 +218,7 @@ const AsbestosSection = () => {
             <div className="w-full lg:w-1/2 flex justify-center order-1 lg:order-1">
               <div className="relative w-full max-w-[320px] sm:max-w-[450px] md:max-w-[500px] lg:max-w-[600px]">
                 <img
-                  src="/asbestos/Who Qualifies.png"
+                  src="/asbestos/Who Qualifies.webp"
                   alt="Asbestos exposure illustration"
                   className="w-full h-auto object-contain drop-shadow-xl"
                 />

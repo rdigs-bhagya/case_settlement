@@ -49,8 +49,8 @@ const RoundUpSection = () => {
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../RoundUp/Roundup.png"
-                                    alt="Firefighters using AFFF foam at emergency scene"
+                                    src="/RoundUp/Roundup.webp"
+                                    alt="Roundup herbicide illustration"
                                     className="w-full h-auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-blue/20 to-transparent"></div>
@@ -63,8 +63,8 @@ const RoundUpSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../RoundUp/Roundup 2.png"
-                                    alt="AFFF lawsuit victims illustration"
+                                    src="/RoundUp/Roundup 2.webp"
+                                    alt="Roundup lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-blue/20 to-transparent"></div>
@@ -72,7 +72,7 @@ const RoundUpSection = () => {
                         </div>
                         <div className="order-2 lg:order-2 space-y-4">
                             <h1 className="text-4xl lg:text-5xl xl:text-4xl font-extrabold leading-tight">
-                                <span className="text-[#193CB8]">THealth Conditions and Legal Precedents</span>
+                                <span className="text-[#193CB8]">Health Conditions and Legal Precedents</span>
                             </h1>
                             <div className="space-y-6 text-lg sm:text-lg text-black/90">
                                 <p>
@@ -115,8 +115,8 @@ const RoundUpSection = () => {
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../RoundUp/Roundup 3.png"
-                                    alt="Firefighters using AFFF foam at emergency scene"
+                                    src="/RoundUp/Roundup 3.webp"
+                                    alt="Roundup herbicide illustration"
                                     className="w-full h-auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-blue/20 to-transparent"></div>

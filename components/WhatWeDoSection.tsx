@@ -22,7 +22,7 @@ export default function WhatWeDoSection() {
           {/* CENTER IMAGE */}
           <div className="flex justify-center">
             <img
-              src="/Home_logos/What We Do.png"
+              src="/Home_logos/What We Do.webp"
               alt="What We Do"
               className="w-[320px] md:w-[400px] lg:w-[460px] object-contain"
             />

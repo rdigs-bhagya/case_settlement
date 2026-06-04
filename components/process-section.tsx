@@ -24,7 +24,7 @@ export function ProcessSection() {
 
               <div className="mt-10 flex justify-center lg:justify-start">
                 <img
-                  src="/Home_logos/How Do I Get Compensated.png"
+                  src="/Home_logos/How Do I Get Compensated.webp"
                   alt="Process"
                   className="w-full max-w-sm"
                 />
@@ -111,7 +111,7 @@ export function ProcessSection() {
           <div className="relative w-full">
 
             <img
-              src="/contact-us-today-bg.png"
+              src="/Contact Us Today.webp"
               alt="Legal Consultation"
               className="w-full h-auto object-contain"
             />

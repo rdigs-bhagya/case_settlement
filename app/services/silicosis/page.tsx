@@ -39,7 +39,7 @@ const SilicosisSection = () => {
                     <div className="flex flex-wrap items-start gap-10">
                         <div className="w-full md:w-1/3 mt-16">
                             <Image
-                                src="/silicosis/Silicosis (3).png"
+                                src="/silicosis/Silicosis.webp"
                                 alt="Silicosis lung disease illustration"
                                 width={500}
                                 height={300}
@@ -78,7 +78,7 @@ const SilicosisSection = () => {
                     <div className="flex flex-wrap items-start gap-10">
                         <div className="w-full md:w-1/3">
                             <Image
-                                src="/silicosis/Silicosis 2.png"
+                                src="/silicosis/Silicosis 2.webp"
                                 alt="Health conditions lawsuit illustration"
                                 width={500}
                                 height={300}
@@ -124,7 +124,7 @@ const SilicosisSection = () => {
                     <div className="flex flex-wrap items-start gap-10">
                         <div className="w-full md:w-1/3">
                             <Image
-                                src="/silicosis/Silicosis 3.png"
+                                src="/silicosis/Silicosis 3.webp"
                                 alt="Roundup lawsuit illustration"
                                 width={500}
                                 height={300}

@@ -90,7 +90,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link href="/" className="w-30 h-12 flex items-center justify-center">
-              <img src="/logo.png" alt="Claim Your Claims Logo" />
+              <img src="/logo.webp" alt="Claim Your Claims Logo" />
             </Link>
           </div>
 

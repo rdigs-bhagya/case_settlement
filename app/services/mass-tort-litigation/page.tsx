@@ -48,7 +48,7 @@ const MassTortSection = () => {
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../Mass_Tort_Litigation/Mass Tort Litigation.png"
+                                    src="/Mass_Tort_Litigation/Mass Tort Litigation.webp"
                                     alt="Firefighters using AFFF foam at emergency scene"
                                     className="w-full h-auto"
                                 />
@@ -62,7 +62,7 @@ const MassTortSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../Mass_Tort_Litigation/Mass Tort Litigation 2.png"
+                                    src="/Mass_Tort_Litigation/Mass Tort Litigation 2.webp"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />

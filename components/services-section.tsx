@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const services = [
   {
-    image: "/service-images/AFFFp.jpg",
+    image: "/service-images/Services-01.webp",
     title: "AFFF-Lawsuite",
     description:
       "Legal support for AFFF cancer and toxic exposure claims, pursuing compensation.",
@@ -12,7 +12,7 @@ const services = [
     link: "services/afff-service",
   },
   {
-    image: "/service-images/motor.jpg",
+    image: "/service-images/Services-02.webp",
     title: "Motor Vehicle Accidents",
     description:
       "Expert handling of car, truck, and motorcycle accident claims with full insurance negotiations.",
@@ -20,7 +20,7 @@ const services = [
     link: "/services/mva",
   },
   {
-    image: "/service-images/product-liability.jpg",
+    image: "/service-images/Services-03.webp",
     title: "Product Liability",
     description:
       "Defective product cases including pharmaceuticals, medical devices, and consumer products.",
@@ -28,7 +28,7 @@ const services = [
     link: "/services/product-liability-service",
   },
   {
-    image: "/service-images/mass-torent.jpg",
+    image: "/service-images/Services-04.webp",
     title: "Mass Tort Litigation",
     description:
       "Join class action lawsuits for widespread harm from corporations and defective products.",

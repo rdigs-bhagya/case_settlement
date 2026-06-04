@@ -50,8 +50,8 @@ const PFASSection = () => {
                         <div className="order-1 lg:order-2 relative">
                             <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../PFAS/PFAS-3.png"
-                                    alt="Firefighters using AFFF foam at emergency scene"
+                                    src="/PFAS/PFAS.webp"
+                                    alt="PFAS"
                                     className="w-full h-auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-blue/20 to-transparent"></div>
@@ -64,8 +64,8 @@ const PFASSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                  src="../PFAS/PFAS-2.png"
-                                    alt="AFFF lawsuit victims illustration"
+                                  src="/PFAS/PFAS 2.webp"
+                                    alt="pfas"
                                     className="w-full h-auto"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy-blue/20 to-transparent"></div>

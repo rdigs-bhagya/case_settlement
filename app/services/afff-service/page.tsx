@@ -57,7 +57,7 @@ const AFFFHeroSection = () => {
                         <div className="order-1 lg:order-2 relative">
                             <div className=" transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../service-images/AFFF Exposure.png"
+                                    src="/afff/AFFF Exposure.webp"
                                     alt="Firefighters using AFFF foam at emergency scene"
                                     className="w-full h-auto"
                                 />
@@ -71,7 +71,7 @@ const AFFFHeroSection = () => {
                         <div className="order-1 lg:order-1 relative">
                             <div className="relative  transform -rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img
-                                    src="../service-images/AFFF Exposure 2 .png"
+                                    src="/afff/AFFF Exposure 2.webp"
                                     alt="AFFF lawsuit victims illustration"
                                     className="w-full h-auto"
                                 />
