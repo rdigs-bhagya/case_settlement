@@ -127,7 +127,7 @@ messages, and emails. I understand that consent is not required to proceed.`;
     (data as any).clientDetails = clientDetails;
 
     try {
-      const res = await fetch("https://case-9w55.onrender.com/claims", {
+      const res = await fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/claims", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

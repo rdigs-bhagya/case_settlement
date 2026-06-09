@@ -70,7 +70,6 @@ I understand that my wireless carrier may charge me for such communications and 
   };
 
   // Submit Handler
-  // Submit Handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("");
@@ -108,7 +107,7 @@ I understand that my wireless carrier may charge me for such communications and 
     };
 
     try {
-      const response = await fetch("https://case-9w55.onrender.com/contact", {
+      const response = await fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userPayload),
