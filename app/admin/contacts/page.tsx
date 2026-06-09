@@ -66,7 +66,7 @@ export default function ContactsPage() {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await fetch("https://case-9w55.onrender.com/contact");
+        const response = await fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/contact");
         const data = await response.json();
 
         let contactsList = Array.isArray(data)
@@ -145,7 +145,7 @@ export default function ContactsPage() {
 
     try {
       const response = await fetch(
-        `https://case-9w55.onrender.com/contact/${id}`,
+        `https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/contact/${id}`,
         {
           method: "DELETE",
         }

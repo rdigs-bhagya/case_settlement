@@ -57,7 +57,7 @@ export default function ClaimsPage() {
   useEffect(() => {
     const fetchClaims = async () => {
       try {
-        const response = await fetch("https://case-9w55.onrender.com/claims")
+        const response = await fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/claims")
         const data = await response.json()
 
         let claimsList: Claim[] = []
@@ -130,7 +130,7 @@ export default function ClaimsPage() {
     setDeleting(id)
 
     try {
-      const response = await fetch(`https://case-9w55.onrender.com/claims/${id}`, { method: "DELETE" })
+      const response = await fetch(`https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/claims/${id}`, { method: "DELETE" })
       if (response.ok) {
         setClaims((prev) => prev.filter((c) => c._id !== id))
         setFilteredClaims((prev) => prev.filter((c) => c._id !== id))

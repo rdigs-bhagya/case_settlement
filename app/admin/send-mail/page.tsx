@@ -16,7 +16,7 @@ export default function SendMailPage() {
   // LOAD ALLOWED LINKS FROM BACKEND
   // ------------------------------------
   useEffect(() => {
-    fetch("https://case-9w55.onrender.com/sendMail/links")
+    fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/sendMail/links")
       .then((res) => res.json())
       .then((data) => setLinks(data));
   }, []);
