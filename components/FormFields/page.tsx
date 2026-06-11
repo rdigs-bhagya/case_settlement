@@ -220,6 +220,7 @@ I understand that my wireless carrier may charge me for such communications and 
             "Depo-Provera",
             "Social Media Addiction",
             "Talcum Powder",
+            "Rideshare"
             "Other"
           ].map((caseType) => (
             <option key={caseType} value={caseType}>
