@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { CalendarDays, User } from 'lucide-react';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: "Legal Blogs & Resources | ClaimYourClaims",
@@ -14,7 +15,7 @@ const posts = [
     excerpt:
       'The first trial against Abbott Laboratories, the manufacturer of Similac baby formula, commenced in St. Louis state court...',
     author: 'Legal Claim Assistance',
-    image: '/images/blog1.jpg',
+    image: '/blog/BLOG-1-CYC.png',
   },
   {
     date: 'May 13, 2024',
@@ -22,7 +23,7 @@ const posts = [
     excerpt:
       'Johnson & Johnson has rolled out a $6.48 billion bankruptcy plan aimed at settling talc lawsuits, drawing immediate resistance...',
     author: 'Legal Claim Assistance',
-    image: '/images/blog2.jpg',
+    image: '/blog/BLOG-2-CYC.png',
   },
   {
     date: 'May 13, 2024',
@@ -30,7 +31,7 @@ const posts = [
     excerpt:
       'Fraudulent activity is on the rise in class action and mass tort claims, despite the growing prevalence of digital payments...',
     author: 'Legal Claim Assistance',
-    image: '/images/blog3.jpg',
+    image: '/blog/BLOG-3-CYC.png',
   },
   {
     date: 'May 13, 2024',
@@ -89,9 +90,15 @@ export default function BlogPage() {
             key={index}
             className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
           >
-            {/* Image Placeholder */}
-            <div className="h-48 bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-400">Image</span>
+            {/* Image */}
+            <div className="relative h-48 w-full overflow-hidden">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
             </div>
 
             {/* Card Content */}
