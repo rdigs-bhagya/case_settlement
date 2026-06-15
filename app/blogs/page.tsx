@@ -15,7 +15,7 @@ const posts = [
     excerpt:
       'The first trial against Abbott Laboratories, the manufacturer of Similac baby formula, commenced in St. Louis state court...',
     author: 'Legal Claim Assistance',
-    image: '/blog/BLOG-1-CYC.png',
+    image: '/blog/BLOG-1-CYC.webp',
   },
   {
     date: 'May 13, 2024',
@@ -23,7 +23,7 @@ const posts = [
     excerpt:
       'Johnson & Johnson has rolled out a $6.48 billion bankruptcy plan aimed at settling talc lawsuits, drawing immediate resistance...',
     author: 'Legal Claim Assistance',
-    image: '/blog/BLOG-2-CYC.png',
+    image: '/blog/BLOG-2-CYC.webp',
   },
   {
     date: 'May 13, 2024',
@@ -31,7 +31,7 @@ const posts = [
     excerpt:
       'Fraudulent activity is on the rise in class action and mass tort claims, despite the growing prevalence of digital payments...',
     author: 'Legal Claim Assistance',
-    image: '/blog/BLOG-3-CYC.png',
+    image: '/blog/BLOG-3-CYC.webp',
   },
   {
     date: 'May 13, 2024',
@@ -96,7 +96,7 @@ export default function BlogPage() {
                 src={post.image}
                 alt={post.title}
                 fill
-                className="object-cover"
+                className="object-fill"
                 priority={index === 0}
               />
             </div>
