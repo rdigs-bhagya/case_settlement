@@ -49,7 +49,7 @@ export function HeroSection() {
               <Image src="\Home_logos\reuters.webp" alt="Logo 1" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
               {/* <Image src="\Home_logos\image.png" alt="Logo 2" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" /> */}
               {/* <Image src="\Home_logos\fox-business.png" alt="Logo 3" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" /> */}
-              <Image src="\Home_logos\cnn.webp" alt="Logo 4" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
+              <Image src="\Home_logos\CNN.webp" alt="Logo 4" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
               {/* <Image src="\Home_logos\abcnews.png" alt="Logo 5" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" /> */}
               <Image src="\Home_logos\NBC.webp" alt="Logo 5" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
               <Image src="\Home_logos\FOXI-business.webp" alt="Logo 6" width={70} height={20} className="object-contain opacity-80 hover:opacity-100 transition" />
