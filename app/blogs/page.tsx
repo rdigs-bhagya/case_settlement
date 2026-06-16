@@ -39,7 +39,7 @@ const posts = [
     excerpt:
       'Judge Pratter appointed new co-lead counsels in one of the most significant pharmaceutical injury cases against diabetes drug makers...',
     author: 'Legal Claim Assistance',
-    image: '/images/blog4.jpg',
+    image: '/blog/BLOG-4-CYC.webp',
   },
   {
     date: 'May 5, 2024',
