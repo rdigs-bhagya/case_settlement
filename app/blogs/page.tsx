@@ -47,7 +47,7 @@ const posts = [
     excerpt:
       'The JPML has ordered the consolidation of Suboxone dental injury lawsuits in the Northern District of Ohio under Judge Calabrese...',
     author: 'Legal Claim Assistance',
-    image: '/images/blog5.jpg',
+    image: '/blog/BLOG-5-CYC.webp',
   },
   {
     date: 'May 5, 2024',
@@ -55,7 +55,7 @@ const posts = [
     excerpt:
       'A federal judge approved a settlement valued at up to $600M concerning recalled Philips CPAP devices that caused economic damages...',
     author: 'Legal Claim Assistance',
-    image: '/images/blog6.jpg',
+    image: '/blog/BLOG-6-CYC.webp',
   },
 ];
 
