@@ -20,7 +20,7 @@ export default function LoginPage() {
     setError("")
     setLoading(true)
 
-    if (email === "landmark" && password === "demand@2026") {
+    if (email === "leads@landmarkdemand.com" && password === "LandMarkLeads@2026") {
       localStorage.setItem("adminToken", "demo-token-" + Date.now())
       router.push("/admin/dashboard")
     } else {
