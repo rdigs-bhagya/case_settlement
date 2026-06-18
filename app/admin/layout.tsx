@@ -5,6 +5,11 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { AdminSidebar } from "@/components/admin-sidebar"
+import {
+  ADMIN_TOKEN_STORAGE_KEY,
+  clearAdminSession,
+  isAdminSessionValid,
+} from "@/lib/admin-auth"
 
 export default function AdminLayout({
   children,
@@ -15,11 +20,34 @@ export default function AdminLayout({
   const [isAuthorized, setIsAuthorized] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem("adminToken")
-    if (!token) {
-      router.push("/")
-    } else {
+    const validateSession = () => {
+      const token = localStorage.getItem(ADMIN_TOKEN_STORAGE_KEY)
+
+      if (!isAdminSessionValid(token)) {
+        clearAdminSession()
+        setIsAuthorized(false)
+        router.push("/")
+        return
+      }
+
       setIsAuthorized(true)
+    }
+
+    validateSession()
+
+    const validationInterval = window.setInterval(validateSession, 30000)
+
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === ADMIN_TOKEN_STORAGE_KEY) {
+        validateSession()
+      }
+    }
+
+    window.addEventListener("storage", handleStorageChange)
+
+    return () => {
+      window.clearInterval(validationInterval)
+      window.removeEventListener("storage", handleStorageChange)
     }
   }, [router])
 

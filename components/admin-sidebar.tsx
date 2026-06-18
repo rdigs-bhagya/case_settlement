@@ -4,13 +4,14 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { LayoutDashboard, Mail, FileText, LogOut } from "lucide-react"
+import { clearAdminSession } from "@/lib/admin-auth"
 
 export function AdminSidebar() {
   const pathname = usePathname()
   const router = useRouter()
 
   const handleLogout = () => {
-    localStorage.removeItem("adminToken")
+    clearAdminSession()
     router.push("/")
   }
 

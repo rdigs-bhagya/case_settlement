@@ -7,6 +7,12 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
+import {
+  ADMIN_EMAIL,
+  ADMIN_PASSWORD,
+  ADMIN_TOKEN_STORAGE_KEY,
+  createAdminSession,
+} from "@/lib/admin-auth"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -20,8 +26,8 @@ export default function LoginPage() {
     setError("")
     setLoading(true)
 
-    if (email === "leads@landmarkdemand.com" && password === "LandMarkLeads@2026") {
-      localStorage.setItem("adminToken", "demo-token-" + Date.now())
+    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+      localStorage.setItem(ADMIN_TOKEN_STORAGE_KEY, createAdminSession(email))
       router.push("/admin/dashboard")
     } else {
       setError("Invalid email or password")
