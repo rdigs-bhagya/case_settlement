@@ -17,8 +17,8 @@ export default function DashboardPage() {
     const fetchStats = async () => {
       try {
         const [contactsRes, claimsRes] = await Promise.all([
-          fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/contact"),
-          fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/claims"),
+          fetch("https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/contact"),
+          fetch("https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/claims"),
         ])
 
         const contactsData = await contactsRes.json()

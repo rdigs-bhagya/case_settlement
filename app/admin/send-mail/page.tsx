@@ -16,7 +16,7 @@ export default function SendMailPage() {
   // LOAD ALLOWED LINKS FROM BACKEND
   // ------------------------------------
   useEffect(() => {
-    fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/sendMail/links")
+    fetch("https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/sendMail/links")
       .then((res) => res.json())
       .then((data) => setLinks(data));
   }, []);
@@ -64,9 +64,8 @@ export default function SendMailPage() {
       {/* Alert */}
       {status && (
         <div
-          className={`fixed top-5 right-5 px-4 py-3 rounded shadow-lg text-white ${
-            status.includes("❌") ? "bg-red-600" : "bg-green-600"
-          }`}
+          className={`fixed top-5 right-5 px-4 py-3 rounded shadow-lg text-white ${status.includes("❌") ? "bg-red-600" : "bg-green-600"
+            }`}
         >
           {status}
         </div>
