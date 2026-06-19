@@ -16,7 +16,8 @@ export default function SendMailPage() {
   // LOAD ALLOWED LINKS FROM BACKEND
   // ------------------------------------
   useEffect(() => {
-    fetch("https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/sendMail/links")
+    const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_BASE_URL || "https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev";
+    fetch(`${baseUrl}/sendMail/links`)
       .then((res) => res.json())
       .then((data) => setLinks(data));
   }, []);
@@ -38,8 +39,9 @@ export default function SendMailPage() {
       return;
     }
 
+    const emailUrl = process.env.NEXT_PUBLIC_ADMIN_SEND_EMAIL_URL || "https://rm97455zj6.execute-api.us-east-1.amazonaws.com/dev/api/v1/sendMail";
     const res = await fetch(
-      "https://rm97455zj6.execute-api.us-east-1.amazonaws.com/dev/api/v1/sendEmail",
+      emailUrl,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

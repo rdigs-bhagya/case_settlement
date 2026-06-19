@@ -1,71 +1,27 @@
-export const ADMIN_EMAIL = "leads@landmarkdemand.com"
-export const ADMIN_PASSWORD = "LandMarkLeads@2026"
-export const ADMIN_SESSION_MAX_AGE_MS = 1000 * 60 * 60 * 8
-export const ADMIN_TOKEN_STORAGE_KEY = "adminToken"
+export const ADMIN_SESSION_MAX_AGE_MS = 1000 * 60 * 60 * 8;
+export const ADMIN_TOKEN_STORAGE_KEY = "adminToken";
 
-export type AdminSession = {
-  email: string
-  authSignature: string
-  issuedAt: number
-  expiresAt: number
+export function createAdminSession(token: string): string {
+  // We simply return the token to be stored
+  return token;
 }
 
-function getAdminAuthSignature(): string {
-  return `${ADMIN_EMAIL}:${ADMIN_PASSWORD}`
-}
-
-export function createAdminSession(email: string): string {
-  const issuedAt = Date.now()
-
-  return JSON.stringify({
-    email,
-    authSignature: getAdminAuthSignature(),
-    issuedAt,
-    expiresAt: issuedAt + ADMIN_SESSION_MAX_AGE_MS,
-  } satisfies AdminSession)
-}
-
-export function parseAdminSession(token: string | null): AdminSession | null {
+export function parseAdminSession(token: string | null): string | null {
   if (!token) {
-    return null
+    return null;
   }
-
-  try {
-    const session = JSON.parse(token) as Partial<AdminSession>
-
-    if (
-      typeof session.email !== "string" ||
-      typeof session.authSignature !== "string" ||
-      typeof session.issuedAt !== "number" ||
-      typeof session.expiresAt !== "number"
-    ) {
-      return null
-    }
-
-    return session as AdminSession
-  } catch {
-    return null
-  }
+  return token;
 }
 
 export function isAdminSessionValid(token: string | null): boolean {
-  const session = parseAdminSession(token)
-
-  if (!session) {
-    return false
+  // A basic check to see if we have a token. 
+  // True validation happens on the backend.
+  if (!token || token.length < 10) {
+    return false;
   }
-
-  if (session.email !== ADMIN_EMAIL) {
-    return false
-  }
-
-  if (session.authSignature !== getAdminAuthSignature()) {
-    return false
-  }
-
-  return Date.now() < session.expiresAt
+  return true;
 }
 
 export function clearAdminSession(): void {
-  localStorage.removeItem(ADMIN_TOKEN_STORAGE_KEY)
+  localStorage.removeItem(ADMIN_TOKEN_STORAGE_KEY);
 }

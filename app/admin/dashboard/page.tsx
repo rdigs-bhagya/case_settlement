@@ -16,9 +16,13 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
+        const token = localStorage.getItem("adminToken")
+        const headers = { Authorization: `Bearer ${token}` }
+        const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_BASE_URL || "https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev";
+
         const [contactsRes, claimsRes] = await Promise.all([
-          fetch("https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/contact"),
-          fetch("https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/claims"),
+          fetch(`${baseUrl}/contact`, { headers }),
+          fetch(`${baseUrl}/claims`, { headers }),
         ])
 
         const contactsData = await contactsRes.json()

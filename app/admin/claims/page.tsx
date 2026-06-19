@@ -57,7 +57,10 @@ export default function ClaimsPage() {
   useEffect(() => {
     const fetchClaims = async () => {
       try {
-        const response = await fetch("https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/claims")
+        const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_BASE_URL || "https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev";
+        const response = await fetch(`${baseUrl}/claims`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` }
+        })
         const data = await response.json()
 
         let claimsList: Claim[] = []
@@ -130,7 +133,11 @@ export default function ClaimsPage() {
     setDeleting(id)
 
     try {
-      const response = await fetch(`https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/claims/${id}`, { method: "DELETE" })
+      const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_BASE_URL || "https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev";
+      const response = await fetch(`${baseUrl}/claims/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` }
+      })
       if (response.ok) {
         setClaims((prev) => prev.filter((c) => c._id !== id))
         setFilteredClaims((prev) => prev.filter((c) => c._id !== id))

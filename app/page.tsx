@@ -8,8 +8,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
 import {
-  ADMIN_EMAIL,
-  ADMIN_PASSWORD,
   ADMIN_TOKEN_STORAGE_KEY,
   createAdminSession,
 } from "@/lib/admin-auth"
@@ -26,11 +24,24 @@ export default function LoginPage() {
     setError("")
     setLoading(true)
 
-    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-      localStorage.setItem(ADMIN_TOKEN_STORAGE_KEY, createAdminSession(email))
-      router.push("/admin/dashboard")
-    } else {
-      setError("Invalid email or password")
+    try {
+      const loginUrl = process.env.NEXT_PUBLIC_ADMIN_LOGIN_URL || "https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/auth/login";
+      const response = await fetch(loginUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        localStorage.setItem(ADMIN_TOKEN_STORAGE_KEY, createAdminSession(data.token))
+        router.push("/admin/dashboard")
+      } else {
+        setError("Invalid email or password")
+        setLoading(false)
+      }
+    } catch (err) {
+      setError("An error occurred during login. Please try again.")
       setLoading(false)
     }
   }
