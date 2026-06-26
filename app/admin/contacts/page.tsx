@@ -67,7 +67,7 @@ export default function ContactsPage() {
     const fetchContacts = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_BASE_URL || "https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev";
-        const response = await fetch(`${baseUrl}/contact`, {
+        const response = await fetch(`${baseUrl}/contact/data`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` }
         });
         const data = await response.json();
@@ -103,16 +103,12 @@ export default function ContactsPage() {
       const first = (contact.firstName || "").toString().toLowerCase();
       const last = (contact.lastName || "").toString().toLowerCase();
       const full = `${first} ${last}`.trim();
-      const email = (contact.email || "").toString().toLowerCase();
-      const phone = (contact.phone || "").toString().toLowerCase(); // Added Phone search
       const caseType = (contact.caseType || "").toString().toLowerCase();
 
       return (
         first.includes(term) ||
         last.includes(term) ||
         full.includes(term) ||
-        email.includes(term) ||
-        phone.includes(term) || // ✅ Now user can search by phone number
         caseType.includes(term)
       );
     });
@@ -194,8 +190,6 @@ export default function ContactsPage() {
 
       addLine("First Name", contact.firstName);
       addLine("Last Name", contact.lastName);
-      addLine("Email", contact.email);
-      addLine("Phone", contact.phone);
       addLine("TrustedForm Certificate URL", contact.xxTrustedFormCertUrl);
       addLine("Case Type", contact.caseType);
       addLine("Has Lawyer", contact.hasLawyer || "N/A"); // ✅ NEW
@@ -283,8 +277,6 @@ export default function ContactsPage() {
         // Main Details
         addLine("First Name", contact.firstName);
         addLine("Last Name", contact.lastName);
-        addLine("Email", contact.email);
-        addLine("Phone", contact.phone);
         addLine("TrustedForm Certificate URL", contact.xxTrustedFormCertUrl);
         addLine("Case Type", contact.caseType);
         addLine("Has Lawyer", contact.hasLawyer || "N/A");
@@ -389,8 +381,8 @@ export default function ContactsPage() {
       {/* Header */}
       <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Contact Forms</h1>
-          <p className="text-muted-foreground mt-2">
+          <h1 className="text-3xl font-bold text-gray-900">Contact Forms</h1>
+          <p className="text-gray-500 mt-2">
             Manage all submitted contact inquiries
           </p>
         </div>
@@ -458,30 +450,26 @@ export default function ContactsPage() {
           </Card>
 
           {/* Table */}
-          <Card>
+          <Card className="border-none shadow-md shadow-gray-200/50 rounded-xl bg-white overflow-hidden">
             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-12">S.No</TableHead>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Phone</TableHead>
-                  <TableHead>Case Type</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead className="text-right">Action</TableHead>
+              <TableHeader className="bg-gray-50/50 border-b border-gray-100">
+                <TableRow className="hover:bg-transparent">
+                  <TableHead className="w-12 font-semibold text-gray-600">S.No</TableHead>
+                  <TableHead className="font-semibold text-gray-600">Name</TableHead>
+                  <TableHead className="font-semibold text-gray-600">Case Type</TableHead>
+                  <TableHead className="font-semibold text-gray-600">Date</TableHead>
+                  <TableHead className="text-right font-semibold text-gray-600">Action</TableHead>
                 </TableRow>
               </TableHeader>
 
               <TableBody>
                 {currentRecords.length > 0 ? (
                   currentRecords.map((contact, index) => (
-                    <TableRow key={contact._id || index}>
+                    <TableRow key={contact._id || index} className="hover:bg-[#E6F3FB]/50 transition-colors border-b border-gray-50">
                       <TableCell>{indexOfFirstRecord + index + 1}</TableCell>
                       <TableCell>
                         {contact.firstName} {contact.lastName}
                       </TableCell>
-                      <TableCell>{contact.email}</TableCell>
-                      <TableCell>{contact.phone}</TableCell>
                       <TableCell>
                         <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
                           {contact.caseType}
@@ -511,7 +499,7 @@ export default function ContactsPage() {
                           >
                             <Download className="w-4 h-4" />
                           </Button>
-
+                          {/* 
                           <Button
                             variant="ghost"
                             size="sm"
@@ -520,7 +508,7 @@ export default function ContactsPage() {
                             className="text-red-600 hover:text-red-700 hover:bg-red-50"
                           >
                             <Trash2 className="w-4 h-4" />
-                          </Button>
+                          </Button> */}
                         </div>
                       </TableCell>
                     </TableRow>

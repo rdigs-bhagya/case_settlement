@@ -67,8 +67,6 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
 
     addLine("First Name", claim.firstName)
     addLine("Last Name", claim.lastName)
-    addLine("Email", claim.email)
-    addLine("Phone", claim.phone)
     addLine("TrustedForm Certificate URL", claim.xxTrustedFormCertUrl)
     addLine("Service", claim.service)
     addLine("Consent", claim.consent ? "Yes" : "No")
@@ -144,16 +142,6 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
               <label className="text-sm font-medium text-muted-foreground">Last Name</label>
               <p className="text-lg text-foreground mt-1">{claim.lastName}</p>
             </div>
-          </div>
-
-          <div>
-            <label className="text-sm font-medium text-muted-foreground">Email</label>
-            <p className="text-lg text-foreground mt-1">{claim.email}</p>
-          </div>
-
-          <div>
-            <label className="text-sm font-medium text-muted-foreground">Phone</label>
-            <p className="text-lg text-foreground mt-1">{claim.phone}</p>
           </div>
 
           <div>

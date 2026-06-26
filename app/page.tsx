@@ -47,11 +47,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <Card className="w-full max-w-md p-8 shadow-2xl">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-[#E6F3FB]">
+      <Card className="w-full max-w-md p-8 shadow-[0_10px_40px_rgba(48,153,213,0.15)] border-t-4 border-t-[#3099D5] rounded-xl bg-white">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Legal Claims</h1>
-          <p className="text-muted-foreground">Admin Panel</p>
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E6F3FB] text-[#3099D5] mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Legal Claims</h1>
+          <p className="text-gray-500">Secure Admin Access</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
@@ -73,8 +76,8 @@ export default function LoginPage() {
 
           {error && <p className="text-destructive text-sm">{error}</p>}
 
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? "Logging in..." : "Login"}
+          <Button type="submit" disabled={loading} className="w-full bg-[#3099D5] hover:bg-[#257ba9] text-white shadow-lg shadow-[#3099D5]/30 transition-all rounded-lg py-6 text-md">
+            {loading ? "Logging in..." : "Login to Dashboard"}
           </Button>
         </form>
       </Card>

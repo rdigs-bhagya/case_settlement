@@ -58,7 +58,7 @@ export default function ClaimsPage() {
     const fetchClaims = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_BASE_URL || "https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev";
-        const response = await fetch(`${baseUrl}/claims`, {
+        const response = await fetch(`${baseUrl}/claims/data`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("adminToken")}` }
         })
         const data = await response.json()
@@ -96,14 +96,12 @@ export default function ClaimsPage() {
       const firstName = (claim.firstName || "").toLowerCase();
       const lastName = (claim.lastName || "").toLowerCase();
       const fullName = `${firstName} ${lastName}`;
-      const email = (claim.email || "").toLowerCase();
       const service = (claim.service || "").toLowerCase();
 
       return (
         firstName.includes(term) ||
         lastName.includes(term) ||
         fullName.includes(term) || // Allows searching for "John Doe"
-        email.includes(term) ||
         service.includes(term)
       );
     });
@@ -189,8 +187,6 @@ export default function ClaimsPage() {
       // Personal Info
       addLine("First Name", claim.firstName)
       addLine("Last Name", claim.lastName)
-      addLine("Email", claim.email)
-      addLine("Phone", claim.phone)
       addLine("TrustedForm Certificate URL", claim.xxTrustedFormCertUrl)
       addLine("Service", claim.service)
       addLine("Consent", consentValue)
@@ -299,8 +295,6 @@ export default function ClaimsPage() {
 
         addLine("First Name", claim.firstName)
         addLine("Last Name", claim.lastName)
-        addLine("Email", claim.email)
-        addLine("Phone", claim.phone)
         addLine("TrustedForm Certificate URL", claim.xxTrustedFormCertUrl)
         addLine("Service", claim.service)
         addLine("Consent", consentValue)
@@ -388,8 +382,8 @@ export default function ClaimsPage() {
     <div className="p-8">
       <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Claims Forms</h1>
-          <p className="text-muted-foreground mt-2">Manage all submitted claim requests</p>
+          <h1 className="text-3xl font-bold text-gray-900">Claims Forms</h1>
+          <p className="text-gray-500 mt-2">Manage all submitted claim requests</p>
         </div>
 
         <div className="flex gap-3 items-center w-full sm:w-auto">
@@ -430,27 +424,23 @@ export default function ClaimsPage() {
           </Card>
 
           {/* Table */}
-          <Card>
+          <Card className="border-none shadow-md shadow-gray-200/50 rounded-xl bg-white overflow-hidden">
             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-12">S.No</TableHead>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Phone</TableHead>
-                  <TableHead>Service Type</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead className="text-right">Action</TableHead>
+              <TableHeader className="bg-gray-50/50 border-b border-gray-100">
+                <TableRow className="hover:bg-transparent">
+                  <TableHead className="w-12 font-semibold text-gray-600">S.No</TableHead>
+                  <TableHead className="font-semibold text-gray-600">Name</TableHead>
+                  <TableHead className="font-semibold text-gray-600">Service Type</TableHead>
+                  <TableHead className="font-semibold text-gray-600">Date</TableHead>
+                  <TableHead className="text-right font-semibold text-gray-600">Action</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {currentRecords.length > 0 ? (
                   currentRecords.map((claim, index) => (
-                    <TableRow key={claim._id || index}>
+                    <TableRow key={claim._id || index} className="hover:bg-[#E6F3FB]/50 transition-colors border-b border-gray-50">
                       <TableCell>{indexOfFirstRecord + index + 1}</TableCell>
                       <TableCell>{claim.firstName} {claim.lastName}</TableCell>
-                      <TableCell>{claim.email}</TableCell>
-                      <TableCell>{claim.phone}</TableCell>
                       <TableCell>
                         <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
                           {claim.service}
@@ -461,7 +451,7 @@ export default function ClaimsPage() {
                         <div className="flex gap-2 justify-end">
                           <Button variant="ghost" size="sm" onClick={() => setSelectedClaim(claim)}><Eye className="w-4 h-4" /></Button>
                           <Button variant="ghost" size="sm" onClick={() => downloadSinglePDF(claim)} title="Download single PDF"><Download className="w-4 h-4" /></Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleOpenDeleteDialog(claim)} disabled={deleting === claim._id} className="text-red-600 hover:text-red-700 hover:bg-red-50"><Trash2 className="w-4 h-4" /></Button>
+                          {/* <Button variant="ghost" size="sm" onClick={() => handleOpenDeleteDialog(claim)} disabled={deleting === claim._id} className="text-red-600 hover:text-red-700 hover:bg-red-50"><Trash2 className="w-4 h-4" /></Button> */}
                         </div>
                       </TableCell>
                     </TableRow>
@@ -498,7 +488,7 @@ export default function ClaimsPage() {
 
       {selectedClaim && <ClaimDetailModal claim={selectedClaim} onClose={() => setSelectedClaim(null)} />}
 
-      <Dialog open={openDialog} onClose={handleCloseDialog}>
+      {/* <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogTitle>Delete Claim</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -511,7 +501,7 @@ export default function ClaimsPage() {
             {deleting === claimToDelete?._id ? "Deleting..." : "Delete"}
           </MUIButton>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
     </div>
   )
 }

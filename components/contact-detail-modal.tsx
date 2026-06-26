@@ -64,8 +64,6 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
 
     addLine("First Name", contact.firstName);
     addLine("Last Name", contact.lastName);
-    addLine("Email", contact.email);
-    addLine("Phone", contact.phone);
     addLine("TrustedForm Certificate URL", contact.xxTrustedFormCertUrl);
     addLine("Case Type", contact.caseType);
     addLine("Has Lawyer", contact.hasLawyer || "N/A"); // ✅ NEW
@@ -131,16 +129,6 @@ export function ContactDetailModal({ contact, onClose }: ContactDetailModalProps
               <label className="text-sm font-medium text-muted-foreground">Last Name</label>
               <p className="text-lg text-foreground mt-1">{contact.lastName}</p>
             </div>
-          </div>
-
-          <div>
-            <label className="text-sm font-medium text-muted-foreground">Email</label>
-            <p className="text-lg text-foreground mt-1">{contact.email}</p>
-          </div>
-
-          <div>
-            <label className="text-sm font-medium text-muted-foreground">Phone</label>
-            <p className="text-lg text-foreground mt-1">{contact.phone}</p>
           </div>
 
           <div>
