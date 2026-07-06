@@ -44,9 +44,10 @@ type FormData = {
 
 type ClaimReviewFormProps = {
   service: string;
+  compact?: boolean;
 };
 
-export default function ClaimReviewForm({ service }: ClaimReviewFormProps) {
+export default function ClaimReviewForm({ service, compact = false }: ClaimReviewFormProps) {
   const {
     register,
     handleSubmit,
@@ -258,6 +259,74 @@ messages, and emails. I understand that consent is not required to proceed.`;
   };
 
   const questionsToRender = SERVICE_QUESTIONS[service] || [];
+
+  if (compact) {
+    return (
+      <div className="w-full">
+        <h2 className="text-2xl font-bold text-slate-900">Free Case Evaluation</h2>
+        <p className="mt-3 text-sm text-slate-500">Accepting Clients Nationwide</p>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <Label className={labelClass}>First Name*</Label>
+              <Input
+                {...register("firstName", { required: "First name required" })}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <Label className={labelClass}>Last Name*</Label>
+              <Input
+                {...register("lastName", { required: "Last name required" })}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <Label className={labelClass}>Phone*</Label>
+              <Input
+                {...register("phone", { required: "Phone required" })}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <Label className={labelClass}>Your Email*</Label>
+              <Input
+                {...register("email", { required: "Email required" })}
+                className={inputClass}
+              />
+            </div>
+          </div>
+
+          <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl" />
+
+          <div className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <Checkbox
+              id="consent"
+              className="mt-1 border-2 border-blue-400 data-[state=checked]:bg-blue-400 data-[state=checked]:text-white"
+              checked={!!watch("consent")}
+              onCheckedChange={(checked) => setValue("consent", checked as boolean)}
+            />
+            <Label htmlFor="consent" className="text-sm text-slate-600">
+              I agree that by providing my phone number and/or email, checking this box, and
+              submitting this form, that I am consenting by electronic signature to authorize Landmark
+              Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners or affiliates to
+              contact me with automated, autodialed, artificial or prerecorded marketing calls, text
+              messages, and emails. I understand that consent is not required to proceed.
+            </Label>
+          </div>
+          {errors.consent && <p className="text-xs text-red-600">Consent is required.</p>}
+
+          <Button
+            type="submit"
+            className="w-full bg-blue-900 text-white hover:bg-blue-800"
+          >
+            Submit
+          </Button>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <section className="bg-gradient-to-b from-slate-50 to-white py-12">
