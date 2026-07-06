@@ -57,6 +57,7 @@ export function Header() {
     { name: "Silicosis", href: "/services/silicosis" },
     { name: "Roblox Lawsuit", href: "/services/roblox-service" },
     { name: "Asbestos Lawsuit", href: "/services/asbestos-service" },
+    { name: "Depo Prova", href: "/services/depo-provera" },
   ]
 
   return (
@@ -99,7 +100,7 @@ export function Header() {
               <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors text-lg font-bold">
                 Services <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[600px] p-4" align="start" sideOffset={8} alignOffset={-200}>
+              <DropdownMenuContent className="w-[700px] p-4" align="start" sideOffset={8} alignOffset={-200}>
                 <div className="grid grid-cols-2 gap-3">
                   {services.map((service, index) => (
                     <a

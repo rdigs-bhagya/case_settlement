@@ -218,6 +218,35 @@ export const SERVICE_QUESTIONS: Record<string, QuestionAnswerConfig[]> = {
         }
     ],
 
+    // depo-provera
+    "depo-provera": [
+        {
+            question: "Have you been diagnosed with a meningioma or other brain tumor after using Depo-Provera?",
+            type: "select",
+            options: ["Yes", "No"],
+        },
+        {
+            question: "How long did you use Depo-Provera before your diagnosis?",
+            type: "select",
+            options: ["Less than 1 year", "1-2 years", "3-5 years", "5+ years"],
+        },
+        {
+            question: "What year were you diagnosed?",
+            type: "number",
+            options: [],
+        },
+        {
+            question: "Do you have medical records that document your diagnosis and treatment?",
+            type: "select",
+            options: ["Yes", "No"],
+        },
+        {
+            question: "Have you been advised by a healthcare professional that your condition may be related to Depo-Provera use?",
+            type: "select",
+            options: ["Yes", "No"],
+        },
+    ],
+
     // product-liability
     "product-liability": [
         {
