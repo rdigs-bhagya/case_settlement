@@ -107,7 +107,7 @@ I understand that my wireless carrier may charge me for such communications and 
     };
 
     try {
-      const response = await fetch("https://g8l8qu2ccf.execute-api.us-east-1.amazonaws.com/dev/contact", {
+      const response = await fetch("https://wcyf5iypbi.execute-api.us-east-1.amazonaws.com/dev/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userPayload),
