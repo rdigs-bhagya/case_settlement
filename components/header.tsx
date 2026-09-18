@@ -58,6 +58,7 @@ export function Header() {
     { name: "Roblox Lawsuit", href: "/services/roblox-service" },
     { name: "Asbestos Lawsuit", href: "/services/asbestos-service" },
     { name: "Depo Prova", href: "/services/depo-provera" },
+    { name: "Rideshare Lawsuit", href: "/services/rideshare-service" },
   ]
 
   return (

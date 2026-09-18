@@ -624,6 +624,14 @@ export const SERVICE_QUESTIONS: Record<string, QuestionAnswerConfig[]> = {
                 "No"
             ]
         }
+    ],
+
+    "rideshare": [
+        {
+            "question": "While riding in a Lyft or Uber have you or a loved one ever been assaulted by the driver?",
+            "type": "radio",
+            "options": ["Yes", "No"]
+        }
     ]
 
 };
