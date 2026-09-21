@@ -31,7 +31,12 @@ const RideshareHeroSection = () => {
     return (
         <>
             <section className="text-black relative overflow-hidden">
-                <div className="container mx-auto px-8 py-4 relative z-10 mt-18">
+                <div className="container mx-auto px-8 py-4 relative z-10 mt-36">
+                    <div className="bg-gray-50 rounded-md px-4 py-3 shadow-sm border mb-8">
+                        <p className="text-[12px] font-serif m-0 text-gray-700 text-center max-w-7xl mx-auto">
+                            <b>DISCLAIMER</b> : Paid legal advertisement. Phillips Law Group (700 Flower St, Suite 1000 Los Angeles, CA 90017) is responsible for this ad. A California-licensed attorney is associated for California cases. This ad uses paid actors, dramatizations, and AI-generated content for illustration only and does not depict real clients or events. No guarantee of results. Cases may be referred to, or jointly handled with, other attorneys.
+                        </p>
+                    </div>
                     <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[500px]">
                         <div className="order-2 lg:order-1 space-y-4">
                             <figure className="mb-4">
