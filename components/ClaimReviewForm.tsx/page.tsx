@@ -59,11 +59,15 @@ export default function ClaimReviewForm({ service, compact = false }: ClaimRevie
 
   const serviceAnswers = watch("serviceAnswers") || [];
 
-  const CONSENT_TEXT = `I agree that by providing my phone number and/or email, checking this box, and
+  const DEFAULT_CONSENT_TEXT = `I agree that by providing my phone number and/or email, checking this box, and
 submitting this form, that I am consenting by electronic signature to authorize Landmark
 Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners or affiliates to
 contact me with automated, autodialed, artificial or prerecorded marketing calls, text
 messages, and emails. I understand that consent is not required to proceed.`;
+
+  const RIDESHARE_CONSENT_TEXT = `By clicking the checkbox and submitting this form, I acknowledge my electronic signature and agree to the terms of use and privacy policy. I consent to receive communications, including emails, phone calls, text messages, offers, and services via the provided phone number or email address above from Landmark Demand, Novera Media Solutions, Eilers Law Firm and Our Marketing Partners. I understand there may be a charge by my wireless carrier for these communications, which may be generated using an autodialer and may contain pre-recorded messages. Consent is not mandatory, but this authorization supersedes any prior federal, state, or corporate Do Not Call registrations.`;
+
+  const consentText = service === "rideshare" ? RIDESHARE_CONSENT_TEXT : DEFAULT_CONSENT_TEXT;
 
   // ⭐ FUNCTION TO GET FULL CLIENT DETAILS
   const getClientDetails = async () => {
@@ -117,7 +121,7 @@ messages, and emails. I understand that consent is not required to proceed.`;
 
   const onSubmit = async (data: FormData) => {
     data.service = service;
-    data.consentText = CONSENT_TEXT;
+    data.consentText = consentText;
 
     // TrustedForm
     const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
@@ -308,11 +312,7 @@ messages, and emails. I understand that consent is not required to proceed.`;
               onCheckedChange={(checked) => setValue("consent", checked as boolean)}
             />
             <Label htmlFor="consent" className="text-sm text-slate-600">
-              I agree that by providing my phone number and/or email, checking this box, and
-              submitting this form, that I am consenting by electronic signature to authorize Landmark
-              Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners or affiliates to
-              contact me with automated, autodialed, artificial or prerecorded marketing calls, text
-              messages, and emails. I understand that consent is not required to proceed.
+              {consentText}
             </Label>
           </div>
           {errors.consent && <p className="text-xs text-red-600">Consent is required.</p>}
@@ -403,11 +403,7 @@ messages, and emails. I understand that consent is not required to proceed.`;
                   onCheckedChange={(checked) => setValue("consent", checked as boolean)}
                 />
                 <Label htmlFor="consent" className="text-sm text-slate-600">
-                  I agree that by providing my phone number and/or email, checking this box, and
-                  submitting this form, that I am consenting by electronic signature to authorize Landmark
-                  Demand d/b/a Claim Your Claims, Agility Labs Inc., and their partners or affiliates to
-                  contact me with automated, autodialed, artificial or prerecorded marketing calls, text
-                  messages, and emails. I understand that consent is not required to proceed.
+                  {consentText}
                 </Label>
               </div>
               {errors.consent && (
