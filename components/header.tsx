@@ -99,7 +99,7 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-8">
             <DropdownMenu modal={false}>
               <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors text-lg font-bold">
-               Active Lawsuites <ChevronDown className="h-4 w-4" />
+               Active Lawsuits <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-[700px] p-4" align="start" sideOffset={8} alignOffset={-200}>
                 <div className="grid grid-cols-2 gap-3">
