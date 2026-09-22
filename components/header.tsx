@@ -57,8 +57,8 @@ export function Header() {
     { name: "Silicosis", href: "/services/silicosis" },
     { name: "Roblox Lawsuit", href: "/services/robloxlawsuit" },
     { name: "Asbestos Lawsuit", href: "/services/asbestos-service" },
-    { name: "Depo Prova", href: "/services/depo-provera" },
-    { name: "Rideshare Lawsuit", href: "/services/rideshare" },
+    { name: "Depo Prova", href: "/services/depo-provera-lawsuit" },
+    { name: "Rideshare Lawsuit", href: "/services/rideshare-lawsuit" },
   ]
 
   return (
