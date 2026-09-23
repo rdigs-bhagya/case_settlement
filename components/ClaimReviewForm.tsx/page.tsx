@@ -134,18 +134,23 @@ messages, and emails. I understand that consent is not required to proceed.`;
     (data as any).clientDetails = clientDetails;
 
     try {
-      const requestOptions = {
+      const databaseRequestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       };
+      const zapierRequestOptions = {
+        method: "POST",
+        mode: "no-cors" as const,
+        body: JSON.stringify(data),
+      };
       const responses = await Promise.all(
         service === "rideshare"
-          ? [fetch(databaseEndpoint, requestOptions), fetch(zapierEndpoint, requestOptions)]
-          : [fetch(databaseEndpoint, requestOptions)]
+          ? [fetch(databaseEndpoint, databaseRequestOptions), fetch(zapierEndpoint, zapierRequestOptions)]
+          : [fetch(databaseEndpoint, databaseRequestOptions)]
       );
 
-      if (responses.every((response) => response.ok)) {
+      if (responses[0].ok) {
         alert("✅ Form submitted successfully!");
         reset();
       } else {
