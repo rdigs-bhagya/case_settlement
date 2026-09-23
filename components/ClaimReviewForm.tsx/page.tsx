@@ -68,6 +68,8 @@ messages, and emails. I understand that consent is not required to proceed.`;
   const RIDESHARE_CONSENT_TEXT = `By clicking the checkbox and submitting this form, I acknowledge my electronic signature and agree to the terms of use and privacy policy. I consent to receive communications, including emails, phone calls, text messages, offers, and services via the provided phone number or email address above from Landmark Demand, Novera Media Solutions, Eilers Law Firm and Our Marketing Partners. I understand there may be a charge by my wireless carrier for these communications, which may be generated using an autodialer and may contain pre-recorded messages. Consent is not mandatory, but this authorization supersedes any prior federal, state, or corporate Do Not Call registrations.`;
 
   const consentText = service === "rideshare" ? RIDESHARE_CONSENT_TEXT : DEFAULT_CONSENT_TEXT;
+  const databaseEndpoint = "https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/claims";
+  const zapierEndpoint = "https://hooks.zapier.com/hooks/catch/23024319/4dspi7f/";
 
   // ⭐ FUNCTION TO GET FULL CLIENT DETAILS
   const getClientDetails = async () => {
@@ -132,19 +134,22 @@ messages, and emails. I understand that consent is not required to proceed.`;
     (data as any).clientDetails = clientDetails;
 
     try {
-      const res = await fetch("https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/claims", {
+      const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-      });
+      };
+      const responses = await Promise.all(
+        service === "rideshare"
+          ? [fetch(databaseEndpoint, requestOptions), fetch(zapierEndpoint, requestOptions)]
+          : [fetch(databaseEndpoint, requestOptions)]
+      );
 
-      const result = await res.json();
-
-      if (res.ok) {
+      if (responses.every((response) => response.ok)) {
         alert("✅ Form submitted successfully!");
         reset();
       } else {
-        alert("❌ " + result.error);
+        alert("❌ Unable to submit the form. Please try again.");
       }
     } catch (err) {
       console.error(err);
