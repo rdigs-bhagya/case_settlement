@@ -36,6 +36,14 @@ type FormData = {
   phone: string;
   serviceAnswers?: QuestionAnswer[];
   lawyerInfo?: string;
+  address?: string;
+  pubId?: string;
+  robloxUsername?: string;
+  filingFor?: string;
+  victimName?: string;
+  ageAtIncident?: string;
+  driverName?: string;
+  bestTimeToContact?: string;
   consent?: boolean;
   consentText: string,
   xxTrustedFormCertUrl: string;
@@ -68,7 +76,7 @@ messages, and emails. I understand that consent is not required to proceed.`;
   const RIDESHARE_CONSENT_TEXT = `By clicking the checkbox and submitting this form, I acknowledge my electronic signature and agree to the terms of use and privacy policy. I consent to receive communications, including emails, phone calls, text messages, offers, and services via the provided phone number or email address above from Landmark Demand, Novera Media Solutions, Eilers Law Firm and Our Marketing Partners. I understand there may be a charge by my wireless carrier for these communications, which may be generated using an autodialer and may contain pre-recorded messages. Consent is not mandatory, but this authorization supersedes any prior federal, state, or corporate Do Not Call registrations.`;
 
   const consentText = service === "rideshare" ? RIDESHARE_CONSENT_TEXT : DEFAULT_CONSENT_TEXT;
-  const databaseEndpoint = "https://vnafaffbmg.execute-api.ap-south-1.amazonaws.com/claims";
+  const databaseEndpoint = "https://wcyf5iypbi.execute-api.us-east-1.amazonaws.com/dev/claims";
   const zapierEndpoint = "https://hooks.zapier.com/hooks/catch/23024319/4dspi7f/";
 
   // ⭐ FUNCTION TO GET FULL CLIENT DETAILS
@@ -133,6 +141,25 @@ messages, and emails. I understand that consent is not required to proceed.`;
     const clientDetails = await getClientDetails();
     (data as any).clientDetails = clientDetails;
 
+    const ridesharePayload = {
+      first_name: data.firstName,
+      last_name: data.lastName,
+      phone: data.phone,
+      email: data.email,
+      address: data.address || "",
+      campaign: "rideshare",
+      pub_id: data.pubId || "",
+      trustedform_cert_url: data.xxTrustedFormCertUrl,
+      have_attorney: data.lawyerInfo || "",
+      roblox_username: data.robloxUsername || "",
+      filing_for: data.filingFor || "",
+      victim_name: data.victimName || "",
+      age_at_abuse: data.ageAtIncident || "",
+      abuser_name: data.driverName || "",
+      best_time_to_contact: data.bestTimeToContact || "",
+      was_assaulted_by_rideshare_driver: data.serviceAnswers?.[0]?.answer || "",
+    };
+
     try {
       const databaseRequestOptions = {
         method: "POST",
@@ -142,7 +169,7 @@ messages, and emails. I understand that consent is not required to proceed.`;
       const zapierRequestOptions = {
         method: "POST",
         mode: "no-cors" as const,
-        body: JSON.stringify(data),
+        body: JSON.stringify(ridesharePayload),
       };
       const responses = await Promise.all(
         service === "rideshare"
@@ -378,6 +405,74 @@ messages, and emails. I understand that consent is not required to proceed.`;
                 />
               </div>
             </div>
+
+            {service === "rideshare" && (
+              <div className="grid lg:grid-cols-2 gap-6">
+                <div className="lg:col-span-2">
+                  <Label className={labelClass}>Address</Label>
+                  <Input
+                    {...register("address")}
+                    placeholder="Street address, city, state, ZIP"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <Label className={labelClass}>Publisher ID</Label>
+                  <Input
+                    {...register("pubId")}
+                    placeholder="Enter publisher ID"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <Label className={labelClass}>Roblox Username</Label>
+                  <Input
+                    {...register("robloxUsername")}
+                    placeholder="Enter Roblox username"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <Label className={labelClass}>Who are you filing for?</Label>
+                  <Input
+                    {...register("filingFor")}
+                    placeholder="Self, child, loved one, etc."
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <Label className={labelClass}>Victim's Name</Label>
+                  <Input
+                    {...register("victimName")}
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <Label className={labelClass}>Age at Time of Incident</Label>
+                  <Input
+                    {...register("ageAtIncident")}
+                    type="number"
+                    min="0"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <Label className={labelClass}>Driver's Name, if Known</Label>
+                  <Input
+                    {...register("driverName")}
+                    className={inputClass}
+                  />
+                </div>
+                <div className="lg:col-span-2">
+                  <Label className={labelClass}>Best Time to Contact You</Label>
+                  <Input
+                    {...register("bestTimeToContact")}
+                    placeholder="Morning, afternoon, evening, etc."
+                    className={inputClass}
+                  />
+                </div>
+              </div>
+            )}
 
             {/* Dynamic Service Questions */}
             {questionsToRender.map((q) => (
