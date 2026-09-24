@@ -38,7 +38,7 @@ type FormData = {
   lawyerInfo?: string;
   address?: string;
   pubId?: string;
-  robloxUsername?: string;
+  rideshareUsername?: string;
   filingFor?: string;
   victimName?: string;
   ageAtIncident?: string;
@@ -151,7 +151,7 @@ messages, and emails. I understand that consent is not required to proceed.`;
       pub_id: data.pubId || "",
       trustedform_cert_url: data.xxTrustedFormCertUrl,
       have_attorney: data.lawyerInfo || "",
-      roblox_username: data.robloxUsername || "",
+      rideshare_username: data.rideshareUsername || "",
       filing_for: data.filingFor || "",
       victim_name: data.victimName || "",
       age_at_abuse: data.ageAtIncident || "",
@@ -425,10 +425,10 @@ messages, and emails. I understand that consent is not required to proceed.`;
                   />
                 </div>
                 <div>
-                  <Label className={labelClass}>Roblox Username</Label>
+                  <Label className={labelClass}>Rideshare Username</Label>
                   <Input
-                    {...register("robloxUsername")}
-                    placeholder="Enter Roblox username"
+                    {...register("rideshareUsername")}
+                    placeholder="Enter Rideshare username"
                     className={inputClass}
                   />
                 </div>
