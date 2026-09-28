@@ -24,6 +24,14 @@ interface Claim {
   createdAt?: string
   clientDetails?: ClientDetails
   xxTrustedFormCertUrl?: string
+  address?: string
+  pubId?: string
+  rideshareUsername?: string
+  filingFor?: string
+  victimName?: string
+  ageAtIncident?: string | number
+  driverName?: string
+  bestTimeToContact?: string
 }
 
 interface ClientLocation {
@@ -69,6 +77,16 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
     addLine("Last Name", claim.lastName)
     addLine("TrustedForm Certificate URL", claim.xxTrustedFormCertUrl)
     addLine("Service", claim.service)
+    if (claim.service === "rideshare") {
+      addLine("Address", claim.address)
+      addLine("Pub ID", claim.pubId)
+      addLine("Rideshare Username", claim.rideshareUsername)
+      addLine("Filing For", claim.filingFor)
+      addLine("Victim Name", claim.victimName)
+      addLine("Age at Incident", claim.ageAtIncident)
+      addLine("Driver Name", claim.driverName)
+      addLine("Best Time to Contact", claim.bestTimeToContact)
+    }
     addLine("Consent", claim.consent ? "Yes" : "No")
     addLine("Consent Text", claim.consentText)
     if (claim.lawyerInfo) addLine("Lawyer Info", claim.lawyerInfo)
@@ -157,6 +175,26 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
               </span>
             </p>
           </div>
+
+          {claim.service === "rideshare" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {([
+                ["Address", claim.address],
+                ["Pub ID", claim.pubId],
+                ["Rideshare Username", claim.rideshareUsername],
+                ["Filing For", claim.filingFor],
+                ["Victim Name", claim.victimName],
+                ["Age at Incident", claim.ageAtIncident],
+                ["Driver Name", claim.driverName],
+                ["Best Time to Contact", claim.bestTimeToContact],
+              ] as const).map(([label, value]) => (
+                <div key={label}>
+                  <label className="text-sm font-medium text-muted-foreground">{label}</label>
+                  <p className="text-lg text-foreground mt-1">{value || "N/A"}</p>
+                </div>
+              ))}
+            </div>
+          )}
 
           {claim.serviceAnswers && claim.serviceAnswers.length > 0 && (
             <div>
