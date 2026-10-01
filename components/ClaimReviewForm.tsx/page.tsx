@@ -37,12 +37,6 @@ type FormData = {
   serviceAnswers?: QuestionAnswer[];
   lawyerInfo?: string;
   address?: string;
-  pubId?: string;
-  rideshareUsername?: string;
-  filingFor?: string;
-  victimName?: string;
-  ageAtIncident?: string;
-  driverName?: string;
   bestTimeToContact?: string;
   consent?: boolean;
   consentText: string,
@@ -148,14 +142,8 @@ messages, and emails. I understand that consent is not required to proceed.`;
       email: data.email,
       address: data.address || "",
       campaign: "rideshare",
-      pub_id: data.pubId || "",
       trustedform_cert_url: data.xxTrustedFormCertUrl,
       have_attorney: data.lawyerInfo || "",
-      rideshare_username: data.rideshareUsername || "",
-      filing_for: data.filingFor || "",
-      victim_name: data.victimName || "",
-      age_at_abuse: data.ageAtIncident || "",
-      abuser_name: data.driverName || "",
       best_time_to_contact: data.bestTimeToContact || "",
       was_assaulted_by_rideshare_driver: data.serviceAnswers?.[0]?.answer || "",
     };
@@ -413,53 +401,6 @@ messages, and emails. I understand that consent is not required to proceed.`;
                   <Input
                     {...register("address")}
                     placeholder="Street address, city, state, ZIP"
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <Label className={labelClass}>Publisher ID</Label>
-                  <Input
-                    {...register("pubId")}
-                    placeholder="Enter publisher ID"
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <Label className={labelClass}>Rideshare Username</Label>
-                  <Input
-                    {...register("rideshareUsername")}
-                    placeholder="Enter Rideshare username"
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <Label className={labelClass}>Who are you filing for?</Label>
-                  <Input
-                    {...register("filingFor")}
-                    placeholder="Self, child, loved one, etc."
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <Label className={labelClass}>Victim's Name</Label>
-                  <Input
-                    {...register("victimName")}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <Label className={labelClass}>Age at Time of Incident</Label>
-                  <Input
-                    {...register("ageAtIncident")}
-                    type="number"
-                    min="0"
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <Label className={labelClass}>Driver's Name, if Known</Label>
-                  <Input
-                    {...register("driverName")}
                     className={inputClass}
                   />
                 </div>
