@@ -25,12 +25,6 @@ interface Claim {
   clientDetails?: ClientDetails
   xxTrustedFormCertUrl?: string
   address?: string
-  pubId?: string
-  rideshareUsername?: string
-  filingFor?: string
-  victimName?: string
-  ageAtIncident?: string | number
-  driverName?: string
   bestTimeToContact?: string
 }
 
@@ -79,12 +73,6 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
     addLine("Service", claim.service)
     if (claim.service === "rideshare") {
       addLine("Address", claim.address)
-      addLine("Pub ID", claim.pubId)
-      addLine("Rideshare Username", claim.rideshareUsername)
-      addLine("Filing For", claim.filingFor)
-      addLine("Victim Name", claim.victimName)
-      addLine("Age at Incident", claim.ageAtIncident)
-      addLine("Driver Name", claim.driverName)
       addLine("Best Time to Contact", claim.bestTimeToContact)
     }
     addLine("Consent", claim.consent ? "Yes" : "No")
@@ -180,12 +168,6 @@ export function ClaimDetailModal({ claim, onClose }: ClaimDetailModalProps) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {([
                 ["Address", claim.address],
-                ["Pub ID", claim.pubId],
-                ["Rideshare Username", claim.rideshareUsername],
-                ["Filing For", claim.filingFor],
-                ["Victim Name", claim.victimName],
-                ["Age at Incident", claim.ageAtIncident],
-                ["Driver Name", claim.driverName],
                 ["Best Time to Contact", claim.bestTimeToContact],
               ] as const).map(([label, value]) => (
                 <div key={label}>

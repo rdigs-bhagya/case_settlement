@@ -35,12 +35,6 @@ interface Claim {
   createdAt?: string
   xxTrustedFormCertUrl?: string
   address?: string
-  pubId?: string
-  rideshareUsername?: string
-  filingFor?: string
-  victimName?: string
-  ageAtIncident?: string | number
-  driverName?: string
   bestTimeToContact?: string
 }
 
@@ -199,12 +193,6 @@ export default function ClaimsPage() {
       addLine("Service", claim.service)
       if (claim.service === "rideshare") {
         addLine("Address", claim.address)
-        addLine("Pub ID", claim.pubId)
-        addLine("Rideshare Username", claim.rideshareUsername)
-        addLine("Filing For", claim.filingFor)
-        addLine("Victim Name", claim.victimName)
-        addLine("Age at Incident", claim.ageAtIncident)
-        addLine("Driver Name", claim.driverName)
         addLine("Best Time to Contact", claim.bestTimeToContact)
       }
       addLine("Consent", consentValue)
