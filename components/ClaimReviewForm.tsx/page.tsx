@@ -147,6 +147,24 @@ messages, and emails. I understand that consent is not required to proceed.`;
       best_time_to_contact: data.bestTimeToContact || "",
       was_assaulted_by_rideshare_driver: data.serviceAnswers?.[0]?.answer || "",
     };
+    const getServiceAnswer = (question: string) =>
+      data.serviceAnswers?.find((answer) => answer.question === question)?.answer || "";
+    const robloxPayload = {
+      first_name: data.firstName,
+      last_name: data.lastName,
+      phone: data.phone,
+      email: data.email,
+      campaign: "roblox",
+      trustedform_cert_url: data.xxTrustedFormCertUrl,
+      have_attorney: data.lawyerInfo || "",
+      last_four_ssn: getServiceAnswer("Last four digits of SSN"),
+      met_abuser_through_roblox: getServiceAnswer("Did your child meet an abuser through Roblox?"),
+      under_18_when_abuse_began: getServiceAnswer("Was your child under 18 when the abuse began?"),
+      abuse_involved: getServiceAnswer(
+        "Did the abuse involve physical assault, grooming, or exchange of explicit content?"
+      ),
+      service_answers: data.serviceAnswers || [],
+    };
 
     try {
       const databaseRequestOptions = {
@@ -157,13 +175,18 @@ messages, and emails. I understand that consent is not required to proceed.`;
       const zapierRequestOptions = {
         method: "POST",
         mode: "no-cors" as const,
-        body: JSON.stringify(ridesharePayload),
       };
-      const responses = await Promise.all(
-        service === "rideshare"
-          ? [fetch(databaseEndpoint, databaseRequestOptions), fetch(zapierEndpoint, zapierRequestOptions)]
-          : [fetch(databaseEndpoint, databaseRequestOptions)]
-      );
+      const requests: Promise<Response>[] = [fetch(databaseEndpoint, databaseRequestOptions)];
+      if (service === "rideshare" || service === "roblox") {
+        const zapierPayload = service === "rideshare" ? ridesharePayload : robloxPayload;
+        requests.push(
+          fetch(zapierEndpoint, {
+            ...zapierRequestOptions,
+            body: JSON.stringify(zapierPayload),
+          })
+        );
+      }
+      const responses = await Promise.all(requests);
 
       if (responses[0].ok) {
         alert("✅ Form submitted successfully!");
