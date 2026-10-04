@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -50,6 +51,9 @@ type ClaimReviewFormProps = {
 };
 
 export default function ClaimReviewForm({ service, compact = false }: ClaimReviewFormProps) {
+  const submissionLock = useRef(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
@@ -124,49 +128,54 @@ messages, and emails. I understand that consent is not required to proceed.`;
 
 
   const onSubmit = async (data: FormData) => {
-    data.service = service;
-    data.consentText = consentText;
-
-    // TrustedForm
-    const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
-    data.xxTrustedFormCertUrl = tfValue || "";
-
-    // Get client details
-    const clientDetails = await getClientDetails();
-    (data as any).clientDetails = clientDetails;
-
-    const ridesharePayload = {
-      first_name: data.firstName,
-      last_name: data.lastName,
-      phone: data.phone,
-      email: data.email,
-      address: data.address || "",
-      campaign: "rideshare",
-      trustedform_cert_url: data.xxTrustedFormCertUrl,
-      have_attorney: data.lawyerInfo || "",
-      best_time_to_contact: data.bestTimeToContact || "",
-      was_assaulted_by_rideshare_driver: data.serviceAnswers?.[0]?.answer || "",
-    };
-    const getServiceAnswer = (question: string) =>
-      data.serviceAnswers?.find((answer) => answer.question === question)?.answer || "";
-    const robloxPayload = {
-      first_name: data.firstName,
-      last_name: data.lastName,
-      phone: data.phone,
-      email: data.email,
-      campaign: "roblox",
-      trustedform_cert_url: data.xxTrustedFormCertUrl,
-      have_attorney: data.lawyerInfo || "",
-      last_four_ssn: getServiceAnswer("Last four digits of SSN"),
-      met_abuser_through_roblox: getServiceAnswer("Did your child meet an abuser through Roblox?"),
-      under_18_when_abuse_began: getServiceAnswer("Was your child under 18 when the abuse began?"),
-      abuse_involved: getServiceAnswer(
-        "Did the abuse involve physical assault, grooming, or exchange of explicit content?"
-      ),
-      service_answers: data.serviceAnswers || [],
-    };
+    if (submissionLock.current || hasSubmitted) return;
+    submissionLock.current = true;
+    setIsSubmitting(true);
+    let databaseAccepted = false;
 
     try {
+      data.service = service;
+      data.consentText = consentText;
+
+      // TrustedForm
+      const tfValue = (document.getElementById("xxTrustedFormCertUrl") as HTMLInputElement)?.value;
+      data.xxTrustedFormCertUrl = tfValue || "";
+
+      // Get client details
+      const clientDetails = await getClientDetails();
+      (data as any).clientDetails = clientDetails;
+
+      const ridesharePayload = {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phone,
+        email: data.email,
+        address: data.address || "",
+        campaign: "rideshare",
+        trustedform_cert_url: data.xxTrustedFormCertUrl,
+        have_attorney: data.lawyerInfo || "",
+        best_time_to_contact: data.bestTimeToContact || "",
+        was_assaulted_by_rideshare_driver: data.serviceAnswers?.[0]?.answer || "",
+      };
+      const getServiceAnswer = (question: string) =>
+        data.serviceAnswers?.find((answer) => answer.question === question)?.answer || "";
+      const robloxPayload = {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phone,
+        email: data.email,
+        campaign: "roblox",
+        trustedform_cert_url: data.xxTrustedFormCertUrl,
+        have_attorney: data.lawyerInfo || "",
+        last_four_ssn: getServiceAnswer("Last four digits of SSN"),
+        met_abuser_through_roblox: getServiceAnswer("Did your child meet an abuser through Roblox?"),
+        under_18_when_abuse_began: getServiceAnswer("Was your child under 18 when the abuse began?"),
+        abuse_involved: getServiceAnswer(
+          "Did the abuse involve physical assault, grooming, or exchange of explicit content?"
+        ),
+        service_answers: data.serviceAnswers || [],
+      };
+
       const databaseRequestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -175,27 +184,40 @@ messages, and emails. I understand that consent is not required to proceed.`;
       const zapierRequestOptions = {
         method: "POST",
         mode: "no-cors" as const,
+        body: JSON.stringify(ridesharePayload),
       };
-      const requests: Promise<Response>[] = [fetch(databaseEndpoint, databaseRequestOptions)];
+      const databaseResponse = await fetch(databaseEndpoint, databaseRequestOptions);
+
+      if (databaseResponse.status !== 201) {
+        alert("âŒ Unable to submit the form. Please try again.");
+        return;
+      }
+
+      // The database has accepted the lead; prevent a repeat submit even if
+      // the follow-up webhook fails.
+      setHasSubmitted(true);
+
+      databaseAccepted = true;
       if (service === "rideshare" || service === "roblox") {
         const zapierPayload = service === "rideshare" ? ridesharePayload : robloxPayload;
-        requests.push(
-          fetch(zapierEndpoint, {
-            ...zapierRequestOptions,
-            body: JSON.stringify(zapierPayload),
-          })
-        );
+        await fetch(zapierEndpoint, {
+          ...zapierRequestOptions,
+          body: JSON.stringify(zapierPayload),
+        });
       }
-      const responses = await Promise.all(requests);
 
-      if (responses[0].ok) {
         alert("✅ Form submitted successfully!");
         reset();
-      } else {
-        alert("❌ Unable to submit the form. Please try again.");
-      }
     } catch (err) {
       console.error(err);
+      if (databaseAccepted) {
+        alert("Your claim was saved, but the follow-up could not be confirmed. Please do not submit it again.");
+      } else {
+        alert("Unable to submit the form. Please try again.");
+      }
+    } finally {
+      submissionLock.current = false;
+      setIsSubmitting(false);
     }
   };
 
@@ -367,9 +389,10 @@ messages, and emails. I understand that consent is not required to proceed.`;
 
           <Button
             type="submit"
+            disabled={isSubmitting || hasSubmitted}
             className="w-full bg-blue-900 text-white hover:bg-blue-800"
           >
-            Submit
+            {isSubmitting ? "Submitting..." : hasSubmitted ? "Submitted" : "Submit"}
           </Button>
         </form>
       </div>
@@ -482,9 +505,14 @@ messages, and emails. I understand that consent is not required to proceed.`;
 
             <Button
               type="submit"
+              disabled={isSubmitting || hasSubmitted}
               className="w-full bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 font-bold py-3 rounded-lg text-lg shadow-md hover:shadow-lg hover:from-amber-500 hover:to-amber-600 transition"
             >
-              Get Your Free Claim Review
+              {isSubmitting
+                ? "Submitting..."
+                : hasSubmitted
+                  ? "Submitted"
+                  : "Get Your Free Claim Review"}
             </Button>
           </form>
         </div>
